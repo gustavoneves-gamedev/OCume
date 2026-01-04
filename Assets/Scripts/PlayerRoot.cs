@@ -12,8 +12,9 @@ public class PlayerRoot : MonoBehaviour
 
     private Vector3 move;
     private int desiredLane = 0;
-    private bool isChangingLane;
-    
+    public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
+    //o script detectar quando o jogador finalizar a troca de lane
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,21 +31,23 @@ public class PlayerRoot : MonoBehaviour
     {
         move = transform.forward * verticalSpeed;
 
-        if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1)
+        if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
         {
             desiredLane = desiredLane + 1;
+            //isChangingLane = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1)
+        if (Input.GetKeyDown(KeyCode.A) && desiredLane > -1 && !isChangingLane)
         {
             desiredLane = desiredLane - 1;
+            //isChangingLane = true;
         }
 
         float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
 
         move.x = (targetX - transform.position.x) / Time.deltaTime;
 
-
+        
         cc.Move(move * Time.deltaTime);
     }
 }
