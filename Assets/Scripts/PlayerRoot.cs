@@ -12,6 +12,7 @@ public class PlayerRoot : MonoBehaviour
 
     private Vector3 move;
     private int desiredLane = 0;
+    private bool isChangingLane;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,8 +23,13 @@ public class PlayerRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerMovement();
+    }
+
+    private void PlayerMovement()
+    {
         move = transform.forward * verticalSpeed;
-        
+
         if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1)
         {
             desiredLane = desiredLane + 1;
@@ -34,8 +40,10 @@ public class PlayerRoot : MonoBehaviour
             desiredLane = desiredLane - 1;
         }
 
-        move.x = Mathf.Lerp(transform.position.x, desiredLane, horizontalSpeed);
-        
+        float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
+
+        move.x = (targetX - transform.position.x) / Time.deltaTime;
+
 
         cc.Move(move * Time.deltaTime);
     }
