@@ -67,6 +67,11 @@ public class PlayerRoot : MonoBehaviour
         {
             GameController.gameController.UpdateRunCoins(normalCoinMultiplier);
         }
+        
+        if(other.CompareTag("Ruby"))
+        {
+            GameController.gameController.UpdateRunCoins(0, rubyMultiplier);
+        }
     }
 
 }
