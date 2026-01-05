@@ -24,6 +24,7 @@ public class PlayerRoot : MonoBehaviour
     
     void Start()
     {
+        GameController.gameController.playerRoot = this;
         Initialize();
     }
 
@@ -77,7 +78,9 @@ public class PlayerRoot : MonoBehaviour
         }
     }
 
-
+    //Talvez eu deva criar um script de moedas para colocar isso tudo lá e
+    //tocar o som delas quando o jogador as coletar. VER COM PROFESSOR O QUE PESA MENOS
+    //OU POSSO COLOCAR OS SONS AQUI E TOCAR QUANDO COLETAR AS MOEDAS!! - VOU FAZER ISTO
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Coin"))
