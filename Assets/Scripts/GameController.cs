@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public int runRubies;
 
     public PlayerRoot playerRoot;
+    public UIController uiController;
     
     
     void Awake()
