@@ -7,6 +7,10 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float horizontalSpeed;
 
+    [Header("PowerUps")]
+    [SerializeField] public int normalCoinMultiplier = 1;
+    [SerializeField] public int rubyMultiplier = 1;
+
     [Header("References")]
     [SerializeField] private CharacterController cc;
 
@@ -15,13 +19,19 @@ public class PlayerRoot : MonoBehaviour
     public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
     //o script detectar quando o jogador finalizar a troca de lane
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
-        
+        Initialize();
     }
 
-    // Update is called once per frame
+    private void Initialize()
+    {
+        normalCoinMultiplier = 1;
+        rubyMultiplier = 1;
+    }
+
+
     void Update()
     {
         PlayerMovement();
@@ -50,4 +60,13 @@ public class PlayerRoot : MonoBehaviour
         
         cc.Move(move * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            GameController.gameController.UpdateRunCoins(normalCoinMultiplier);
+        }
+    }
+
 }

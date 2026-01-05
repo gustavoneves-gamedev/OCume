@@ -4,8 +4,10 @@ public class GameController : MonoBehaviour
 {
     public static GameController gameController;
 
-    [Header("Mode")]
-    [SerializeField] private bool isRunning;
+    [Header("Run")]
+    public bool isRunning;
+    public int runNormalCoins;
+    public int runRubies;
 
     public PlayerRoot playerRoot;
     
@@ -26,5 +28,17 @@ public class GameController : MonoBehaviour
     {
 
     }
-    
+
+    #region Run
+
+    public void UpdateRunCoins(int normalCoins = 0, int rubies = 0)
+    {
+        runNormalCoins += normalCoins;
+
+        runRubies += rubies;
+    }
+
+
+    #endregion
+
 }
