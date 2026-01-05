@@ -6,6 +6,8 @@ public class PlayerRoot : MonoBehaviour
     [Header("Status")]
     [SerializeField] private float verticalSpeed;
     [SerializeField] private float horizontalSpeed;
+    public float currentStamina;
+    public float maxStamina;
 
     [Header("PowerUps")]
     [SerializeField] public int normalCoinMultiplier = 1;
@@ -60,6 +62,21 @@ public class PlayerRoot : MonoBehaviour
         
         cc.Move(move * Time.deltaTime);
     }
+
+    public void UpdateStamina(float x)
+    {
+        currentStamina += x;
+
+        if (currentStamina > maxStamina)
+            currentStamina = maxStamina;
+
+        if (currentStamina <= 0)
+        {
+            currentStamina = 0;
+            //OnDeathEvent();
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
