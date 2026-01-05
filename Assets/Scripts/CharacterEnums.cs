@@ -1,7 +1,4 @@
-using UnityEngine;
 
-public class CharacterID : MonoBehaviour
-{
     public enum characterID 
     {
         Cowboy,
@@ -23,4 +20,4 @@ public class CharacterID : MonoBehaviour
 
     }
 
-}
+
