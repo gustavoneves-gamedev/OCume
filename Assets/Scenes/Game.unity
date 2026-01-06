@@ -1337,6 +1337,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf10d95b71ca4df4fb3d80e6585dc860, type: 3}
+--- !u!1 &294560856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2256591609571127849, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+  m_PrefabInstance: {fileID: 4813382045633849443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &295011655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,6 +2908,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456255627}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &479783029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2293958696203824109, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+  m_PrefabInstance: {fileID: 4813382045633849443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &489202430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7180,6 +7190,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a689477b5635e49afa338f0a249700, type: 3}
+--- !u!1 &1349215636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8275758077615260354, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+  m_PrefabInstance: {fileID: 4813382045633849443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1357606723
 GameObject:
   m_ObjectHideFlags: 0
@@ -9873,20 +9888,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59667772b5bd3d4ba385659756fa6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaUpgradeFactor: 5
-  staminaUpgrades: 0
-  movementSpeedUpgradeFactor: 1
-  movementSpeedUpgrades: 0
-  damageUpgradeFactor: 1
-  damageUpgrades: 0
-  cooldownUpgradeFactor: 0.2
-  cooldownUpgrades: 0
-  ammoUpgradeFactor: 1
-  ammoUpgrades: 0
-  defenseUpgradeFactor: 5
-  defenseUpgrades: 0
-  resistanceUpgradeFactor: 2
-  resistanceUpgrades: 0
+  staminaIncrement: 0
+  movementSpeedIncrement: 0
+  damageIncrement: 0
+  cooldownIncrement: 0
+  ammoIncrement: 0
+  defenseIncrement: 0
+  resistanceIncrement: 0
+  cowboyStaminaUpgradeFactor: 5
+  cowboyStaminaUpgrades: 0
+  cowboyMovementSpeedUpgradeFactor: 1
+  cowboyMovementSpeedUpgrades: 0
+  cowboyDamageUpgradeFactor: 1
+  cowboyDamageUpgrades: 0
+  cowboyCooldownUpgradeFactor: 0.2
+  cowboyCooldownUpgrades: 0
+  cowboyAmmoUpgradeFactor: 1
+  cowboyAmmoUpgrades: 0
+  cowboyDefenseUpgradeFactor: 5
+  cowboyDefenseUpgrades: 0
+  cowboyResistanceUpgradeFactor: 2
+  cowboyResistanceUpgrades: 0
+  samuraiStaminaUpgradeFactor: 5
+  samuraiStaminaUpgrades: 0
+  samuraiMovementSpeedUpgradeFactor: 1
+  samuraiMovementSpeedUpgrades: 0
+  samuraiDamageUpgradeFactor: 1
+  samuraiDamageUpgrades: 0
+  samuraiCooldownUpgradeFactor: 0.2
+  samuraiCooldownUpgrades: 0
+  samuraiAmmoUpgradeFactor: 1
+  samuraiAmmoUpgrades: 0
+  samuraiDefenseUpgradeFactor: 5
+  samuraiDefenseUpgrades: 0
+  samuraiResistanceUpgradeFactor: 2
+  samuraiResistanceUpgrades: 0
+  alpinistaStaminaUpgradeFactor: 5
+  alpinistaStaminaUpgrades: 0
+  alpinistaMovementSpeedUpgradeFactor: 1
+  alpinistaMovementSpeedUpgrades: 0
+  alpinistaDamageUpgradeFactor: 1
+  alpinistaDamageUpgrades: 0
+  alpinistaCooldownUpgradeFactor: 0.2
+  alpinistaCooldownUpgrades: 0
+  alpinistaAmmoUpgradeFactor: 1
+  alpinistaAmmoUpgrades: 0
+  alpinistaDefenseUpgradeFactor: 5
+  alpinistaDefenseUpgrades: 0
+  alpinistaResistanceUpgradeFactor: 2
+  alpinistaResistanceUpgrades: 0
 --- !u!4 &2032830022
 Transform:
   m_ObjectHideFlags: 0
@@ -10147,6 +10197,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: characterDatas.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: characterModels.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterDatas.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a64ec146f0c78e145a5e625c52777b43, type: 2}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterDatas.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 811f8684f91a4d24fae184e7d58130cd, type: 2}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterDatas.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 04828736e8a04d543b21c28b147d383a, type: 2}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterModels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1349215636}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterModels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 479783029}
+    - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
+      propertyPath: 'characterModels.Array.data[2]'
+      value: 
+      objectReference: {fileID: 294560856}
     - target: {fileID: 2967247556712209944, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

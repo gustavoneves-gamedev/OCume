@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20051b882135b6c41a0422a9f9f3e78e, type: 3}
-  m_Name: Character_Cowboy
+  m_Name: Character_Alpinista
   m_EditorClassIdentifier: 
-  characterID: 0
-  baseMaxStamina: 100
-  baseMovementSpeed: 12
-  baseDamage: 1
-  baseCooldown: 1
-  baseAmmo: 6
-  baseDefense: 5
-  baseResistance: 1
+  characterID: 2
+  baseMaxStamina: 80
+  baseMovementSpeed: 10
+  baseDamage: 2
+  baseCooldown: 1.5
+  baseAmmo: 4
+  baseDefense: 2
+  baseResistance: 10

@@ -41,6 +41,9 @@ public class PlayerRoot : MonoBehaviour
         normalCoinMultiplier = 1;
         rubyMultiplier = 1;
 
+        //Serve para atualizar o script do progress manager e pegar o incremento correto
+        ProgressManager.progressManager.UpdateIncrement(selectedChar);
+
         //Esconde todos os modelos
         for (int i = 0; i < characterModels.Length; i++)
         {
@@ -54,7 +57,7 @@ public class PlayerRoot : MonoBehaviour
         if (selectedChar == characterID.Samurai)
             InitializePlayer(1);
 
-        if (selectedChar == characterID.Samurai)
+        if (selectedChar == characterID.Alpinista)
             InitializePlayer(2);
 
     }
