@@ -4,10 +4,15 @@ public class PlayerRoot : MonoBehaviour
 {
 
     [Header("Status")]
-    [SerializeField] private float verticalSpeed;
-    [SerializeField] private float horizontalSpeed;
     public float currentStamina;
     public float maxStamina;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float horizontalSpeed;     
+    public float damage;
+    public float cooldown;
+    public int ammo;
+    public float defense;
+    public float resistance;
 
     [Header("PowerUps")]
     [SerializeField] public int normalCoinMultiplier = 1;
@@ -15,6 +20,8 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
+    private characterID selectedCharacter = characterID.Cowboy;
+    [SerializeField] private CharacterData[] characterDatas;
 
     private Vector3 move;
     private int desiredLane = 0;
@@ -25,14 +32,46 @@ public class PlayerRoot : MonoBehaviour
     void Start()
     {
         GameController.gameController.playerRoot = this;
-        Initialize();
+        Initialize(selectedCharacter);
     }
 
-    private void Initialize()
+    private void Initialize(characterID selectedChar)
     {
         normalCoinMultiplier = 1;
         rubyMultiplier = 1;
+
+        if (selectedChar == characterID.Cowboy)
+            InitializeCowboy();
+
     }
+
+    private void InitializeCowboy()
+    {
+        // ProgressManager.progressManager.staminaUpgrades
+        maxStamina = characterDatas[0].baseMaxStamina +
+            ProgressManager.progressManager.staminaUpgrades * ProgressManager.progressManager.staminaUpgradeFactor;
+
+        movementSpeed = characterDatas[0].baseMovementSpeed +
+            ProgressManager.progressManager.movementSpeedUpgrades * ProgressManager.progressManager.movementSpeedUpgradeFactor;
+
+        damage = characterDatas[0].baseDamage +
+            ProgressManager.progressManager.damageUpgrades * ProgressManager.progressManager.damageUpgradeFactor;
+
+        cooldown = characterDatas[0].baseCooldown +
+            ProgressManager.progressManager.cooldownUpgrades * ProgressManager.progressManager.cooldownUpgradeFactor;
+
+        ammo = characterDatas[0].baseAmmo +
+            ProgressManager.progressManager.ammoUpgrades * ProgressManager.progressManager.ammoUpgradeFactor;
+
+        defense = characterDatas[0].baseDefense +
+            ProgressManager.progressManager.defenseUpgrades * ProgressManager.progressManager.defenseUpgradeFactor;
+
+        resistance = characterDatas[0].baseResistance +
+            ProgressManager.progressManager.resistanceUpgrades * ProgressManager.progressManager.resistanceUpgradeFactor;
+
+    }
+
+
 
 
     void Update()
@@ -42,7 +81,7 @@ public class PlayerRoot : MonoBehaviour
 
     private void PlayerMovement()
     {
-        move = transform.forward * verticalSpeed;
+        move = transform.forward * movementSpeed;
 
         if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
         {

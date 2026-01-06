@@ -9844,6 +9844,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028461557}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2032830020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032830022}
+  - component: {fileID: 2032830021}
+  m_Layer: 0
+  m_Name: ProgressManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2032830021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032830020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59667772b5bd3d4ba385659756fa6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaUpgradeFactor: 5
+  staminaUpgrades: 0
+  movementSpeedUpgradeFactor: 1
+  movementSpeedUpgrades: 0
+  damageUpgradeFactor: 1
+  damageUpgrades: 0
+  cooldownUpgradeFactor: 0.2
+  cooldownUpgrades: 0
+  ammoUpgradeFactor: 1
+  ammoUpgrades: 0
+  defenseUpgradeFactor: 5
+  defenseUpgrades: 0
+  resistanceUpgradeFactor: 2
+  resistanceUpgrades: 0
+--- !u!4 &2032830022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032830020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.929737, y: 0.77658826, z: 17.191109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2044163744
 GameObject:
   m_ObjectHideFlags: 0
@@ -10229,3 +10287,4 @@ SceneRoots:
   - {fileID: 1577437321}
   - {fileID: 1670216957}
   - {fileID: 393168559}
+  - {fileID: 2032830022}
