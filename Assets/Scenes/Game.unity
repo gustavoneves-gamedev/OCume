@@ -9896,7 +9896,7 @@ MonoBehaviour:
   defenseIncrement: 0
   resistanceIncrement: 0
   cowboyStaminaUpgradeFactor: 5
-  cowboyStaminaUpgrades: 0
+  cowboyStaminaUpgrades: 5
   cowboyMovementSpeedUpgradeFactor: 1
   cowboyMovementSpeedUpgrades: 0
   cowboyDamageUpgradeFactor: 1
@@ -9911,7 +9911,7 @@ MonoBehaviour:
   cowboyResistanceUpgrades: 0
   samuraiStaminaUpgradeFactor: 5
   samuraiStaminaUpgrades: 0
-  samuraiMovementSpeedUpgradeFactor: 1
+  samuraiMovementSpeedUpgradeFactor: 0.5
   samuraiMovementSpeedUpgrades: 0
   samuraiDamageUpgradeFactor: 1
   samuraiDamageUpgrades: 0
