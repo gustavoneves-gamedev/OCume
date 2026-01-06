@@ -61,26 +61,19 @@ public class PlayerRoot : MonoBehaviour
 
     private void InitializePlayer(int charCode)
     {
-        maxStamina = characterDatas[charCode].baseMaxStamina +
-            ProgressManager.progressManager.staminaUpgrades * ProgressManager.progressManager.staminaUpgradeFactor;
+        maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
-        movementSpeed = characterDatas[charCode].baseMovementSpeed +
-            ProgressManager.progressManager.movementSpeedUpgrades * ProgressManager.progressManager.movementSpeedUpgradeFactor;
+        movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
 
-        damage = characterDatas[charCode].baseDamage +
-            ProgressManager.progressManager.damageUpgrades * ProgressManager.progressManager.damageUpgradeFactor;
+        damage = characterDatas[charCode].baseDamage + ProgressManager.progressManager.damageIncrement;
 
-        cooldown = characterDatas[charCode].baseCooldown +
-            ProgressManager.progressManager.cooldownUpgrades * ProgressManager.progressManager.cooldownUpgradeFactor;
+        cooldown = characterDatas[charCode].baseCooldown + ProgressManager.progressManager.cooldownIncrement;
 
-        ammo = characterDatas[charCode].baseAmmo +
-            ProgressManager.progressManager.ammoUpgrades * ProgressManager.progressManager.ammoUpgradeFactor;
+        ammo = characterDatas[charCode].baseAmmo + ProgressManager.progressManager.ammoIncrement;
 
-        defense = characterDatas[charCode].baseDefense +
-            ProgressManager.progressManager.defenseUpgrades * ProgressManager.progressManager.defenseUpgradeFactor;
+        defense = characterDatas[charCode].baseDefense + ProgressManager.progressManager.defenseIncrement;
 
-        resistance = characterDatas[charCode].baseResistance +
-            ProgressManager.progressManager.resistanceUpgrades * ProgressManager.progressManager.resistanceUpgradeFactor;
+        resistance = characterDatas[charCode].baseResistance + ProgressManager.progressManager.resistanceIncrement;
 
         characterModels[charCode].SetActive(true); //Ativa o modelo do personagem selecionado
 
