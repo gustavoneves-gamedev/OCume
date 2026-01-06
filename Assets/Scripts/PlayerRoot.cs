@@ -22,6 +22,7 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterController cc;
     private characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
+    [SerializeField] private GameObject[] characterModels;
 
     private Vector3 move;
     private int desiredLane = 0;
@@ -40,34 +41,50 @@ public class PlayerRoot : MonoBehaviour
         normalCoinMultiplier = 1;
         rubyMultiplier = 1;
 
+        //Esconde todos os modelos
+        for (int i = 0; i < characterModels.Length; i++)
+        {
+            characterModels[i].SetActive(false);
+        }
+
+
         if (selectedChar == characterID.Cowboy)
-            InitializeCowboy();
+            InitializePlayer(0);
+
+        if (selectedChar == characterID.Samurai)
+            InitializePlayer(1);
+
+        if (selectedChar == characterID.Samurai)
+            InitializePlayer(2);
 
     }
 
-    private void InitializeCowboy()
+    private void InitializePlayer(int charCode)
     {
-        // ProgressManager.progressManager.staminaUpgrades
-        maxStamina = characterDatas[0].baseMaxStamina +
+        maxStamina = characterDatas[charCode].baseMaxStamina +
             ProgressManager.progressManager.staminaUpgrades * ProgressManager.progressManager.staminaUpgradeFactor;
 
-        movementSpeed = characterDatas[0].baseMovementSpeed +
+        movementSpeed = characterDatas[charCode].baseMovementSpeed +
             ProgressManager.progressManager.movementSpeedUpgrades * ProgressManager.progressManager.movementSpeedUpgradeFactor;
 
-        damage = characterDatas[0].baseDamage +
+        damage = characterDatas[charCode].baseDamage +
             ProgressManager.progressManager.damageUpgrades * ProgressManager.progressManager.damageUpgradeFactor;
 
-        cooldown = characterDatas[0].baseCooldown +
+        cooldown = characterDatas[charCode].baseCooldown +
             ProgressManager.progressManager.cooldownUpgrades * ProgressManager.progressManager.cooldownUpgradeFactor;
 
-        ammo = characterDatas[0].baseAmmo +
+        ammo = characterDatas[charCode].baseAmmo +
             ProgressManager.progressManager.ammoUpgrades * ProgressManager.progressManager.ammoUpgradeFactor;
 
-        defense = characterDatas[0].baseDefense +
+        defense = characterDatas[charCode].baseDefense +
             ProgressManager.progressManager.defenseUpgrades * ProgressManager.progressManager.defenseUpgradeFactor;
 
-        resistance = characterDatas[0].baseResistance +
+        resistance = characterDatas[charCode].baseResistance +
             ProgressManager.progressManager.resistanceUpgrades * ProgressManager.progressManager.resistanceUpgradeFactor;
+
+        characterModels[charCode].SetActive(true); //Ativa o modelo do personagem selecionado
+
+        currentStamina = maxStamina;
 
     }
 
