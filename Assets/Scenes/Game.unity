@@ -11269,7 +11269,7 @@ MonoBehaviour:
   defenseIncrement: 0
   resistanceIncrement: 0
   cowboyStaminaUpgradeFactor: 5
-  cowboyStaminaUpgrades: 5
+  cowboyStaminaUpgrades: 0
   cowboyMovementSpeedUpgradeFactor: 1
   cowboyMovementSpeedUpgrades: 0
   cowboyDamageUpgradeFactor: 1
