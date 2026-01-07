@@ -38,7 +38,7 @@ public class PlayerRoot : MonoBehaviour
         Initialize(selectedCharacter);
     }
 
-    private void Initialize(characterID selectedChar)
+    public void Initialize(characterID selectedChar)
     {
         normalCoinMultiplier = 1;
         rubyMultiplier = 1;
@@ -84,16 +84,23 @@ public class PlayerRoot : MonoBehaviour
 
         currentStamina = maxStamina;
 
+        //O BeginRunAnimation vai primeiro atualizar as informações do jogador e depois
+        //canRun = true;
+
     }
 
 
     public void BeginRunAnimation()
     {
+        
+
         //PlayRunAnimation -> Terei que elaborar isso aqui, definir qual animação deverá tocar (jogador está no checkpoin
         //ou no início da Run?)
 
         //Depois disso a animação terá um event trigger que irá mudar a bool isRunning para true. Para testes, irei colocar 
         //aqui o gatilho para começar a corrida
+
+
 
         canRun = true;
     }
