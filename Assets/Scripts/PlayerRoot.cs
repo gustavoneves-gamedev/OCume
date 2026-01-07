@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerRoot : MonoBehaviour
 {
     [Header("Run")]
-    [SerializeField] private bool isRunning;
+    [SerializeField] private bool canRun;
 
     [Header("Status")]
     public float currentStamina;
@@ -89,12 +89,20 @@ public class PlayerRoot : MonoBehaviour
 
     public void BeginRunAnimation()
     {
-        //PlayRun
+        //PlayRunAnimation -> Terei que elaborar isso aqui, definir qual animação deverá tocar (jogador está no checkpoin
+        //ou no início da Run?)
+
+        //Depois disso a animação terá um event trigger que irá mudar a bool isRunning para true. Para testes, irei colocar 
+        //aqui o gatilho para começar a corrida
+
+        canRun = true;
     }
+
+
     
     void Update()
     {
-        
+        if (canRun == false) return;
         
         PlayerMovement();
     }

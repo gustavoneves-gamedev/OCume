@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
 
     public void BeginRun()
     {
-
+        GameController.gameController.playerRoot.BeginRunAnimation();
     }
 
     #region Character Selection
