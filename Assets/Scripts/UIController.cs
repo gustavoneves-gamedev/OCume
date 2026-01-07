@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    
+
+    [Header("MainMenu")]
+    [SerializeField] private GameObject mainMenu;
 
     void Start()
     {
@@ -12,6 +14,7 @@ public class UIController : MonoBehaviour
     public void BeginRun()
     {
         GameController.gameController.playerRoot.BeginRunAnimation();
+        mainMenu.SetActive(false);
     }
 
     #region Character Selection
