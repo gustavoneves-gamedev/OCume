@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerRoot : MonoBehaviour
 {
+    [Header("Run")]
+    [SerializeField] private bool isRunning;
 
     [Header("Status")]
     public float currentStamina;
@@ -20,7 +22,7 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
-    private characterID selectedCharacter = characterID.Cowboy;
+    public characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
 
@@ -85,10 +87,15 @@ public class PlayerRoot : MonoBehaviour
     }
 
 
-
-
+    public void BeginRunAnimation()
+    {
+        //PlayRun
+    }
+    
     void Update()
     {
+        
+        
         PlayerMovement();
     }
 
