@@ -4,6 +4,8 @@ public class PlayerRoot : MonoBehaviour
 {
     [Header("Run")]
     [SerializeField] private bool canRun;
+    public float heightClimbed;
+    private float initialHeight;
 
     [Header("Status")]
     public float currentStamina;
@@ -51,7 +53,6 @@ public class PlayerRoot : MonoBehaviour
         {
             characterModels[i].SetActive(false);
         }
-
 
         if (selectedChar == characterID.Cowboy)
             InitializePlayer(0);
@@ -103,6 +104,7 @@ public class PlayerRoot : MonoBehaviour
 
 
         canRun = true;
+        initialHeight = transform.position.z;
     }
 
 
@@ -112,6 +114,8 @@ public class PlayerRoot : MonoBehaviour
         if (canRun == false) return;
         
         PlayerMovement();
+
+        heightClimbed = transform.position.z - initialHeight;
     }
 
     private void PlayerMovement()
