@@ -16,9 +16,11 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private float horizontalSpeed;
     public float damage;
     public float cooldown;
-    public int ammo;
-    private int maxAmmo; //Esta variável pode ficar apenas aqui
-    public float reloadSpeed;
+    private float cooldownRemaining; //Esta variável pode ficar apenas aqui
+    public int maxAmmo;
+    private int currentAmmo; //Esta variável pode ficar apenas aqui
+    public float reloadTime;
+    private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui
     public float defense;
     public float resistance;
     //FALTOU O RELOAD SPEED -> Velocidade com a qual a AMMO é restaurada! Alterar em no scriptable object também
@@ -80,7 +82,7 @@ public class PlayerRoot : MonoBehaviour
 
         cooldown = characterDatas[charCode].baseCooldown + ProgressManager.progressManager.cooldownIncrement;
 
-        ammo = characterDatas[charCode].baseAmmo + ProgressManager.progressManager.ammoIncrement;
+        maxAmmo = characterDatas[charCode].baseAmmo + ProgressManager.progressManager.ammoIncrement;
 
         defense = characterDatas[charCode].baseDefense + ProgressManager.progressManager.defenseIncrement;
 
@@ -114,7 +116,8 @@ public class PlayerRoot : MonoBehaviour
 
     private void BeginRunEvent()
     {
-        ammo = maxAmmo;
+        currentAmmo = maxAmmo;
+        cooldownRemaining = 0;
         runHeightClimbed = 0;
         initialHeight = transform.position.z;
         canRun = true;
@@ -129,9 +132,15 @@ public class PlayerRoot : MonoBehaviour
         PlayerMovement();
         TimeCounter();
 
-        if (canAttack == true && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Attack();
+            if (canAttack == true)
+                Attack();
+            else if (currentAmmo <= 0)
+                Debug.Log("SEM MUNIÇÃO SUFICIENTE, SEU BOSTA");
+            else if (cooldownRemaining >= 0)
+                Debug.Log("Calma, Village People. Em cooldown ainda");        
+           
         }
 
         //Calcula a altura escalada pelo jogador
@@ -140,13 +149,33 @@ public class PlayerRoot : MonoBehaviour
 
     private void TimeCounter()
     {
+        if (currentAmmo <= maxAmmo)
+        {
+            if (reloadTimeRemaining <= 0)
+            {
+                currentAmmo++;
+                reloadTimeRemaining = reloadTime;
+            }
+            else
+                reloadTimeRemaining -= Time.deltaTime;
+        }
+
+        if (cooldownRemaining <= 0 && currentAmmo >= 1)
+        {
+            canAttack = true;
+        }
+        else if (cooldownRemaining >= 0)
+        {
+            cooldownRemaining -= Time.deltaTime;
+        }
 
     }
 
     private void Attack()
     {
         Debug.Log("Ataquei!!");
-        ammo--;
+        currentAmmo--;
+        cooldownRemaining = cooldown;
     }
 
     private void PlayerMovement()
