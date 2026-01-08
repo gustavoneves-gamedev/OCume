@@ -7,17 +7,21 @@ public class PlayerRoot : MonoBehaviour
     public float heightClimbed;
     private float initialHeight;
     public float runHeightClimbed;
+    private bool canAttack;
 
     [Header("Status")]
     public float currentStamina;
     public float maxStamina;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float horizontalSpeed;     
+    [SerializeField] private float horizontalSpeed;
     public float damage;
     public float cooldown;
     public int ammo;
+    private int maxAmmo; //Esta variável pode ficar apenas aqui
+    public float reloadSpeed;
     public float defense;
     public float resistance;
+    //FALTOU O RELOAD SPEED -> Velocidade com a qual a AMMO é restaurada! Alterar em no scriptable object também
 
     [Header("PowerUps")]
     [SerializeField] public int normalCoinMultiplier = 1;
@@ -32,9 +36,9 @@ public class PlayerRoot : MonoBehaviour
     private Vector3 move;
     private int desiredLane = 0;
     public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
-    //o script detectar quando o jogador finalizar a troca de lane
+                                //o script detectar quando o jogador finalizar a troca de lane
 
-    
+
     void Start()
     {
         GameController.gameController.playerRoot = this;
@@ -110,20 +114,39 @@ public class PlayerRoot : MonoBehaviour
 
     private void BeginRunEvent()
     {
+        ammo = maxAmmo;
         runHeightClimbed = 0;
         initialHeight = transform.position.z;
         canRun = true;
     }
 
 
-    
+
     void Update()
     {
         if (canRun == false) return;
-        
-        PlayerMovement();
 
+        PlayerMovement();
+        TimeCounter();
+
+        if (canAttack == true && Input.GetKeyDown(KeyCode.Space))
+        {
+            Attack();
+        }
+
+        //Calcula a altura escalada pelo jogador
         heightClimbed = transform.position.z - initialHeight;
+    }
+
+    private void TimeCounter()
+    {
+
+    }
+
+    private void Attack()
+    {
+        Debug.Log("Ataquei!!");
+        ammo--;
     }
 
     private void PlayerMovement()
@@ -146,7 +169,7 @@ public class PlayerRoot : MonoBehaviour
 
         move.x = (targetX - transform.position.x) / Time.deltaTime;
 
-        
+
         cc.Move(move * Time.deltaTime);
     }
 
@@ -180,8 +203,8 @@ public class PlayerRoot : MonoBehaviour
             GameController.gameController.UpdateRunCoins(normalCoinMultiplier);
             other.gameObject.SetActive(false);
         }
-        
-        if(other.CompareTag("Ruby"))
+
+        if (other.CompareTag("Ruby"))
         {
             GameController.gameController.UpdateRunCoins(0, rubyMultiplier);
             other.gameObject.SetActive(false);
