@@ -18,7 +18,7 @@ public class PlayerRoot : MonoBehaviour
     public float cooldown;
     private float cooldownRemaining; //Esta variável pode ficar apenas aqui
     public int maxAmmo;
-    private int currentAmmo; //Esta variável pode ficar apenas aqui
+    public int currentAmmo; //Esta variável pode ficar apenas aqui
     public float reloadTime;
     private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui
     public float defense;
@@ -118,6 +118,7 @@ public class PlayerRoot : MonoBehaviour
     {
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
+        reloadTimeRemaining = reloadTime;
         runHeightClimbed = 0;
         initialHeight = transform.position.z;
         canRun = true;
@@ -137,9 +138,9 @@ public class PlayerRoot : MonoBehaviour
             if (canAttack == true)
                 Attack();
             else if (currentAmmo <= 0)
-                Debug.Log("SEM MUNIÇÃO SUFICIENTE, SEU BOSTA");
+                Debug.Log("Sem munição suficiente");
             else if (cooldownRemaining >= 0)
-                Debug.Log("Calma, Village People. Em cooldown ainda");        
+                Debug.Log("Ataque em cooldown ainda");        
            
         }
 
@@ -149,7 +150,7 @@ public class PlayerRoot : MonoBehaviour
 
     private void TimeCounter()
     {
-        if (currentAmmo <= maxAmmo)
+        if (currentAmmo < maxAmmo)
         {
             if (reloadTimeRemaining <= 0)
             {
@@ -176,6 +177,7 @@ public class PlayerRoot : MonoBehaviour
         Debug.Log("Ataquei!!");
         currentAmmo--;
         cooldownRemaining = cooldown;
+        canAttack = false;
     }
 
     private void PlayerMovement()
