@@ -6,6 +6,7 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private bool canRun;
     public float heightClimbed;
     private float initialHeight;
+    public float runHeightClimbed;
 
     [Header("Status")]
     public float currentStamina;
@@ -93,7 +94,7 @@ public class PlayerRoot : MonoBehaviour
 
     public void BeginRunAnimation()
     {
-        
+
 
         //PlayRunAnimation -> Terei que elaborar isso aqui, definir qual animação deverá tocar (jogador está no checkpoin
         //ou no início da Run?)
@@ -102,9 +103,16 @@ public class PlayerRoot : MonoBehaviour
         //aqui o gatilho para começar a corrida
 
 
+        BeginRunEvent();
 
-        canRun = true;
+
+    }
+
+    private void BeginRunEvent()
+    {
+        runHeightClimbed = 0;
         initialHeight = transform.position.z;
+        canRun = true;
     }
 
 
@@ -152,8 +160,14 @@ public class PlayerRoot : MonoBehaviour
         if (currentStamina <= 0)
         {
             currentStamina = 0;
-            //OnDeathEvent();
+            OnDeathEvent();
         }
+    }
+
+    private void OnDeathEvent()
+    {
+        canRun = false;
+        runHeightClimbed = heightClimbed;
     }
 
     //Talvez eu deva criar um script de moedas para colocar isso tudo lá e
