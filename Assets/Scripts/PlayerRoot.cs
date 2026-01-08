@@ -133,7 +133,7 @@ public class PlayerRoot : MonoBehaviour
         if (canRun == false) return;
 
         PlayerMovement();
-        TimeCounter();
+        AttackTimeCounter();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -150,7 +150,7 @@ public class PlayerRoot : MonoBehaviour
         heightClimbed = transform.position.z - initialHeight;
     }
 
-    private void TimeCounter()
+    private void AttackTimeCounter()
     {
         if (currentAmmo < maxAmmo)
         {
