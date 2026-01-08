@@ -23,7 +23,7 @@ public class PlayerRoot : MonoBehaviour
     private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui
     public float defense;
     public float resistance;
-    //FALTOU O RELOAD SPEED -> Velocidade com a qual a AMMO é restaurada! Alterar em no scriptable object também
+    
 
     [Header("PowerUps")]
     [SerializeField] public int normalCoinMultiplier = 1;
@@ -83,6 +83,8 @@ public class PlayerRoot : MonoBehaviour
         cooldown = characterDatas[charCode].baseCooldown + ProgressManager.progressManager.cooldownIncrement;
 
         maxAmmo = characterDatas[charCode].baseAmmo + ProgressManager.progressManager.ammoIncrement;
+
+        reloadTime = characterDatas[charCode].reloadTime + ProgressManager.progressManager.reloadIncrement;
 
         defense = characterDatas[charCode].baseDefense + ProgressManager.progressManager.defenseIncrement;
 

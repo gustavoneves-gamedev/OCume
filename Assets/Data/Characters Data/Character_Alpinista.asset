@@ -18,5 +18,6 @@ MonoBehaviour:
   baseDamage: 2
   baseCooldown: 1.5
   baseAmmo: 4
+  reloadTime: 3
   baseDefense: 2
   baseResistance: 10

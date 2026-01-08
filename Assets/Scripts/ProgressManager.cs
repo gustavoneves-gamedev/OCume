@@ -11,6 +11,7 @@ public class ProgressManager : MonoBehaviour
     public float damageIncrement;
     public float cooldownIncrement;
     public int ammoIncrement;
+    public float reloadIncrement;
     public float defenseIncrement;
     public float resistanceIncrement;
 
@@ -26,6 +27,8 @@ public class ProgressManager : MonoBehaviour
     public int cowboyCooldownUpgrades;
     public int cowboyAmmoUpgradeFactor = 1;
     public int cowboyAmmoUpgrades;
+    public float cowboyReloadUpgradeFactor = 0.25f;
+    public int cowboyReloadUpgrades;
     public float cowboyDefenseUpgradeFactor = 5f;
     public int cowboyDefenseUpgrades;
     public float cowboyResistanceUpgradeFactor = 2f;
@@ -42,6 +45,8 @@ public class ProgressManager : MonoBehaviour
     public int samuraiCooldownUpgrades;
     public int samuraiAmmoUpgradeFactor = 1;
     public int samuraiAmmoUpgrades;
+    public float samuraiReloadUpgradeFactor = 0.25f;
+    public int samuraiReloadUpgrades;
     public float samuraiDefenseUpgradeFactor = 5f;
     public int samuraiDefenseUpgrades;
     public float samuraiResistanceUpgradeFactor = 2f;
@@ -58,6 +63,8 @@ public class ProgressManager : MonoBehaviour
     public int alpinistaCooldownUpgrades;
     public int alpinistaAmmoUpgradeFactor = 1;
     public int alpinistaAmmoUpgrades;
+    public float alpinistaReloadUpgradeFactor = 0.25f;
+    public int alpinistaReloadUpgrades;
     public float alpinistaDefenseUpgradeFactor = 5f;
     public int alpinistaDefenseUpgrades;
     public float alpinistaResistanceUpgradeFactor = 2f;
@@ -92,6 +99,7 @@ public class ProgressManager : MonoBehaviour
         if (stat == statType.Damage) cowboyDamageUpgrades++;
         if (stat == statType.Cooldown) cowboyCooldownUpgrades++;
         if (stat == statType.Ammo) cowboyAmmoUpgrades++;
+        if (stat == statType.ReloadTime) cowboyReloadUpgrades++;
         if (stat == statType.Defense) cowboyDefenseUpgrades++;
         if (stat == statType.Resistance) cowboyResistanceUpgrades++;
 
@@ -106,6 +114,7 @@ public class ProgressManager : MonoBehaviour
         if (stat == statType.Damage) samuraiDamageUpgrades++;
         if (stat == statType.Cooldown) samuraiCooldownUpgrades++;
         if (stat == statType.Ammo) samuraiAmmoUpgrades++;
+        if (stat == statType.ReloadTime) samuraiReloadUpgrades++;
         if (stat == statType.Defense) samuraiDefenseUpgrades++;
         if (stat == statType.Resistance) samuraiResistanceUpgrades++;
 
@@ -120,6 +129,7 @@ public class ProgressManager : MonoBehaviour
         if (stat == statType.Damage) alpinistaDamageUpgrades++;
         if (stat == statType.Cooldown) alpinistaCooldownUpgrades++;
         if (stat == statType.Ammo) alpinistaAmmoUpgrades++;
+        if (stat == statType.ReloadTime) alpinistaReloadUpgrades++;
         if (stat == statType.Defense) alpinistaDefenseUpgrades++;
         if (stat == statType.Resistance) alpinistaResistanceUpgrades++;
 
@@ -136,6 +146,7 @@ public class ProgressManager : MonoBehaviour
             damageIncrement = cowboyDamageUpgrades * cowboyDamageUpgradeFactor;
             cooldownIncrement = cowboyCooldownUpgrades * cowboyCooldownUpgradeFactor;
             ammoIncrement = cowboyAmmoUpgrades * cowboyAmmoUpgradeFactor;
+            reloadIncrement = cowboyReloadUpgrades * cowboyReloadUpgradeFactor;
             defenseIncrement = cowboyDefenseUpgrades * cowboyDefenseUpgradeFactor;
             resistanceIncrement = cowboyResistanceUpgrades * cowboyResistanceUpgradeFactor;
         }
@@ -147,6 +158,7 @@ public class ProgressManager : MonoBehaviour
             damageIncrement = samuraiDamageUpgrades * samuraiDamageUpgradeFactor;
             cooldownIncrement = samuraiCooldownUpgrades * samuraiCooldownUpgradeFactor;
             ammoIncrement = samuraiAmmoUpgrades * samuraiAmmoUpgradeFactor;
+            reloadIncrement = samuraiReloadUpgrades * samuraiReloadUpgradeFactor;
             defenseIncrement = samuraiDefenseUpgrades * samuraiDefenseUpgradeFactor;
             resistanceIncrement = samuraiResistanceUpgrades * samuraiResistanceUpgradeFactor;
         }
@@ -158,6 +170,7 @@ public class ProgressManager : MonoBehaviour
             damageIncrement = alpinistaDamageUpgrades * alpinistaDamageUpgradeFactor;
             cooldownIncrement = alpinistaCooldownUpgrades * alpinistaCooldownUpgradeFactor;
             ammoIncrement = alpinistaAmmoUpgrades * alpinistaAmmoUpgradeFactor;
+            reloadIncrement = alpinistaReloadUpgrades * alpinistaReloadUpgradeFactor;
             defenseIncrement = alpinistaDefenseUpgrades * alpinistaDefenseUpgradeFactor;
             resistanceIncrement = alpinistaResistanceUpgrades * alpinistaResistanceUpgradeFactor;
         }

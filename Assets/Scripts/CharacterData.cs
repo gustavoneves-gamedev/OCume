@@ -14,6 +14,7 @@ public class CharacterData : ScriptableObject
     public float baseDamage;
     public float baseCooldown;
     public int baseAmmo;
+    public float reloadTime;
     public float baseDefense;
     public float baseResistance;
 

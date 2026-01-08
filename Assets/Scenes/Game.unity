@@ -11266,6 +11266,7 @@ MonoBehaviour:
   damageIncrement: 0
   cooldownIncrement: 0
   ammoIncrement: 0
+  reloadIncrement: 0
   defenseIncrement: 0
   resistanceIncrement: 0
   cowboyStaminaUpgradeFactor: 5
@@ -11572,7 +11573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: reloadTime
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2586103653087468127, guid: 1133b85e9a9e9344fa46e7490d6b764d, type: 3}
       propertyPath: characterDatas.Array.size

@@ -14,7 +14,7 @@
         Damage,
         Cooldown,
         Ammo,
-        ReloadSpeed,
+        ReloadTime,
         Defense,
         Resistance
 
