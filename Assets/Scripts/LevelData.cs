@@ -11,6 +11,8 @@ public class LevelData : ScriptableObject
 
     [Header("Atributes")]
     public int checkpoints;
+    public float height;
+    public bool isUnlocked;
 
     
 }

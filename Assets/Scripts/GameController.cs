@@ -9,6 +9,10 @@ public class GameController : MonoBehaviour
     public int runNormalCoins;
     public int runRubies;
 
+    [Header("Levels")]
+    [SerializeField] private LevelData[] levels;
+
+
     public PlayerRoot playerRoot;
     public UIController uiController;
     
