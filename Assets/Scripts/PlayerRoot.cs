@@ -4,11 +4,16 @@ public class PlayerRoot : MonoBehaviour
 {
     [Header("Run")]
     [SerializeField] private bool canRun;
+    public bool isGamePaused;
     public float heightClimbed;
     private float initialHeight;
     public float runHeightClimbed;
     private bool canAttack;
     //private bool canCountCheckpoint;
+    private Vector3 move;
+    private int desiredLane = 0;
+    public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
+                                //o script detectar quando o jogador finalizar a troca de lane
 
     [Header("Status")]
     public float currentStamina;
@@ -24,7 +29,7 @@ public class PlayerRoot : MonoBehaviour
     private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui
     public float defense;
     public float resistance;
-    
+
 
     [Header("PowerUps")]
     [SerializeField] public int normalCoinMultiplier = 1;
@@ -36,17 +41,14 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
 
-    private Vector3 move;
-    private int desiredLane = 0;
-    public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
-                                //o script detectar quando o jogador finalizar a troca de lane
+    
 
 
     void Start()
     {
         GameController.gameController.playerRoot = this;
         Initialize(selectedCharacter);
-        
+
     }
 
     public void Initialize(characterID selectedChar)
@@ -132,7 +134,7 @@ public class PlayerRoot : MonoBehaviour
 
     void Update()
     {
-        if (canRun == false) return;
+        if (canRun == false || isGamePaused) return;
 
         PlayerMovement();
         AttackTimeCounter();
@@ -145,8 +147,13 @@ public class PlayerRoot : MonoBehaviour
             else if (currentAmmo <= 0)
                 Debug.Log("Sem munição suficiente");
             else if (cooldownRemaining >= 0)
-                Debug.Log("Ataque em cooldown ainda");        
-           
+                Debug.Log("Ataque em cooldown ainda");
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            BackToMainMenu();
         }
 
         //Calcula a altura escalada pelo jogador
@@ -179,7 +186,7 @@ public class PlayerRoot : MonoBehaviour
 
     private void StaminaConsumption()
     {
-        currentStamina -= ((2 - resistance/10f) * Time.deltaTime);
+        currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
     }
 
     public void UpdateStamina(float x)
@@ -228,8 +235,14 @@ public class PlayerRoot : MonoBehaviour
         cc.Move(move * Time.deltaTime);
     }
 
-    
-    
+
+    private void BackToMainMenu()
+    {
+        canRun = false;
+        GameController.gameController.uiController.MainMenu();
+    }
+
+
     private void OnDeathEvent()
     {
         canRun = false;

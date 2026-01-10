@@ -17,6 +17,11 @@ public class UIController : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
+    public void MainMenu()
+    {
+        mainMenu.SetActive(true);
+    }
+
     #region Character Selection
 
     public void SelectCowboy()
@@ -40,5 +45,23 @@ public class UIController : MonoBehaviour
 
     #endregion
 
-    
+    #region Level Selection
+
+    public void SelectCowboyLevel()
+    {
+        GameController.gameController.currentLevelID = levelID.CowboyLevel;
+        //GameController.gameController.playerRoot.Initialize(characterID.Cowboy);
+    }
+
+    public void SelectSamuraiLevel()
+    {
+        GameController.gameController.currentLevelID = levelID.SamuraiLevel;
+    }
+
+    public void SelectAlpinistaLevel()
+    {
+        GameController.gameController.currentLevelID = levelID.AlpinistaLevel;
+    }
+
+    #endregion
 }
