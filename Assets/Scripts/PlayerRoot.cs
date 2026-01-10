@@ -51,6 +51,15 @@ public class PlayerRoot : MonoBehaviour
 
     }
 
+    public void ResetPosition(Vector3 worldPos)
+    {
+        cc.enabled = false;
+
+        transform.position = worldPos + Vector3.forward;
+
+        cc.enabled = true;
+    }
+
     public void Initialize(characterID selectedChar)
     {
         normalCoinMultiplier = 1;

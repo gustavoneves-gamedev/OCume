@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.LowLevel;
 
 public class GameController : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class GameController : MonoBehaviour
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
     public levelID currentLevelID = levelID.CowboyLevel;
-    public LevelData currentLevelData;
+    //public LevelData currentLevelData;
     public int currentLevelCheckpoint = 0;
+    public float currentLevelCheckpointDistance;
+    public int cowboyLevelCheckpoint;
+    public int samuraiLevelCheckpoint;
+    public int alpinistaLevelCheckpoint;
 
 
     public PlayerRoot playerRoot;
@@ -39,8 +44,11 @@ public class GameController : MonoBehaviour
 
     public void BeginRun()
     {
-        playerRoot.transform.position = Vector3.forward * currentLevelData.checkpointDistance * 
-            currentLevelData.currentCheckpoint;
+        playerRoot.ResetPosition(new Vector3(0, 0, currentLevelCheckpointDistance *
+            currentLevelCheckpoint));
+
+
+       // playerRoot.transform.position = new Vector3 ( 0, 0, currentLevelCheckpointDistance * currentLevelCheckpoint);
 
         playerRoot.BeginRunAnimation();
     }
@@ -81,13 +89,35 @@ public class GameController : MonoBehaviour
         {
             if (currentLevelID == levelArray[i].levelId)
             {
-                currentLevelData = levelArray[i];
+                //currentLevelData = levelArray[i];
+                currentLevelCheckpointDistance = levelArray[i].checkpointDistance;
+                
             }
         }
     }
 
     public void UpdateCheckpoint()
     {
+        
+        if (currentLevelID == levelID.CowboyLevel)
+        {
+            cowboyLevelCheckpoint++;
+            return;
+        }
+
+        if (currentLevelID == levelID.SamuraiLevel)
+        {
+            samuraiLevelCheckpoint++;
+            return;
+        }
+
+        if (currentLevelID == levelID.AlpinistaLevel)
+        {
+            alpinistaLevelCheckpoint++;
+            return;
+        }
+
+
         //foreach (var levelMap in levelArray)
         //{
         //    if (levelMap.levelId == currentLevelID)
@@ -97,8 +127,8 @@ public class GameController : MonoBehaviour
         //    }
         //}
 
-        currentLevelData.currentCheckpoint++;
-        
+        //currentLevelData.currentCheckpoint++;
+
     }
 
     #endregion

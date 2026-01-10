@@ -50,18 +50,21 @@ public class UIController : MonoBehaviour
     public void SelectCowboyLevel()
     {
         GameController.gameController.currentLevelID = levelID.CowboyLevel;
+        GameController.gameController.currentLevelCheckpoint = GameController.gameController.cowboyLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
     }
 
     public void SelectSamuraiLevel()
     {
         GameController.gameController.currentLevelID = levelID.SamuraiLevel;
+        GameController.gameController.currentLevelCheckpoint = GameController.gameController.samuraiLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
     }
 
     public void SelectAlpinistaLevel()
     {
         GameController.gameController.currentLevelID = levelID.AlpinistaLevel;
+        GameController.gameController.currentLevelCheckpoint = GameController.gameController.alpinistaLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
     }
 
