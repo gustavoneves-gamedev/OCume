@@ -15,5 +15,6 @@ MonoBehaviour:
   levelId: 2
   checkpoints: 0
   currentCheckpoint: 0
+  checkpointDistance: 40
   height: 0
   isUnlocked: 0

@@ -13,8 +13,8 @@ public class UIController : MonoBehaviour
 
     public void BeginRun()
     {
-        GameController.gameController.playerRoot.BeginRunAnimation();
         mainMenu.SetActive(false);
+        GameController.gameController.BeginRun();
     }
 
     public void MainMenu()
@@ -50,17 +50,19 @@ public class UIController : MonoBehaviour
     public void SelectCowboyLevel()
     {
         GameController.gameController.currentLevelID = levelID.CowboyLevel;
-        //GameController.gameController.playerRoot.Initialize(characterID.Cowboy);
+        GameController.gameController.InitilizeLevelStatics();
     }
 
     public void SelectSamuraiLevel()
     {
         GameController.gameController.currentLevelID = levelID.SamuraiLevel;
+        GameController.gameController.InitilizeLevelStatics();
     }
 
     public void SelectAlpinistaLevel()
     {
         GameController.gameController.currentLevelID = levelID.AlpinistaLevel;
+        GameController.gameController.InitilizeLevelStatics();
     }
 
     #endregion
