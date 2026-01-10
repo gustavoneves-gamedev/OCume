@@ -10,7 +10,9 @@ public class GameController : MonoBehaviour
     public int runRubies;
 
     [Header("Levels")]
-    [SerializeField] private LevelData[] levels;
+    [SerializeField] private LevelData[] levelArray;
+    public levelID currentLevelID = levelID.CowboyLevel;
+    public int currentLevelCheckpoint = 0;
 
 
     public PlayerRoot playerRoot;
@@ -59,9 +61,30 @@ public class GameController : MonoBehaviour
 
     #region Level
 
+    //Preciso melhorar isto, mas acho que será necessário fazer um script para o level primeiro
     private void InitilizeLevelStatics()
     {
+        //coloquei var aqui porque é mais fácil do que escrever levelData, mas não sei se é mais pesado ou não
+        foreach (var level in levelArray) 
+        {
+            //if (level.levelId == levelID.AlpinistaMap)
+            //{
 
+            //}
+        }
+    }
+
+    public void UpdateCheckpoint()
+    {
+        foreach (var levelMap in levelArray)
+        {
+            if (levelMap.levelId == currentLevelID)
+            {
+                levelMap.currentCheckpoint++;
+                return;
+            }
+        }
+        
     }
 
     #endregion

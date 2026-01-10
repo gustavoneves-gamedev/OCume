@@ -8,6 +8,7 @@ public class PlayerRoot : MonoBehaviour
     private float initialHeight;
     public float runHeightClimbed;
     private bool canAttack;
+    //private bool canCountCheckpoint;
 
     [Header("Status")]
     public float currentStamina;
@@ -250,6 +251,11 @@ public class PlayerRoot : MonoBehaviour
         {
             GameController.gameController.UpdateRunCoins(0, rubyMultiplier);
             other.gameObject.SetActive(false);
+        }
+
+        if (other.CompareTag("Checkpoint"))
+        {
+            GameController.gameController.UpdateCheckpoint();
         }
     }
 

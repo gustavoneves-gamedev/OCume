@@ -20,7 +20,7 @@ public enum statType
 
 }
 
-public enum levels
+public enum levelID
 {
     CowboyLevel,
     SamuraiLevel,

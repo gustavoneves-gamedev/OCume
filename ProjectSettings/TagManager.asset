@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - Ruby
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

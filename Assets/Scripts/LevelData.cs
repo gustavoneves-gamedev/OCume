@@ -7,7 +7,7 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     [Header("ID")]
-    public levels levelId;
+    public levelID levelId;
 
     [Header("Atributes")]
     public int checkpoints;
