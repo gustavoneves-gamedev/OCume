@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        InitilizeLevelStatics();
+    }
+
     public void BeginRun()
     {
 
@@ -49,6 +54,15 @@ public class GameController : MonoBehaviour
         runRubies += rubies;
     }
 
+
+    #endregion
+
+    #region Level
+
+    private void InitilizeLevelStatics()
+    {
+
+    }
 
     #endregion
 

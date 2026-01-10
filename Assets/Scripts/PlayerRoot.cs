@@ -45,6 +45,7 @@ public class PlayerRoot : MonoBehaviour
     {
         GameController.gameController.playerRoot = this;
         Initialize(selectedCharacter);
+        
     }
 
     public void Initialize(characterID selectedChar)
@@ -180,6 +181,20 @@ public class PlayerRoot : MonoBehaviour
         currentStamina -= ((2 - resistance/10f) * Time.deltaTime);
     }
 
+    public void UpdateStamina(float x)
+    {
+        currentStamina += x;
+
+        if (currentStamina > maxStamina)
+            currentStamina = maxStamina;
+
+        if (currentStamina <= 0)
+        {
+            currentStamina = 0;
+            OnDeathEvent();
+        }
+    }
+
     private void Attack()
     {
         Debug.Log("Ataquei!!");
@@ -212,20 +227,8 @@ public class PlayerRoot : MonoBehaviour
         cc.Move(move * Time.deltaTime);
     }
 
-    public void UpdateStamina(float x)
-    {
-        currentStamina += x;
-
-        if (currentStamina > maxStamina)
-            currentStamina = maxStamina;
-
-        if (currentStamina <= 0)
-        {
-            currentStamina = 0;
-            OnDeathEvent();
-        }
-    }
-
+    
+    
     private void OnDeathEvent()
     {
         canRun = false;
