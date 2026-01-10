@@ -51,6 +51,8 @@ public class PlayerRoot : MonoBehaviour
 
     }
 
+    //Tive que fazer desta forma porque o CharacterController não estava deixando reposicionar
+    //AVALIAR SE PRECISAREI USAR UM INVOKE PARA DAR TEMPO DE O JOGADOR CHEGAR NA NOVA POSIÇÃO!! (ACHO QUE NÃO)
     public void ResetPosition(Vector3 worldPos)
     {
         cc.enabled = false;

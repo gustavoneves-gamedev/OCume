@@ -44,11 +44,9 @@ public class GameController : MonoBehaviour
 
     public void BeginRun()
     {
-        playerRoot.ResetPosition(new Vector3(0, 0, currentLevelCheckpointDistance *
-            currentLevelCheckpoint));
+       Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * currentLevelCheckpoint;
 
-
-       // playerRoot.transform.position = new Vector3 ( 0, 0, currentLevelCheckpointDistance * currentLevelCheckpoint);
+        playerRoot.ResetPosition(worldPos);       
 
         playerRoot.BeginRunAnimation();
     }
@@ -73,23 +71,15 @@ public class GameController : MonoBehaviour
 
     #region Level
 
-    //Preciso melhorar isto, mas acho que será necessário fazer um script para o level primeiro
+    
     public void InitilizeLevelStatics()
     {
-        //coloquei var aqui porque é mais fácil do que escrever levelData, mas não sei se é mais pesado ou não
-        //foreach (var level in levelArray) 
-        //{
-        //    if (level.levelId == levelID.AlpinistaLevel)
-        //    {
-
-        //    }
-        //}
-
+        
         for (int i = 0; i < levelArray.Length; i++)
         {
             if (currentLevelID == levelArray[i].levelId)
             {
-                //currentLevelData = levelArray[i];
+                
                 currentLevelCheckpointDistance = levelArray[i].checkpointDistance;
                 
             }
@@ -98,16 +88,19 @@ public class GameController : MonoBehaviour
 
     public void UpdateCheckpoint()
     {
-        
+        currentLevelCheckpoint++;
+
         if (currentLevelID == levelID.CowboyLevel)
         {
             cowboyLevelCheckpoint++;
+            //currentLevelCheckpoint++;
             return;
         }
 
         if (currentLevelID == levelID.SamuraiLevel)
         {
             samuraiLevelCheckpoint++;
+            //currentLevelCheckpoint++;
             return;
         }
 
@@ -118,16 +111,6 @@ public class GameController : MonoBehaviour
         }
 
 
-        //foreach (var levelMap in levelArray)
-        //{
-        //    if (levelMap.levelId == currentLevelID)
-        //    {
-        //        levelMap.currentCheckpoint++;
-        //        return;
-        //    }
-        //}
-
-        //currentLevelData.currentCheckpoint++;
 
     }
 
