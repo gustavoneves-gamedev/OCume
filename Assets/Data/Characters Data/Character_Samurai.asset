@@ -20,4 +20,4 @@ MonoBehaviour:
   baseAmmo: 2
   reloadTime: 10
   baseDefense: 10
-  baseResistance: 1
+  baseResistance: 2

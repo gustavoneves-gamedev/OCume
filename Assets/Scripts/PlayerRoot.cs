@@ -134,6 +134,7 @@ public class PlayerRoot : MonoBehaviour
 
         PlayerMovement();
         AttackTimeCounter();
+        StaminaConsumption();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -172,6 +173,11 @@ public class PlayerRoot : MonoBehaviour
             cooldownRemaining -= Time.deltaTime;
         }
 
+    }
+
+    private void StaminaConsumption()
+    {
+        currentStamina -= ((2 - resistance/10f) * Time.deltaTime);
     }
 
     private void Attack()
