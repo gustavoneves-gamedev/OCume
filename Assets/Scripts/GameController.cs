@@ -122,8 +122,29 @@ public class GameController : MonoBehaviour
             return;
         }
 
+    }
 
+    public void UpdateBestHeight(float totalHeight)
+    {
+        if (currentLevelID == levelID.CowboyLevel && totalHeight > cowboyLevelBestHeight)
+        {
+            cowboyLevelBestHeight = totalHeight;
+            //currentLevelCheckpoint++;
+            return;
+        }
 
+        if (currentLevelID == levelID.SamuraiLevel && totalHeight > samuraiLevelBestHeight)
+        {
+            samuraiLevelBestHeight = totalHeight;
+            //currentLevelCheckpoint++;
+            return;
+        }
+
+        if (currentLevelID == levelID.AlpinistaLevel && totalHeight > alpinistaLevelBestHeight)
+        {
+            alpinistaLevelBestHeight = totalHeight;
+            return;
+        }
     }
 
     #endregion

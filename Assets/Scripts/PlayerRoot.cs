@@ -8,6 +8,7 @@ public class PlayerRoot : MonoBehaviour
     public float heightClimbed;
     private float initialHeight;
     public float runHeightClimbed;
+    public float totalHeight; //Valor que será mostrado ao final
     private bool canAttack;
     //private bool canCountCheckpoint;
     private Vector3 move;
@@ -262,8 +263,18 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
-        canRun = false;
+        canRun = false;        
+        EndRun();
+    }
+
+    //Coloquei esta função abaixo para o caso de o jogador ganhar a escalada e não encerrá-la com sua morte
+    private void EndRun()
+    {
         runHeightClimbed = heightClimbed;
+
+
+        GameController.gameController.UpdateBestHeight(heightClimbed + runHeightClimbed);
+
     }
 
     //Talvez eu deva criar um script de moedas para colocar isso tudo lá e
