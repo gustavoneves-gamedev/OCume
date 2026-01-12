@@ -10,15 +10,25 @@ public class GameController : MonoBehaviour
     public int runNormalCoins;
     public int runRubies;
 
+    //IMPORTANTE: DEPOIS TENHO QUE OTIMIZAR ISSO PORQUE VAI ACABAR VIRANDO UM MONSTRO CONFORME FOR ADICIONANDO FASES
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
     public levelID currentLevelID = levelID.CowboyLevel;
+    //public levelID lastLevelID;
     //public LevelData currentLevelData;
     public int currentLevelCheckpoint = 0;
     public float currentLevelCheckpointDistance;
     public int cowboyLevelCheckpoint;
+    public float cowboyLevelBestHeight;
     public int samuraiLevelCheckpoint;
+    public float samuraiLevelBestHeight;
     public int alpinistaLevelCheckpoint;
+    public float alpinistaLevelBestHeight;
+
+    [Header("Infinity Level")]
+    public bool isInfinityRun;
+    public float bestHeight;
+    //public float bestWeekHeight;
 
 
     public PlayerRoot playerRoot;
@@ -39,13 +49,15 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        //currentLevelID = lastLevel;
         InitilizeLevelStatics();
     }
 
     public void BeginRun()
     {
-       Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * currentLevelCheckpoint;
-
+       //Reseta a posição do jogador com base no checkpoint desbloqueado da fase
+        Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * currentLevelCheckpoint;
+        
         playerRoot.ResetPosition(worldPos);       
 
         playerRoot.BeginRunAnimation();

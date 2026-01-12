@@ -14,6 +14,7 @@ public class LevelData : ScriptableObject
     public int currentCheckpoint;
     public float checkpointDistance;
     public float height;
+    public float bestHeight;
     public bool isUnlocked;
 
     

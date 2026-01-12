@@ -198,6 +198,12 @@ public class PlayerRoot : MonoBehaviour
     private void StaminaConsumption()
     {
         currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
+
+        if (currentStamina <= 0)
+        {
+            currentStamina = 0;
+            OnDeathEvent();
+        }
     }
 
     public void UpdateStamina(float x)
@@ -207,11 +213,11 @@ public class PlayerRoot : MonoBehaviour
         if (currentStamina > maxStamina)
             currentStamina = maxStamina;
 
-        if (currentStamina <= 0)
-        {
-            currentStamina = 0;
-            OnDeathEvent();
-        }
+        //if (currentStamina <= 0)
+        //{
+        //    currentStamina = 0;
+        //    OnDeathEvent();
+        //}
     }
 
     private void Attack()
