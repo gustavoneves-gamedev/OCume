@@ -298,6 +298,12 @@ public class PlayerRoot : MonoBehaviour
         {
             GameController.gameController.UpdateCheckpoint();
         }
+
+        if (other.CompareTag("LevelSpawnTrigger"))
+        {
+            GameController.gameController.levelManager.SpawnLevelPrefab();
+            Debug.Log("Fui Chamado");
+        }
     }
 
 }

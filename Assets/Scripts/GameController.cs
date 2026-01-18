@@ -54,9 +54,11 @@ public class GameController : MonoBehaviour
         InitilizeLevelStatics();
     }
 
+    //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
     {
-       //Reseta a posição do jogador com base no checkpoint desbloqueado da fase
+       //IPC: ESTA LINHA DE CÓDIGO NÃO ESTÁ BOA AQUI, O JOGADOR DÁ UMA LEVE TELETRANSPORTADA QUANDO DOU PLAY!!
+        //Reseta a posição do jogador com base no checkpoint desbloqueado da fase
         Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * currentLevelCheckpoint;
         
         playerRoot.ResetPosition(worldPos);       
