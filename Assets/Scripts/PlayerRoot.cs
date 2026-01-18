@@ -301,9 +301,14 @@ public class PlayerRoot : MonoBehaviour
 
         if (other.CompareTag("LevelSpawnTrigger"))
         {
-            GameController.gameController.levelManager.SpawnLevelPrefab();
-            Debug.Log("Fui Chamado");
+            GameController.gameController.levelManager.SpawnLevelPrefab();            
         }
+
+        if (other.CompareTag("LevelDestroyer"))
+        {
+            GameController.gameController.levelManager.DestroyLevelPrefab();
+        }
+        
     }
 
 }

@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] cowboyLevelPrefabs;
     [SerializeField] private Transform startSpawn;
     private GameObject currentLevelPrefab;
+    private GameObject lastLevelPrefab;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +23,14 @@ public class LevelManager : MonoBehaviour
         GameObject newLevelPrefab = Instantiate(cowboyLevelPrefabs[0], 
             currentLevelPrefab.GetComponent<LevelRoot>().levelPrefabSpawnPoint.position, startSpawn.rotation);
 
+        lastLevelPrefab = currentLevelPrefab;
+
         currentLevelPrefab = newLevelPrefab;
+    }
+
+    public void DestroyLevelPrefab()
+    {
+        Destroy(lastLevelPrefab);
     }
 
 }
