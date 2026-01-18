@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelRoot : MonoBehaviour
 {
-    [Header("Level")]
-    [SerializeField] private GameObject[] cowboyLevelPrefabs;
-    
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
