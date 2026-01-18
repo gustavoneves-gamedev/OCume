@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
 
     public PlayerRoot playerRoot;
     public UIController uiController;
+    public LevelManager levelManager;
     
     
     void Awake()

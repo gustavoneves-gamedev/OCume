@@ -303,6 +303,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185016823}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &206703266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 206703267}
+  m_Layer: 0
+  m_Name: StartPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &206703267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206703266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221024468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1798,7 @@ MonoBehaviour:
   cowboyLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
   - {fileID: 8362309936835548687, guid: 8b7e3b7de6179cd4c86adc0089a20c47, type: 3}
+  startSpawn: {fileID: 206703267}
 --- !u!4 &505877550
 Transform:
   m_ObjectHideFlags: 0
@@ -2854,23 +2886,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a689477b5635e49afa338f0a249700, type: 3}
---- !u!1 &1050052259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
-  m_PrefabInstance: {fileID: 7318928119341755843}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1050052263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050052259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c032a2889110bd41b2e2e8dc1473564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1066051129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3394497602284184990, guid: e8a689477b5635e49afa338f0a249700, type: 3}
@@ -3119,7 +3134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1211836900
 Transform:
   m_ObjectHideFlags: 0
@@ -3138,37 +3153,6 @@ Transform:
   - {fileID: 1908622575}
   - {fileID: 1219977356}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1218091899
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1218091900}
-  m_Layer: 0
-  m_Name: LevelSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1218091900
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218091899}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 230948188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1219977355
 GameObject:
@@ -4247,7 +4231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1577437321
 Transform:
   m_ObjectHideFlags: 0
@@ -4547,6 +4531,7 @@ MonoBehaviour:
   bestHeight: 0
   playerRoot: {fileID: 0}
   uiController: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!4 &1670216957
 Transform:
   m_ObjectHideFlags: 0
@@ -6062,14 +6047,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5654119480534388237, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1218091900}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1050052263}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
 --- !u!1001 &7325712604127647781
 PrefabInstance:
@@ -6143,6 +6122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c032a2889110bd41b2e2e8dc1473564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelPrefabSpawnPoint: {fileID: 0}
 --- !u!1001 &7882555930787366791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6276,3 +6256,4 @@ SceneRoots:
   - {fileID: 393168559}
   - {fileID: 2032830022}
   - {fileID: 505877550}
+  - {fileID: 206703267}
