@@ -12,10 +12,14 @@ public class LevelManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        InitializeLevel();
+    }
+
+    public void InitializeLevel()
+    {
         GameController.gameController.levelManager = this;
 
         currentLevelPrefab = Instantiate(cowboyLevelPrefabs[0].gameObject, startSpawn.position, startSpawn.rotation);
-
     }
 
     public void SpawnLevelPrefab()
