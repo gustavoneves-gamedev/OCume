@@ -25,12 +25,9 @@ public class LevelManager : MonoBehaviour
 
     public void InitializeLevel(levelID levelID)
     {
-        //currentLevelPrefabs = levelPrefabs;
-
-        foreach (GameObject prefab in currentLevelPrefabs)
-        {
-            Destroy(prefab, .1f);
-        }
+        
+        Destroy(currentPrefab);
+        Destroy(lastPrefab);
 
 
         if (levelID == levelID.CowboyLevel)
