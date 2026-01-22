@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Transform startSpawn;
     [SerializeField] private GameObject[] currentLevelPrefabs;
     [SerializeField] private levelID currentLevelID;
+    private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
     private GameObject currentPrefab;
     private GameObject lastPrefab;
 
@@ -61,16 +62,36 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnLevelPrefab()
     {
-        GameObject newLevelPrefab = Instantiate(currentLevelPrefabs[0],
+        //Os Ifs abaixo servem para verificar se deve spawnar o primeiro prefab de cada segmento ou não!!
+        if (hasChangedCheckpoint)
+        {
+            GameObject newLevelPrefab = Instantiate(currentLevelPrefabs[0],
             currentPrefab.GetComponent<LevelRoot>().levelPrefabSpawnPoint.position, startSpawn.rotation);
 
-        lastPrefab = currentPrefab;
+            lastPrefab = currentPrefab;
+            currentPrefab = newLevelPrefab;
 
-        currentPrefab = newLevelPrefab;
+            hasChangedCheckpoint = false;
+        }
+        else
+        {
+            GameObject newLevelPrefab = Instantiate(currentLevelPrefabs[Random.Range(1, currentLevelPrefabs.Length)],
+            currentPrefab.GetComponent<LevelRoot>().levelPrefabSpawnPoint.position, startSpawn.rotation);
+
+            lastPrefab = currentPrefab;
+            currentPrefab = newLevelPrefab;
+        }
+
+        
+
+
     }
 
     public void UpdateLevelPrefabCheckpoint(int checkpoint)
     {
+        //Essa bool detecta se houve troca de zona ou não para determinar qual será o próximo prefab        
+        hasChangedCheckpoint = true;
+
         if (currentLevelID == levelID.CowboyLevel)
         {
             //currentLevelPrefabs = cowboyLevelPrefabsA;

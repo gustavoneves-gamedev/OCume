@@ -168,6 +168,12 @@ public class PlayerRoot : MonoBehaviour
             BackToMainMenu();
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameController.gameController.UpdateCheckpoint();
+        }
+        
+
         //Calcula a altura escalada pelo jogador
         heightClimbed = transform.position.z - initialHeight;
     }
