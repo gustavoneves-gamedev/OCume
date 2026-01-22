@@ -110,6 +110,7 @@ public class GameController : MonoBehaviour
         {
             cowboyLevelCheckpoint++;
             //currentLevelCheckpoint++;
+            levelManager.UpdateLevelPrefabCheckpoint(cowboyLevelCheckpoint);
             return;
         }
 
