@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Level")]
-    [SerializeField] private GameObject[] cowboyLevelPrefabs;
+    [Header(" Cowboy Level")]
+    [SerializeField] private GameObject[] cowboyLevelPrefabsA;
+    [SerializeField] private GameObject[] cowboyLevelPrefabsB;
+    [SerializeField] private GameObject[] cowboyLevelPrefabsC;
+    [SerializeField] private GameObject[] cowboyLevelPrefabsD;
+
+    [Header(" Samurai Level")]
     [SerializeField] private GameObject[] samuraiLevelPrefabs;
+
+    [Header(" Alpinista Level")]
     [SerializeField] private GameObject[] alpinistaLevelPrefabs;
+
+
     [SerializeField] private Transform startSpawn;
     [SerializeField] private GameObject[] currentLevelPrefabs;
+    [SerializeField] private levelID currentLevelID;
     private GameObject currentPrefab;
     private GameObject lastPrefab;
 
@@ -29,24 +39,23 @@ public class LevelManager : MonoBehaviour
         Destroy(currentPrefab);
         Destroy(lastPrefab);
 
+        currentLevelID = levelID;
 
-        if (levelID == levelID.CowboyLevel)
+        if (currentLevelID == levelID.CowboyLevel)
         {
-            currentLevelPrefabs = cowboyLevelPrefabs;
+            currentLevelPrefabs = cowboyLevelPrefabsA;
         }
-        else if (levelID == levelID.SamuraiLevel)
+        else if (currentLevelID == levelID.SamuraiLevel)
         {
             currentLevelPrefabs = samuraiLevelPrefabs;
         }
-        else if (levelID == levelID.AlpinistaLevel)
+        else if (currentLevelID == levelID.AlpinistaLevel)
         {
             currentLevelPrefabs = alpinistaLevelPrefabs;
         }
 
 
         currentPrefab = Instantiate(currentLevelPrefabs[0], startSpawn.position, startSpawn.rotation);
-
-
 
     }
 
@@ -58,6 +67,22 @@ public class LevelManager : MonoBehaviour
         lastPrefab = currentPrefab;
 
         currentPrefab = newLevelPrefab;
+    }
+
+    public void UpdateLevelPrefabCheckpoint()
+    {
+        if (currentLevelID == levelID.CowboyLevel)
+        {
+            currentLevelPrefabs = cowboyLevelPrefabsA;
+        }
+        else if (currentLevelID == levelID.SamuraiLevel)
+        {
+            currentLevelPrefabs = samuraiLevelPrefabs;
+        }
+        else if (currentLevelID == levelID.AlpinistaLevel)
+        {
+            currentLevelPrefabs = alpinistaLevelPrefabs;
+        }
     }
 
     public void DestroyLevelPrefab()

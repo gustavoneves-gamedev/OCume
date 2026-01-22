@@ -1795,15 +1795,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eedbdcdd7886c0740a1b79e94062f973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cowboyLevelPrefabs:
+  cowboyLevelPrefabsA:
   - {fileID: 1252624854937656911, guid: 4f54cb15534fc3942ada2654bd10abb7, type: 3}
   - {fileID: 8362309936835548687, guid: 8b7e3b7de6179cd4c86adc0089a20c47, type: 3}
+  cowboyLevelPrefabsB: []
+  cowboyLevelPrefabsC: []
+  cowboyLevelPrefabsD: []
   samuraiLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 44d4151ee1968f8449d7c5c4f3ff33e8, type: 3}
   alpinistaLevelPrefabs:
   - {fileID: 1252624854937656911, guid: 9f297531ec1481e409dab49ede0ed242, type: 3}
   startSpawn: {fileID: 206703267}
   currentLevelPrefabs: []
+  currentLevelID: 0
 --- !u!4 &505877550
 Transform:
   m_ObjectHideFlags: 0
