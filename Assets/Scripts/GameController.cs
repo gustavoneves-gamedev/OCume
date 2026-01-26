@@ -18,10 +18,16 @@ public class GameController : MonoBehaviour
     //public LevelData currentLevelData;
     public int currentLevelCheckpoint = 0;
     public float currentLevelCheckpointDistance;
+
+    [Header("Cowboy Level")]
     public int cowboyLevelCheckpoint;
     public float cowboyLevelBestHeight;
+
+    [Header("Samurai Level")]
     public int samuraiLevelCheckpoint;
     public float samuraiLevelBestHeight;
+
+    [Header("Alpinista Level")]
     public int alpinistaLevelCheckpoint;
     public float alpinistaLevelBestHeight;
 
@@ -30,7 +36,7 @@ public class GameController : MonoBehaviour
     public float bestHeight;
     //public float bestWeekHeight;
 
-
+    [Header("References")]
     public PlayerRoot playerRoot;
     public UIController uiController;
     public LevelManager levelManager;
@@ -66,7 +72,16 @@ public class GameController : MonoBehaviour
         playerRoot.BeginRunAnimation();
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            playerRoot.canRun = !playerRoot.canRun;
+
+            uiController.PauseMenu();
+            //Pause();
+        }
+    }
 
     #region Main Menu
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerRoot : MonoBehaviour
 {
     [Header("Run")]
-    [SerializeField] private bool canRun;
+    public bool canRun;
     public bool isGamePaused;
     public float heightClimbed;
     private float initialHeight;
@@ -137,7 +137,7 @@ public class PlayerRoot : MonoBehaviour
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
         reloadTimeRemaining = reloadTime;
-        runHeightClimbed = 0;
+        heightClimbed = 0;
         initialHeight = transform.position.z;
         canRun = true;
     }
@@ -163,10 +163,7 @@ public class PlayerRoot : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            BackToMainMenu();
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -259,8 +256,8 @@ public class PlayerRoot : MonoBehaviour
         cc.Move(move * Time.deltaTime);
     }
 
-
-    private void BackToMainMenu()
+    //O CONTROLE DE PAUSE ESTÁ NO GAME CONTROLLER POR ENQUANTO!!!
+    private void Pause()
     {
         canRun = false;
         GameController.gameController.uiController.MainMenu();
@@ -274,12 +271,12 @@ public class PlayerRoot : MonoBehaviour
     }
 
     //Coloquei esta função abaixo para o caso de o jogador ganhar a escalada e não encerrá-la com sua morte
-    private void EndRun()
+    //Outra observação, o ciclo está estranho. O Game Controller chama esta função que depois chama o próprio game controller
+    //Manterei por enquanto, mas vou tentar otimizar no futuro
+    public void EndRun()
     {
-        runHeightClimbed = heightClimbed;
-
-
-        GameController.gameController.UpdateBestHeight(heightClimbed + runHeightClimbed);
+        
+        GameController.gameController.UpdateBestHeight(heightClimbed + initialHeight);
 
     }
 

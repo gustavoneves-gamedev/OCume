@@ -17,10 +17,20 @@ public class UIController : MonoBehaviour
         GameController.gameController.BeginRun();
     }
 
+    public void PauseMenu()
+    {
+        //Temporariamente a pause vai direto para o Menu principal        
+        mainMenu.SetActive(!mainMenu.activeSelf);
+    }
+
     public void MainMenu()
     {
         mainMenu.SetActive(true);
+
+        
     }
+
+    
 
     #region Character Selection
 
