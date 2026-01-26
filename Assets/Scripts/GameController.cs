@@ -78,6 +78,8 @@ public class GameController : MonoBehaviour
         {
             playerRoot.canRun = !playerRoot.canRun;
 
+            playerRoot.EndRun();
+
             uiController.PauseMenu();
             //Pause();
         }

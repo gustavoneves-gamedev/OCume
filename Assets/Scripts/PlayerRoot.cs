@@ -58,7 +58,8 @@ public class PlayerRoot : MonoBehaviour
     {
         cc.enabled = false;
 
-        transform.position = worldPos + Vector3.forward;
+        //transform.position = worldPos + Vector3.forward;
+        transform.position = worldPos;
 
         cc.enabled = true;
     }
