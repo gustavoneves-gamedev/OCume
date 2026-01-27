@@ -261,7 +261,7 @@ public class PlayerRoot : MonoBehaviour
     private void Pause()
     {
         canRun = false;
-        GameController.gameController.uiController.MainMenu();
+        GameController.gameController.uiController.BackToMainMenu();
     }
 
 

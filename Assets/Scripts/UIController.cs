@@ -5,10 +5,21 @@ public class UIController : MonoBehaviour
 
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject pauseMenu;
+
+    [Header("Reference")]
+    public PlayerRoot playerRoot;
 
     void Start()
     {
         GameController.gameController.uiController = this;
+
+        Invoke("Initialize", .1f);
+    }
+
+    private void Initialize()
+    {
+        playerRoot = GameController.gameController.playerRoot;
     }
 
     public void BeginRun()
@@ -17,20 +28,25 @@ public class UIController : MonoBehaviour
         GameController.gameController.BeginRun();
     }
 
+    //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
     {
         //Temporariamente a pause vai direto para o Menu principal        
-        mainMenu.SetActive(!mainMenu.activeSelf);
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+        playerRoot.canRun = !playerRoot.canRun;
+
+        //playerRoot.EndRun();
     }
 
-    public void MainMenu()
+    public void BackToMainMenu()
     {
-        mainMenu.SetActive(true);
+        playerRoot.EndRun();
 
-        
+        mainMenu.SetActive(true);
     }
 
-    
+
 
     #region Character Selection
 

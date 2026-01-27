@@ -76,10 +76,6 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            playerRoot.canRun = !playerRoot.canRun;
-
-            playerRoot.EndRun();
-
             uiController.PauseMenu();
             //Pause();
         }
