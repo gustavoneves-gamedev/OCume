@@ -41,6 +41,9 @@ public class UIController : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        pauseMenu.SetActive(false);
+
+
         playerRoot.EndRun();
 
         mainMenu.SetActive(true);
