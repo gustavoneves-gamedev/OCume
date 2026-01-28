@@ -2034,7 +2034,7 @@ MonoBehaviour:
   startSpawn: {fileID: 206703267}
   currentLevelPrefabs: []
   currentLevelID: 0
-  checkpointPrefab: {fileID: 0}
+  checkpointPrefab: {fileID: 2522730176810595955, guid: 4f71742132a64c04ebb5cf13bdbc1857, type: 3}
 --- !u!4 &505877550
 Transform:
   m_ObjectHideFlags: 0
@@ -3639,7 +3639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1211836900
 Transform:
   m_ObjectHideFlags: 0
@@ -6231,6 +6231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2522730176810595955, guid: 4f71742132a64c04ebb5cf13bdbc1857, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5704404209114265437, guid: 4f71742132a64c04ebb5cf13bdbc1857, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6951,6 +6955,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1211836900}
+  - {fileID: 3163220729623964253}
   - {fileID: 4813382045633849443}
   - {fileID: 1577437321}
   - {fileID: 941530627}
@@ -6960,4 +6965,3 @@ SceneRoots:
   - {fileID: 2032830022}
   - {fileID: 505877550}
   - {fileID: 206703267}
-  - {fileID: 3163220729623964253}

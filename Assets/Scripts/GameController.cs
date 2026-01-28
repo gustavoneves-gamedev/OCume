@@ -109,11 +109,11 @@ public class GameController : MonoBehaviour
         {
             if (currentLevelID == levelArray[i].levelId)
             {
-                currentLevelCheckpointDistance = levelArray[i].checkpointDistance;                
+                currentLevelCheckpointDistance = levelArray[i].checkpointDistance;             
             }
         }
 
-        levelManager.InitializeLevel(currentLevelID);
+        levelManager.InitializeLevel(currentLevelID, currentLevelCheckpointDistance);
 
     }
 

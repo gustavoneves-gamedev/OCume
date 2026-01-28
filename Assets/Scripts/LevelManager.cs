@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] currentLevelPrefabs; //Tornar private após testes
     [SerializeField] private levelID currentLevelID;
     [SerializeField] private GameObject checkpointPrefab; //Prefab dos checkpoints
+    private GameObject activeCheckpoint;
     private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
     private GameObject currentPrefab;
     private GameObject lastPrefab;
@@ -32,15 +33,15 @@ public class LevelManager : MonoBehaviour
                 
         //InitializeLevel(GameController.gameController.currentLevelID);
 
-
-        InitializeLevel(levelID.CowboyLevel);
+        InitializeLevel(levelID.CowboyLevel, 100f);
     }
 
-    public void InitializeLevel(levelID levelID)
+    public void InitializeLevel(levelID levelID, float checkpointDistance)
     {
         
         Destroy(currentPrefab);
         Destroy(lastPrefab);
+        Destroy(activeCheckpoint);
 
         currentLevelID = levelID;
 
@@ -59,6 +60,9 @@ public class LevelManager : MonoBehaviour
 
 
         currentPrefab = Instantiate(currentLevelPrefabs[0], startSpawn.position, startSpawn.rotation);
+
+        activeCheckpoint = Instantiate(checkpointPrefab, 
+            startSpawn.position + Vector3.forward * checkpointDistance, startSpawn.rotation);
 
     }
 
