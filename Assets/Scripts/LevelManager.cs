@@ -61,8 +61,8 @@ public class LevelManager : MonoBehaviour
 
         currentPrefab = Instantiate(currentLevelPrefabs[0], startSpawn.position, startSpawn.rotation);
 
-        activeCheckpoint = Instantiate(checkpointPrefab, 
-            startSpawn.position + Vector3.forward * checkpointDistance, startSpawn.rotation);
+        //activeCheckpoint = Instantiate(checkpointPrefab, 
+        //    startSpawn.position + Vector3.forward * checkpointDistance, startSpawn.rotation);
 
     }
 
