@@ -117,6 +117,36 @@ public class GameController : MonoBehaviour
 
     }
 
+    //Esta função apenas atualiza o próximo conjunto de prefabs e não o checkpoint em si, por isso a informação passada
+    //é o checkpoint + 1
+    //Talvez seja melhor colocar isso no Level Manager diretamente depois
+    public void UpdatePrefab()
+    {
+        //currentLevelCheckpoint++;
+
+        if (currentLevelID == levelID.CowboyLevel)
+        {
+            //cowboyLevelCheckpoint++;
+            //currentLevelCheckpoint++;
+            levelManager.UpdateLevelPrefabs(cowboyLevelCheckpoint + 1);
+            return;
+        }
+
+        if (currentLevelID == levelID.SamuraiLevel)
+        {
+            //samuraiLevelCheckpoint++;
+            //currentLevelCheckpoint++;
+            return;
+        }
+
+        if (currentLevelID == levelID.AlpinistaLevel)
+        {
+            //alpinistaLevelCheckpoint++;
+            return;
+        }
+
+    }
+
     public void UpdateCheckpoint()
     {
         currentLevelCheckpoint++;
@@ -125,7 +155,10 @@ public class GameController : MonoBehaviour
         {
             cowboyLevelCheckpoint++;
             //currentLevelCheckpoint++;
-            levelManager.UpdateLevelPrefabCheckpoint(cowboyLevelCheckpoint);
+            //levelManager.UpdateLevelPrefabCheckpoint(cowboyLevelCheckpoint);
+            levelManager.SpawnCheckpoint(currentLevelCheckpointDistance, cowboyLevelCheckpoint);
+            //ACHO QUE É POSSÍVEL OTIMIZAR ESSA QUESTÃO DO CURRENTLEVELCHECKPOINTDISTANCE EM VEZ DE TER QUE FICAR
+            //PASSANDO ESSA INFORMAÇÃO TODA HORA
             return;
         }
 

@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] currentLevelPrefabs; //Tornar private após testes
     [SerializeField] private levelID currentLevelID;
     [SerializeField] private GameObject checkpointPrefab; //Prefab dos checkpoints
-    private GameObject activeCheckpoint;
+    [SerializeField] private GameObject activeCheckpoint;
     private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
     private GameObject currentPrefab;
     private GameObject lastPrefab;
@@ -92,7 +92,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void UpdateLevelPrefabCheckpoint(int checkpoint)
+    public void SpawnCheckpoint(float checkpointDistance, int checkpointCounter)
+    {
+        Destroy(activeCheckpoint, .1f); //Talvez tocar uma animação de fogos ou confetes quando passar pelo Checkpoint
+
+        activeCheckpoint = Instantiate(checkpointPrefab, startSpawn.position +
+           Vector3.forward * checkpointDistance * (checkpointCounter + 1), startSpawn.rotation);
+    }
+
+    public void UpdateLevelPrefabs(int checkpoint)
     {
         //Essa bool detecta se houve troca de zona ou não para determinar qual será o próximo prefab        
         hasChangedCheckpoint = true;
@@ -114,11 +122,7 @@ public class LevelManager : MonoBehaviour
 
     #region Checkpoint Update
 
-    //HÁ UM PROBLEMA USANDO ISTO!! Ao cruzar o checkpoint, apenas os prefabs subsequentes serãp atualizados
-    //No caso, no meio da run, o jogador trocará de área, mas apenas 1 prefab depois irá mostrar isso visualmente
-    //Não vou mexer nisso agora porque basta calcular bonitinho (ex.: colocar o checkpoint no meio do prefab atual) que
-    //aí isso vai impactar pouco no jogador visualmente, fora que posso colocar um trecho seguro para ele recuperar o fôlego
-    //antes de mudar de zona
+    //DEPOIS TENHO QUE CRIAR MÉTODOS SIMILARES PARA O LEVEL DO SAMURAI E DO ALPINISTA
     private void CowboyCheckpointUpdate(int checkpoint)
     {
         if (checkpoint == 1)

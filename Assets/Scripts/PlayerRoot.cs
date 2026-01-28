@@ -298,6 +298,11 @@ public class PlayerRoot : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        if (other.CompareTag("UpdatePrefabMarker"))
+        {
+            GameController.gameController.UpdatePrefab();
+        }
+
         if (other.CompareTag("Checkpoint"))
         {
             GameController.gameController.UpdateCheckpoint();
