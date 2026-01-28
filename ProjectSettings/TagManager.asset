@@ -6,9 +6,10 @@ TagManager:
   tags:
   - Coin
   - Ruby
-  - Checkpoint
   - LevelSpawnTrigger
   - LevelDestroyer
+  - Checkpoint
+  - UpdatePrefabMarker
   layers:
   - Default
   - TransparentFX

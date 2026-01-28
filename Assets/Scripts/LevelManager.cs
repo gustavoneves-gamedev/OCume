@@ -8,16 +8,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] cowboyLevelPrefabsC;
     [SerializeField] private GameObject[] cowboyLevelPrefabsD;
 
+    //OS TESTES SERÃO FEITOS NO LEVEL DO COWBOY E POSTERIORMENTE IREI APLICAR AOS DEMAIS (CASO DEEM CERTO NÉ)
     [Header(" Samurai Level")]
     [SerializeField] private GameObject[] samuraiLevelPrefabs;
 
     [Header(" Alpinista Level")]
     [SerializeField] private GameObject[] alpinistaLevelPrefabs;
 
-
+    [Header("Config")]
     [SerializeField] private Transform startSpawn;
-    [SerializeField] private GameObject[] currentLevelPrefabs;
+    [SerializeField] private GameObject[] currentLevelPrefabs; //Tornar private após testes
     [SerializeField] private levelID currentLevelID;
+    [SerializeField] private GameObject checkpointPrefab; //Prefab dos checkpoints
     private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
     private GameObject currentPrefab;
     private GameObject lastPrefab;
@@ -81,10 +83,6 @@ public class LevelManager : MonoBehaviour
             lastPrefab = currentPrefab;
             currentPrefab = newLevelPrefab;
         }
-
-        
-
-
     }
 
     public void UpdateLevelPrefabCheckpoint(int checkpoint)
