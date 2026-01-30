@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject statsMenu;
     [SerializeField] private Slider staminaSlider;
 
 
