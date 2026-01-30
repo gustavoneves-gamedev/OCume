@@ -153,6 +153,7 @@ public class PlayerRoot : MonoBehaviour
         AttackTimeCounter();
         StaminaConsumption();
 
+        //Atualiza a barra de stamina na HUD - Verificar se não é melhor passar para o UI Controller
         GameController.gameController.uiController.UpdateHUD(currentStamina/maxStamina);
 
 
