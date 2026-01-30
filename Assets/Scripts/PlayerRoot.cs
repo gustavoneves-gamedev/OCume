@@ -153,6 +153,9 @@ public class PlayerRoot : MonoBehaviour
         AttackTimeCounter();
         StaminaConsumption();
 
+        GameController.gameController.uiController.UpdateHUD(currentStamina/maxStamina);
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canAttack == true)
@@ -211,6 +214,8 @@ public class PlayerRoot : MonoBehaviour
         }
     }
 
+    //Esta função serve para regenerar a stamina e talvez reduzi-la ao longo da Run
+    //AINDA NÃO ESTÁ SENDO UTILIZADA!!
     public void UpdateStamina(float x)
     {
         currentStamina += x;

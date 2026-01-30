@@ -1,11 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
 
     [Header("MainMenu")]
     [SerializeField] private GameObject mainMenu;
+
+    [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject HUD;
+    [SerializeField] private Slider staminaSlider;
+
+
 
     [Header("Reference")]
     public PlayerRoot playerRoot;
@@ -26,6 +33,8 @@ public class UIController : MonoBehaviour
     {
         mainMenu.SetActive(false);
         GameController.gameController.BeginRun();
+
+        HUD.SetActive(true); //Colocar um efeito de fade in aqui 
     }
 
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
@@ -42,6 +51,8 @@ public class UIController : MonoBehaviour
     public void BackToMainMenu()
     {
         pauseMenu.SetActive(false);
+
+        HUD.SetActive(false);
 
 
         playerRoot.EndRun();
@@ -102,9 +113,9 @@ public class UIController : MonoBehaviour
 
     #region Run HUD
 
-    public void UpdateHUD()
+    public void UpdateHUD(float stamina)
     {
-
+        staminaSlider.value = stamina;
     }
 
     #endregion
