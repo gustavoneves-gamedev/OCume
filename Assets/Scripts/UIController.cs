@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,15 @@ public class UIController : MonoBehaviour
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
-    [SerializeField] private GameObject statsMenu;
     [SerializeField] private Slider staminaSlider;
 
+    [Header("Stats Menu")]
+    [SerializeField] private GameObject statsMenu;
+    [SerializeField] private TextMeshProUGUI result;
+    [SerializeField] private TextMeshProUGUI heightClimbed;
+    [SerializeField] private TextMeshProUGUI coinsCollected;
+    [SerializeField] private TextMeshProUGUI rubiesCollected;
+    [SerializeField] private TextMeshProUGUI obstacles;
 
 
     [Header("Reference")]

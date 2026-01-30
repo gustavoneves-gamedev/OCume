@@ -1557,8 +1557,13 @@ MonoBehaviour:
   mainMenu: {fileID: 1194546810}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
-  statsMenu: {fileID: 0}
   staminaSlider: {fileID: 1084490909}
+  statsMenu: {fileID: 1817082298}
+  result: {fileID: 106547168}
+  heightClimbed: {fileID: 189682268}
+  coinsCollected: {fileID: 1714285917}
+  rubiesCollected: {fileID: 1626545608}
+  obstacles: {fileID: 1843163203}
   playerRoot: {fileID: 0}
 --- !u!4 &393168559
 Transform:
@@ -4219,7 +4224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1194546811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6256,7 +6261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1817082299
 RectTransform:
   m_ObjectHideFlags: 0
