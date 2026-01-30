@@ -99,4 +99,13 @@ public class UIController : MonoBehaviour
     }
 
     #endregion
+
+    #region Run HUD
+
+    public void UpdateHUD()
+    {
+
+    }
+
+    #endregion
 }
