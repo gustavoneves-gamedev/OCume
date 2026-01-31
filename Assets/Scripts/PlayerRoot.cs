@@ -8,7 +8,10 @@ public class PlayerRoot : MonoBehaviour
     public float heightClimbed;
     private float initialHeight;
     public float runHeightClimbed;
-    public float totalHeight; //Valor que será mostrado ao final
+    public float totalHeight; //Valor que será mostrado ao final e durante a run
+    private int coinsCollected; //Valor que será mostrado ao final e durante a run
+    private int rubiesCollected; //Valor que será mostrado ao final e durante a run
+    private int obstaclesDestroyed; //Valor que será mostrado ao final e durante a run
     private bool canAttack;
     //private bool canCountCheckpoint;
     private Vector3 move;
@@ -33,8 +36,9 @@ public class PlayerRoot : MonoBehaviour
 
 
     [Header("PowerUps")]
-    [SerializeField] public int normalCoinMultiplier = 1;
-    [SerializeField] public int rubyMultiplier = 1;
+    public int normalCoinMultiplier = 1;    
+    public int rubyMultiplier = 1;
+    
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
@@ -133,8 +137,13 @@ public class PlayerRoot : MonoBehaviour
 
     }
 
+    //Reseta os valores para a nova Run
     private void BeginRunEvent()
     {
+        currentStamina = maxStamina;
+        coinsCollected = 0;
+        rubiesCollected = 0;
+        obstaclesDestroyed = 0;
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
         reloadTimeRemaining = reloadTime;
@@ -273,7 +282,12 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
-        canRun = false;        
+        canRun = false;
+
+        //Atualmente o contador de moedas está no GameController, mas achou que vou puxar para cá
+        GameController.gameController.uiController.
+            StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
+
         EndRun();
     }
 
