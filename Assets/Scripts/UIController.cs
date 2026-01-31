@@ -56,10 +56,25 @@ public class UIController : MonoBehaviour
         //playerRoot.EndRun();
     }
 
-    public void BackToMainMenu()
+    //Talvez eu possa criar um comando para encerrar a corrida antes do fim no modo infinito? Verificar pertinência
+    //disso no futuro
+    public void StaticsMenu(float height = 0, int coins = 0, int rubies = 0, int obstaclesDestroyed = 0)
     {
         pauseMenu.SetActive(false);
+        HUD.SetActive(false);
 
+        heightClimbed.text = "Altura Escalada: " + height;
+        coinsCollected.text = "Moedas: " + coins;
+        rubiesCollected.text = "Rubis: " + rubies;
+        obstacles.text = "Obstáculos: " + obstaclesDestroyed;
+
+        statsMenu.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        statsMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         HUD.SetActive(false);
 
 
