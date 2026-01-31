@@ -10,6 +10,7 @@ TagManager:
   - LevelDestroyer
   - Checkpoint
   - UpdatePrefabMarker
+  - FinishLine
   layers:
   - Default
   - TransparentFX

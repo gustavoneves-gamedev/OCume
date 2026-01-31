@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     //public LevelData currentLevelData;
     public int currentLevelCheckpoint = 0;
     public float currentLevelCheckpointDistance;
+    public float currentLevelHeight;
     private bool isStartingOnCheckpoint;
 
     [Header("Cowboy Level")]
@@ -114,11 +115,12 @@ public class GameController : MonoBehaviour
         {
             if (currentLevelID == levelArray[i].levelId)
             {
-                currentLevelCheckpointDistance = levelArray[i].checkpointDistance;             
+                currentLevelCheckpointDistance = levelArray[i].checkpointDistance;
+                currentLevelHeight = levelArray[i].height;
             }
         }
 
-        levelManager.InitializeLevel(currentLevelID, currentLevelCheckpointDistance);
+        levelManager.InitializeLevel(currentLevelID, currentLevelCheckpointDistance, currentLevelHeight);
 
     }
 
