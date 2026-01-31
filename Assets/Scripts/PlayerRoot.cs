@@ -233,11 +233,11 @@ public class PlayerRoot : MonoBehaviour
         if (currentStamina > maxStamina)
             currentStamina = maxStamina;
 
-        //if (currentStamina <= 0)
-        //{
-        //    currentStamina = 0;
-        //    OnDeathEvent();
-        //}
+        if (currentStamina <= 0)
+        {
+            currentStamina = 0;
+            OnDeathEvent();
+        }
     }
 
     private void Attack()
@@ -326,6 +326,7 @@ public class PlayerRoot : MonoBehaviour
         if (other.CompareTag("Checkpoint"))
         {
             GameController.gameController.UpdateCheckpoint();
+            UpdateStamina(maxStamina * 0.1f);
         }
 
         if (other.CompareTag("LevelSpawnTrigger"))
