@@ -282,11 +282,7 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
-        canRun = false;
-
-        //Atualmente o contador de moedas está no GameController, mas achou que vou puxar para cá
-        GameController.gameController.uiController.
-            StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
+        canRun = false;        
 
         EndRun();
     }
@@ -298,6 +294,9 @@ public class PlayerRoot : MonoBehaviour
     {
         
         GameController.gameController.UpdateBestHeight(heightClimbed + initialHeight);
+
+        GameController.gameController.uiController.
+            StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
 
     }
 
@@ -332,6 +331,8 @@ public class PlayerRoot : MonoBehaviour
         if (other.CompareTag("FinishLine"))
         {
             Debug.Log("GANHEI, CARAI!!");
+            canRun = false;
+            EndRun();
         }
 
         if (other.CompareTag("LevelSpawnTrigger"))
