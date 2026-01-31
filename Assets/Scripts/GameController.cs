@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     //public LevelData currentLevelData;
     public int currentLevelCheckpoint = 0;
     public float currentLevelCheckpointDistance;
+    private bool isStartingOnCheckpoint;
 
     [Header("Cowboy Level")]
     public int cowboyLevelCheckpoint;
@@ -63,7 +64,11 @@ public class GameController : MonoBehaviour
     //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
     {
-       //IPC: ESTA LINHA DE CÓDIGO NÃO ESTÁ BOA AQUI, O JOGADOR DÁ UMA LEVE TELETRANSPORTADA QUANDO DOU PLAY!!
+        //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero 
+        if (!isStartingOnCheckpoint)
+            currentLevelCheckpoint = 0;
+
+        //IPC: ESTA LINHA DE CÓDIGO NÃO ESTÁ BOA AQUI, O JOGADOR DÁ UMA LEVE TELETRANSPORTADA QUANDO DOU PLAY!!
         //Reseta a posição do jogador com base no checkpoint desbloqueado da fase
         Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * currentLevelCheckpoint;
         

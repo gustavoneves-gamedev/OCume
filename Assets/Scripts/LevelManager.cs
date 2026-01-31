@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
                 
         //InitializeLevel(GameController.gameController.currentLevelID);
 
-        InitializeLevel(levelID.CowboyLevel, 100f);
+        InitializeLevel(levelID.CowboyLevel, 400f);
     }
 
     public void InitializeLevel(levelID levelID, float checkpointDistance)

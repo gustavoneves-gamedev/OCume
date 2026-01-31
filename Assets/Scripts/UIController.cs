@@ -40,6 +40,8 @@ public class UIController : MonoBehaviour
     public void BeginRun()
     {
         mainMenu.SetActive(false);
+
+        GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.BeginRun();
 
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
