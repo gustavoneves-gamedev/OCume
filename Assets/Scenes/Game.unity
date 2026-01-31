@@ -2426,8 +2426,7 @@ MonoBehaviour:
   currentLevelPrefabs: []
   currentLevelID: 0
   checkpointPrefab: {fileID: 2522730176810595955, guid: 4f71742132a64c04ebb5cf13bdbc1857, type: 3}
-  activeCheckpoint: {fileID: 0}
-  finishLine: {fileID: 2522730176810595955, guid: 2168fb26a288f5044a35ce4d538e5b94, type: 3}
+  finishLinePrefab: {fileID: 2522730176810595955, guid: 2168fb26a288f5044a35ce4d538e5b94, type: 3}
 --- !u!4 &505877550
 Transform:
   m_ObjectHideFlags: 0
@@ -6008,6 +6007,7 @@ MonoBehaviour:
   currentLevelID: 1
   currentLevelCheckpoint: 0
   currentLevelCheckpointDistance: 0
+  currentLevelHeight: 0
   cowboyLevelCheckpoint: 0
   cowboyLevelBestHeight: 0
   samuraiLevelCheckpoint: 0

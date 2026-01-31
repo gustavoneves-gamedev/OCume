@@ -329,6 +329,11 @@ public class PlayerRoot : MonoBehaviour
             UpdateStamina(maxStamina * 0.1f);
         }
 
+        if (other.CompareTag("FinishLine"))
+        {
+            Debug.Log("GANHEI, CARAI!!");
+        }
+
         if (other.CompareTag("LevelSpawnTrigger"))
         {
             GameController.gameController.levelManager.SpawnLevelPrefab();            
