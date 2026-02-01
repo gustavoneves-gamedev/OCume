@@ -4,6 +4,7 @@ public class PlayerRoot : MonoBehaviour
 {
     [Header("Run")]
     public bool canRun;
+    private bool isDead;
     public bool isGamePaused;
     public float heightClimbed;
     private float initialHeight;
@@ -36,9 +37,9 @@ public class PlayerRoot : MonoBehaviour
 
 
     [Header("PowerUps")]
-    public int normalCoinMultiplier = 1;    
+    public int normalCoinMultiplier = 1;
     public int rubyMultiplier = 1;
-    
+
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
@@ -46,7 +47,7 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
 
-    
+
 
 
     void Start()
@@ -140,6 +141,7 @@ public class PlayerRoot : MonoBehaviour
     //Reseta os valores para a nova Run
     private void BeginRunEvent()
     {
+        isDead = false;
         currentStamina = maxStamina;
         coinsCollected = 0;
         rubiesCollected = 0;
@@ -163,7 +165,7 @@ public class PlayerRoot : MonoBehaviour
         StaminaConsumption();
 
         //Atualiza a barra de stamina na HUD - Verificar se não é melhor passar para o UI Controller
-        GameController.gameController.uiController.UpdateHUD(currentStamina/maxStamina);
+        GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
 
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -177,13 +179,13 @@ public class PlayerRoot : MonoBehaviour
 
         }
 
-        
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameController.gameController.UpdateCheckpoint();
         }
-        
+
 
         //Calcula a altura escalada pelo jogador
         heightClimbed = transform.position.z - initialHeight;
@@ -282,7 +284,8 @@ public class PlayerRoot : MonoBehaviour
 
     private void OnDeathEvent()
     {
-        canRun = false;        
+        canRun = false;
+        isDead = true;
 
         EndRun();
     }
@@ -292,11 +295,29 @@ public class PlayerRoot : MonoBehaviour
     //Manterei por enquanto, mas vou tentar otimizar no futuro
     public void EndRun()
     {
-        
-        GameController.gameController.UpdateBestHeight(heightClimbed + initialHeight);
+
+        float height = 0;
+
+        if (heightClimbed + initialHeight >= GameController.gameController.currentLevelHeight && isDead)
+        {
+            height = GameController.gameController.currentLevelHeight - .5f;
+        }
+        else if (heightClimbed + initialHeight >= GameController.gameController.currentLevelHeight)
+        {
+            height = GameController.gameController.currentLevelHeight;
+        }
+        else
+        {
+            height = heightClimbed + initialHeight;
+        }
+
+        //GameController.gameController.UpdateBestHeight(heightClimbed + initialHeight);
+
+        GameController.gameController.UpdateBestHeight(height);
+
 
         GameController.gameController.uiController.
-            StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
+            StaticsMenu(height, coinsCollected, rubiesCollected, obstaclesDestroyed);
 
     }
 
@@ -332,19 +353,21 @@ public class PlayerRoot : MonoBehaviour
         {
             Debug.Log("GANHEI, CARAI!!");
             canRun = false;
+
+            //Antes de chamar o final da Run, provavelmente vou criar uma função para tocar uma animação aqui no final
             EndRun();
         }
 
         if (other.CompareTag("LevelSpawnTrigger"))
         {
-            GameController.gameController.levelManager.SpawnLevelPrefab();            
+            GameController.gameController.levelManager.SpawnLevelPrefab();
         }
 
         if (other.CompareTag("LevelDestroyer"))
         {
             GameController.gameController.levelManager.DestroyLevelPrefab();
         }
-        
+
     }
 
 }
