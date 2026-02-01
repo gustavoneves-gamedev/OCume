@@ -40,6 +40,7 @@ public class UIController : MonoBehaviour
     public void BeginRun()
     {
         mainMenu.SetActive(false);
+        statsMenu.SetActive(false);
 
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.BeginRun();
@@ -80,7 +81,7 @@ public class UIController : MonoBehaviour
         HUD.SetActive(false);
 
 
-        playerRoot.EndRun();
+        //playerRoot.EndRun();
 
         mainMenu.SetActive(true);
     }
@@ -118,6 +119,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.currentLevelID = levelID.CowboyLevel;
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.cowboyLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
+        GameController.gameController.ResetPlayerPosition();
     }
 
     public void SelectSamuraiLevel()
@@ -125,6 +127,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.currentLevelID = levelID.SamuraiLevel;
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.samuraiLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
+        GameController.gameController.ResetPlayerPosition();
     }
 
     public void SelectAlpinistaLevel()
@@ -132,6 +135,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.currentLevelID = levelID.AlpinistaLevel;
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.alpinistaLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
+        GameController.gameController.ResetPlayerPosition();
     }
 
     #endregion

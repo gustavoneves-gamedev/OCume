@@ -16,6 +16,6 @@ MonoBehaviour:
   checkpoints: 0
   currentCheckpoint: 0
   checkpointDistance: 400
-  height: 2000
+  height: 300
   bestHeight: 0
   isUnlocked: 0

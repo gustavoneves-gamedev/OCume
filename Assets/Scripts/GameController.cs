@@ -67,15 +67,20 @@ public class GameController : MonoBehaviour
     {
         //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero 
         if (!isStartingOnCheckpoint)
-            currentLevelCheckpoint = 0;
+            currentLevelCheckpoint = 0;        
 
+        ResetPlayerPosition();
+
+        playerRoot.BeginRunAnimation();
+    }
+
+    public void ResetPlayerPosition()
+    {
         //IPC: ESTA LINHA DE CÓDIGO NÃO ESTÁ BOA AQUI, O JOGADOR DÁ UMA LEVE TELETRANSPORTADA QUANDO DOU PLAY!!
         //Reseta a posição do jogador com base no checkpoint desbloqueado da fase
         Vector3 worldPos = Vector3.forward * currentLevelCheckpointDistance * currentLevelCheckpoint;
-        
-        playerRoot.ResetPosition(worldPos);       
 
-        playerRoot.BeginRunAnimation();
+        playerRoot.ResetPosition(worldPos);
     }
 
     private void Update()

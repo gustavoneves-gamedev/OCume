@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject checkpointPrefab; //Prefab dos checkpoints
     private GameObject activeCheckpoint;
     [SerializeField] private GameObject finishLinePrefab;
-    public GameObject finishLine;
+    private GameObject finishLine;
     private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
     private GameObject currentPrefab;
     private GameObject lastPrefab;
@@ -147,6 +147,13 @@ public class LevelManager : MonoBehaviour
     }
 
     #endregion
+
+    public void WinLevel()
+    {
+        Destroy(finishLine, .1f); //Talvez tocar uma animação de fogos ou confetes quando passar pela linha de chegada
+
+        
+    }
 
     public void DestroyLevelPrefab()
     {
