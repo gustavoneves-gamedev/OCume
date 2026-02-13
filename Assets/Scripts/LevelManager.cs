@@ -84,6 +84,9 @@ public class LevelManager : MonoBehaviour
             GameObject newLevelPrefab = Instantiate(currentLevelPrefabs[0],
             currentPrefab.GetComponent<LevelRoot>().levelPrefabSpawnPoint.position, startSpawn.rotation);
 
+            //GameObject newLevelPrefab = Instantiate(currentLevelPrefabs[Random.Range(0, 3)],
+            //currentPrefab.GetComponent<LevelRoot>().levelPrefabSpawnPoint.position, startSpawn.rotation);
+
             lastPrefab = currentPrefab;
             currentPrefab = newLevelPrefab;
 
@@ -97,6 +100,8 @@ public class LevelManager : MonoBehaviour
             lastPrefab = currentPrefab;
             currentPrefab = newLevelPrefab;
         }
+
+
     }
 
     public void SpawnCheckpoint(float checkpointDistance, int checkpointCounter)

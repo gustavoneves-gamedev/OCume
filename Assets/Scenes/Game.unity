@@ -2426,7 +2426,6 @@ MonoBehaviour:
   currentLevelPrefabs: []
   currentLevelID: 0
   checkpointPrefab: {fileID: 2522730176810595955, guid: 4f71742132a64c04ebb5cf13bdbc1857, type: 3}
-  finishLinePrefab: {fileID: 2522730176810595955, guid: 2168fb26a288f5044a35ce4d538e5b94, type: 3}
 --- !u!4 &505877550
 Transform:
   m_ObjectHideFlags: 0
@@ -6004,7 +6003,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 385a9f067cbaa0f40b474dfb39ce639c, type: 2}
   - {fileID: 11400000, guid: 66b7427d1265c3a47a73006548432fe0, type: 2}
   - {fileID: 11400000, guid: e0c8ac7d5bf63924f8c7d3b6a5538563, type: 2}
-  currentLevelID: 1
+  currentLevelID: 0
   currentLevelCheckpoint: 0
   currentLevelCheckpointDistance: 0
   currentLevelHeight: 0
@@ -6014,8 +6013,6 @@ MonoBehaviour:
   samuraiLevelBestHeight: 0
   alpinistaLevelCheckpoint: 0
   alpinistaLevelBestHeight: 0
-  isInfinityRun: 0
-  bestHeight: 0
   playerRoot: {fileID: 0}
   uiController: {fileID: 0}
   levelManager: {fileID: 0}
