@@ -22,8 +22,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private levelID currentLevelID;
     [SerializeField] private GameObject checkpointPrefab; //Prefab dos checkpoints
     private GameObject activeCheckpoint;
-    [SerializeField] private GameObject finishLinePrefab;
-    private GameObject finishLine;
+    //[SerializeField] private GameObject finishLinePrefab;
+    //private GameObject finishLine;
     private bool hasChangedCheckpoint;//Essa bool detecta se houve troca de zona ou não
     private GameObject currentPrefab;
     private GameObject lastPrefab;
@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
         Destroy(currentPrefab);
         Destroy(lastPrefab);
         Destroy(activeCheckpoint);
-        Destroy(finishLine);
+        //Destroy(finishLine);
 
         currentLevelID = levelID;
 
@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
         activeCheckpoint = Instantiate(checkpointPrefab, startSpawn.position +
             Vector3.forward * checkpointDistance, startSpawn.rotation);
 
-        finishLine = Instantiate(finishLinePrefab, Vector3.forward * levelHeight, startSpawn.rotation);
+        //finishLine = Instantiate(finishLinePrefab, Vector3.forward * levelHeight, startSpawn.rotation);
         //A função acima comentada é a verdadeira!! Ativei a de baixo para fins de teste!!
         //finishLine = Instantiate(finishLinePrefab, Vector3.forward * 300f, startSpawn.rotation);
 
@@ -150,7 +150,7 @@ public class LevelManager : MonoBehaviour
 
     public void WinLevel()
     {
-        Destroy(finishLine, .1f); //Talvez tocar uma animação de fogos ou confetes quando passar pela linha de chegada
+        //Destroy(finishLine, .1f); //Talvez tocar uma animação de fogos ou confetes quando passar pela linha de chegada
 
         
     }
