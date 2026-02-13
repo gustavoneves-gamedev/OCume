@@ -160,6 +160,9 @@ public class PlayerRoot : MonoBehaviour
     {
         if (canRun == false || isGamePaused) return;
 
+        //Calcula a altura escalada pelo jogador
+        heightClimbed = transform.position.z - initialHeight;
+
         PlayerMovement();
         AttackTimeCounter();
         StaminaConsumption();
@@ -187,8 +190,7 @@ public class PlayerRoot : MonoBehaviour
         }
 
 
-        //Calcula a altura escalada pelo jogador
-        heightClimbed = transform.position.z - initialHeight;
+        
     }
 
     private void AttackTimeCounter()
@@ -268,7 +270,7 @@ public class PlayerRoot : MonoBehaviour
 
         float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
 
-        move.x = (targetX - transform.position.x) / Time.deltaTime;
+        move.x = (targetX - transform.position.x) / Time.deltaTime;      
 
 
         cc.Move(move * Time.deltaTime);
@@ -296,28 +298,12 @@ public class PlayerRoot : MonoBehaviour
     public void EndRun()
     {
 
-        float height = 0;
 
-        if (heightClimbed + initialHeight >= GameController.gameController.currentLevelHeight && isDead)
-        {
-            height = GameController.gameController.currentLevelHeight - .5f;
-        }
-        else if (heightClimbed + initialHeight >= GameController.gameController.currentLevelHeight)
-        {
-            height = GameController.gameController.currentLevelHeight;
-        }
-        else
-        {
-            height = heightClimbed + initialHeight;
-        }
-
-        //GameController.gameController.UpdateBestHeight(heightClimbed + initialHeight);
-
-        GameController.gameController.UpdateBestHeight(height);
+        GameController.gameController.UpdateBestHeight(heightClimbed);
 
 
         GameController.gameController.uiController.
-            StaticsMenu(height, coinsCollected, rubiesCollected, obstaclesDestroyed);
+            StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
 
     }
 
