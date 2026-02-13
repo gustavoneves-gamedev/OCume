@@ -33,9 +33,9 @@ public class GameController : MonoBehaviour
     public int alpinistaLevelCheckpoint;
     public float alpinistaLevelBestHeight;
 
-    [Header("Infinity Level")]
-    public bool isInfinityRun;
-    public float bestHeight;
+    //[Header("Infinity Level")]
+    //public bool isInfinityRun;
+    //public float bestHeight;
     //public float bestWeekHeight;
 
     [Header("References")]

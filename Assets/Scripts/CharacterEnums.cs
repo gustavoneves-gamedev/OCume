@@ -22,7 +22,7 @@ public enum statType
 
 public enum levelID
 {
-    InfinityLevel,
+    
     CowboyLevel,
     SamuraiLevel,
     AlpinistaLevel

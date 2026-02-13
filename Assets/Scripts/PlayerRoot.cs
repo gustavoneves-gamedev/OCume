@@ -8,7 +8,7 @@ public class PlayerRoot : MonoBehaviour
     public bool isGamePaused;
     public float heightClimbed;
     private float initialHeight;
-    public float runHeightClimbed;
+    //public float runHeightClimbed;
     public float totalHeight; //Valor que será mostrado ao final e durante a run
     private int coinsCollected; //Valor que será mostrado ao final e durante a run
     private int rubiesCollected; //Valor que será mostrado ao final e durante a run
@@ -158,7 +158,7 @@ public class PlayerRoot : MonoBehaviour
 
     void Update()
     {
-        if (canRun == false || isGamePaused) return;
+        if (canRun == false || isDead || isGamePaused) return;
 
         //Calcula a altura escalada pelo jogador
         heightClimbed = transform.position.z - initialHeight;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae03f5030977dfd4191c20966edc2d53, type: 3}
   m_Name: SamuraiLevel
   m_EditorClassIdentifier: 
-  levelId: 2
+  levelId: 1
   checkpoints: 0
   currentCheckpoint: 0
   checkpointDistance: 25
