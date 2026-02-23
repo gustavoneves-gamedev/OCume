@@ -121,7 +121,7 @@ public class GameController : MonoBehaviour
             if (currentLevelID == levelArray[i].levelId)
             {
                 currentLevelCheckpointDistance = levelArray[i].checkpointDistance;
-                currentLevelHeight = levelArray[i].height;
+                
             }
         }
 
@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
     //Talvez seja melhor colocar isso no Level Manager diretamente depois
     public void UpdatePrefab()
     {
-        //currentLevelCheckpoint++;
+        //currentLevelCheckpoint++;        
 
         if (currentLevelID == levelID.CowboyLevel)
         {

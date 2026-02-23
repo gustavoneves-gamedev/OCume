@@ -110,7 +110,7 @@ public class LevelManager : MonoBehaviour
 
     public void UpdateLevelPrefabs(int checkpoint)
     {
-        //Essa bool detecta se houve troca de zona ou não para determinar qual será o próximo prefab        
+        //Essa bool detecta se houve troca de zona ou não para determinar qual será o próximo prefab
         hasChangedCheckpoint = true;
 
         if (currentLevelID == levelID.CowboyLevel)

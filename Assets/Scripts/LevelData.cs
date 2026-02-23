@@ -13,9 +13,9 @@ public class LevelData : ScriptableObject
     public int checkpoints;
     public int currentCheckpoint;
     public float checkpointDistance;
-    public float height;
     public float bestHeight;
     public bool isUnlocked;
+    //Acrescentar uma variável para determinar quando que o conjunto de prefabs será alterado IPC!!
 
     
 }

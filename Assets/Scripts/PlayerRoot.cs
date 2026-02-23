@@ -324,9 +324,12 @@ public class PlayerRoot : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
+        //Este trigger serve para spawnar um novo conjunto de prefabs após passar pelo checkpoint 
         if (other.CompareTag("UpdatePrefabMarker"))
         {
+            //VIDE ANOTAÇÃO NO LEVEL DATA QUANTO AO CÁLCULO DE QUANDO OS PREFABS SERÃO ATUALIZADOS
             GameController.gameController.UpdatePrefab();
+            
         }
 
         if (other.CompareTag("Checkpoint"))
