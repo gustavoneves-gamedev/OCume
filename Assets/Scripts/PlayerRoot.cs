@@ -335,16 +335,7 @@ public class PlayerRoot : MonoBehaviour
             UpdateStamina(maxStamina * 0.1f);
         }
 
-        if (other.CompareTag("FinishLine"))
-        {
-            Debug.Log("GANHEI, CARAI!!");
-            canRun = false; //Tenho que tirar isso para deixar o jogador subir mais e apenas parar a câmera
 
-            GameController.gameController.levelManager.WinLevel();
-
-            //Antes de chamar o final da Run, provavelmente vou criar uma função para tocar uma animação aqui no final
-            EndRun();
-        }
 
         if (other.CompareTag("LevelSpawnTrigger"))
         {
