@@ -70,10 +70,6 @@ public class LevelManager : MonoBehaviour
         activeCheckpoint = Instantiate(checkpointPrefab, startSpawn.position +
             Vector3.forward * checkpointDistance, startSpawn.rotation);
 
-        //finishLine = Instantiate(finishLinePrefab, Vector3.forward * levelHeight, startSpawn.rotation);
-        //A função acima comentada é a verdadeira!! Ativei a de baixo para fins de teste!!
-        //finishLine = Instantiate(finishLinePrefab, Vector3.forward * 300f, startSpawn.rotation);
-
     }
 
     public void SpawnLevelPrefab()
@@ -137,15 +133,16 @@ public class LevelManager : MonoBehaviour
     //DEPOIS TENHO QUE CRIAR MÉTODOS SIMILARES PARA O LEVEL DO SAMURAI E DO ALPINISTA
     private void CowboyCheckpointUpdate(int checkpoint)
     {
-        if (checkpoint == 1)
+        //O que está vindo depois do && nos Ifs abaixo servem para evitar tentar puxar referência fora do limite do array
+        if (checkpoint == 1 && cowboyLevelPrefabsB.Length > 2)
         {
             currentLevelPrefabs = cowboyLevelPrefabsB;
         }
-        else if (checkpoint == 2)
+        else if (checkpoint == 2 && cowboyLevelPrefabsC.Length > 2)
         {
             currentLevelPrefabs = cowboyLevelPrefabsC;
         }
-        else if (checkpoint == 3)
+        else if (checkpoint == 3 && cowboyLevelPrefabsD.Length > 2)
         {
             currentLevelPrefabs = cowboyLevelPrefabsD;
         }
@@ -153,13 +150,7 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
-    public void WinLevel()
-    {
-        //Destroy(finishLine, .1f); //Talvez tocar uma animação de fogos ou confetes quando passar pela linha de chegada
-
-        
-    }
-
+    
     public void DestroyLevelPrefab()
     {
         Destroy(lastPrefab);
