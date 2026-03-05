@@ -6,7 +6,12 @@ public class UIController : MonoBehaviour
 {
 
     [Header("MainMenu")]
-    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject tapToPlayText;
+
+    [Header("CharacterMenu")]
+    [SerializeField] private GameObject characterMenu;
 
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
@@ -48,9 +53,10 @@ public class UIController : MonoBehaviour
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
     }
 
-    public void OpenMenuPanel()
+    public void OpenMenuPanel() //Isto só funciona para o estilo 1 de Menu
     {
-
+        tapToPlayText.SetActive(false);
+        menu.GetComponent<Button>().interactable = false;
     }
 
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
