@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
     public PlayerRoot playerRoot;
     public UIController uiController;
     public LevelManager levelManager;
+    public ObstacleManager obstacleManager;
     
     
     void Awake()
