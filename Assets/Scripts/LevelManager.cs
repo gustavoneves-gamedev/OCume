@@ -73,11 +73,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void ObstacleSpawnPointUpdate()
-    {
-        GameController.gameController.obstacleManager.spawnPointsMatrizA =
-            currentPrefab.GetComponent<LevelRoot>().obstaclesSpawnPointsMatriz;
-    }
+    
 
     public void SpawnLevelPrefab()
     {
@@ -106,6 +102,16 @@ public class LevelManager : MonoBehaviour
 
         ObstacleSpawnPointUpdate();
 
+    }
+
+    //Esta função serve para alimentar a Matriz no Obstacle Manager
+    public void ObstacleSpawnPointUpdate()
+    {
+        //GameController.gameController.obstacleManager.spawnPointsMatrizA =
+        //    currentPrefab.GetComponent<LevelRoot>().obstaclesSpawnPointsMatriz;
+
+        GameController.gameController.obstacleManager.
+            UpdateMatriz(currentPrefab.GetComponent<LevelRoot>().obstaclesSpawnPointsMatriz);
     }
 
     public void SpawnCheckpoint(float checkpointDistance, int checkpointCounter)
