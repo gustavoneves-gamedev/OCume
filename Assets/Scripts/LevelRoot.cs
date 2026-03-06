@@ -40,13 +40,14 @@ public class LevelRoot : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < obstaclesSpawnPointsMatriz.GetLength(0); i++)
-        {
-            for (int j = 0; j < obstaclesSpawnPointsMatriz.GetLength(1); j++)
-            {
-                Debug.Log("Elemento [" + i + "," + j + "] = " + obstaclesSpawnPointsMatriz[i,j]);
-            }
-        }
+        //Esta função serve apenas para printar a Matriz
+        //for (int i = 0; i < obstaclesSpawnPointsMatriz.GetLength(0); i++)
+        //{
+        //    for (int j = 0; j < obstaclesSpawnPointsMatriz.GetLength(1); j++)
+        //    {
+        //        Debug.Log("Elemento [" + i + "," + j + "] = " + obstaclesSpawnPointsMatriz[i,j]);
+        //    }
+        //}
 
     }
 }

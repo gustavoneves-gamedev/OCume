@@ -15,7 +15,7 @@ public class ObstacleManager : MonoBehaviour
         GameController.gameController.obstacleManager = this;
         levelManager = GameController.gameController.levelManager;
 
-        Initialize();
+        
     }
 
     public void Initialize()
@@ -33,6 +33,9 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Initialize();
+        }
     }
 }
