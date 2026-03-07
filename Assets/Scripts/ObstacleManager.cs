@@ -8,26 +8,17 @@ public class ObstacleManager : MonoBehaviour
     public ObstacleSpawn[,] spawnPointsMatrizB = new ObstacleSpawn[9,3];
     private bool matrizFlowControl = true;
     private LevelManager levelManager;
+    [SerializeField] private GameObject[] staticObstacles;
+    [SerializeField] private GameObject[] movableObstacles;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         GameController.gameController.obstacleManager = this;
         levelManager = GameController.gameController.levelManager;        
     }
 
-    public void UpdateMatriz(ObstacleSpawn[,] matriz)
-    {
-        if(matrizFlowControl) 
-            spawnPointsMatrizA = matriz;
-        else 
-            spawnPointsMatrizB = matriz;
-
-        matrizFlowControl = !matrizFlowControl;
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -54,4 +45,26 @@ public class ObstacleManager : MonoBehaviour
             }
         }
     }
+
+    public void UpdateMatriz(ObstacleSpawn[,] matriz)
+    {
+        if (matrizFlowControl)
+        {
+            spawnPointsMatrizA = matriz;
+            StaticObjectsSpawn(spawnPointsMatrizA);
+        }
+        else
+        {
+            spawnPointsMatrizB = matriz;
+            StaticObjectsSpawn(spawnPointsMatrizB);
+        }
+
+        matrizFlowControl = !matrizFlowControl;
+    }
+
+    private void StaticObjectsSpawn(ObstacleSpawn[,] matriz)
+    {
+
+    }
+    
 }
