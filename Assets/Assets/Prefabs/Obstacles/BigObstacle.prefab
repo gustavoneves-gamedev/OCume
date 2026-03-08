@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2133744462881446378}
+  - component: {fileID: -6644343815501621675}
   m_Layer: 0
   m_Name: BigObstacle
   m_TagString: Untagged
@@ -144,3 +145,16 @@ Transform:
   - {fileID: 3710458662273512434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6644343815501621675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8459530097593972147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701859b0256d0754c93f5c3dbde46ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleRoot
+  obstacle: {fileID: 7561057750666561717}
