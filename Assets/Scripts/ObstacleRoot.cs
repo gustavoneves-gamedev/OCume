@@ -16,7 +16,8 @@ public class ObstacleRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameController.gameController.isRunning) return;
+        Destroy(gameObject, 1f);
     }
 
     private void OnTriggerEnter(Collider other)

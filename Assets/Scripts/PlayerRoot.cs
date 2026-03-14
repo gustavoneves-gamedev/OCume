@@ -290,10 +290,10 @@ public class PlayerRoot : MonoBehaviour
 
         GameController.gameController.UpdateBestHeight(heightClimbed);
 
-
         GameController.gameController.uiController.
             StaticsMenu(heightClimbed, coinsCollected, rubiesCollected, obstaclesDestroyed);
 
+        GameController.gameController.isRunning = false;
     }
 
     //Talvez eu deva criar um script de moedas para colocar isso tudo lá e

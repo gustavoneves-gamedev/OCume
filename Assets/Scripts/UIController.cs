@@ -95,6 +95,7 @@ public class UIController : MonoBehaviour
         levelSelectionMenu.SetActive(false);
 
         //playerRoot.EndRun();
+        GameController.gameController.isRunning = false;
 
         mainMenu.SetActive(true);
     }

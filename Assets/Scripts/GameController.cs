@@ -66,13 +66,14 @@ public class GameController : MonoBehaviour
     //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
     {
-        //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero 
+        //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero REVISAR!!!
         if (!isStartingOnCheckpoint)
             currentLevelCheckpoint = 0;        
 
         ResetPlayerPosition();
 
         playerRoot.BeginRunAnimation();
+        isRunning = true;
     }
 
     public void ResetPlayerPosition()
@@ -112,8 +113,7 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Level
-
-    
+        
     public void InitilizeLevelStatics()
     {
         
