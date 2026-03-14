@@ -96,10 +96,11 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
+        GameController.gameController.InitilizeLevelStatics();
+        GameController.gameController.ResetPlayerPosition();
 
         mainMenu.SetActive(true);
     }
-
 
 
     #region Character Selection
@@ -124,6 +125,7 @@ public class UIController : MonoBehaviour
 
 
     #endregion
+
 
     #region Level Selection
 
