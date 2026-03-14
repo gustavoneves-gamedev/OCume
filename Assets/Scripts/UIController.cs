@@ -9,8 +9,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
     //[SerializeField] private GameObject menu;
     [SerializeField] private GameObject tapToPlayText;
+    private bool isLevelSelecting;
 
-    [Header("CharacterMenu")]    
+    [Header("CharacterMenu")]
     [SerializeField] private GameObject levelSelectionMenu;
     [SerializeField] private GameObject[] levelMenuArray;
     private int levelCode = 0;
@@ -59,7 +60,7 @@ public class UIController : MonoBehaviour
 
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
     }
-      
+
 
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
@@ -96,9 +97,13 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
-        GameController.gameController.InitilizeLevelStatics();
-        GameController.gameController.ResetPlayerPosition();
+        if (!isLevelSelecting)
+        {
+            GameController.gameController.InitilizeLevelStatics();
+            GameController.gameController.ResetPlayerPosition();
+        }
 
+        isLevelSelecting = false;
         mainMenu.SetActive(true);
     }
 
@@ -132,6 +137,7 @@ public class UIController : MonoBehaviour
     public void LevelSelection()
     {
         levelSelectionMenu.SetActive(true);
+        isLevelSelecting = true;
     }
 
     public void NextLevel()
@@ -158,6 +164,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.cowboyLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();
+        BackToMainMenu();
     }
 
     public void SelectSamuraiLevel()
@@ -166,6 +173,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.samuraiLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();
+        BackToMainMenu();
     }
 
     public void SelectAlpinistaLevel()
@@ -174,6 +182,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.currentLevelCheckpoint = GameController.gameController.alpinistaLevelCheckpoint;
         GameController.gameController.InitilizeLevelStatics();
         GameController.gameController.ResetPlayerPosition();
+        BackToMainMenu();
     }
 
     #endregion
