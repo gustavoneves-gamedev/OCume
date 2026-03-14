@@ -9,12 +9,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject mainMenu;//É tudo no Menu Principal
     //[SerializeField] private GameObject menu;
     [SerializeField] private GameObject tapToPlayText;
-    private bool isLevelSelecting;
 
     [Header("CharacterMenu")]
+    [SerializeField] private GameObject characterSelectionMenu;
+    [SerializeField] private GameObject[] characterMenuArray;
+    private int charCode = 0;
+    private bool isCharSelecting;
+
+    [Header("LevelMenu")]
     [SerializeField] private GameObject levelSelectionMenu;
     [SerializeField] private GameObject[] levelMenuArray;
     private int levelCode = 0;
+    private bool isLevelSelecting;
 
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
@@ -110,6 +116,12 @@ public class UIController : MonoBehaviour
 
     #region Character Selection
 
+    public void CharacterSelection()
+    {
+        characterSelectionMenu.SetActive(true);
+        isCharSelecting = true;
+    }
+
     public void SelectCowboy()
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Cowboy;
@@ -139,23 +151,44 @@ public class UIController : MonoBehaviour
         levelSelectionMenu.SetActive(true);
         isLevelSelecting = true;
     }
+    
 
     public void NextLevel()
     {
-        if (levelCode + 1 >= levelMenuArray.Length) return; //Segurança
+        //if (levelCode + 1 >= levelMenuArray.Length) return; //Segurança
 
-        levelMenuArray[levelCode + 1].SetActive(true);
-        levelMenuArray[levelCode].SetActive(false);
-        levelCode++;
+        if (isLevelSelecting)
+        {
+            levelMenuArray[levelCode + 1].SetActive(true);
+            levelMenuArray[levelCode].SetActive(false);
+            levelCode++;
+        }
+        else if(isCharSelecting)
+        {
+            characterMenuArray[charCode + 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode++;
+        }
     }
 
     public void PreviousLevel()
     {
-        if (levelCode - 1 < 0) return; //Segurança
+        //if (levelCode - 1 < 0) return; //Segurança
 
-        levelMenuArray[levelCode - 1].SetActive(true);
-        levelMenuArray[levelCode].SetActive(false);
-        levelCode--;
+        if (isLevelSelecting)
+        {
+            levelMenuArray[levelCode - 1].SetActive(true);
+            levelMenuArray[levelCode].SetActive(false);
+            levelCode--;
+        }
+        else if (isCharSelecting)
+        {
+            characterMenuArray[charCode - 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode--;
+        }
+
+
     }
 
     public void SelectCowboyLevel()

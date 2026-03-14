@@ -2858,6 +2858,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1194546810}
   tapToPlayText: {fileID: 0}
+  characterSelectionMenu: {fileID: 573306600}
+  characterMenuArray:
+  - {fileID: 197408516}
+  - {fileID: 11434152}
+  - {fileID: 198335875}
   levelSelectionMenu: {fileID: 287675247}
   levelMenuArray:
   - {fileID: 1074221788}
@@ -4457,12 +4462,12 @@ GameObject:
   m_Component:
   - component: {fileID: 573306601}
   m_Layer: 5
-  m_Name: CharacterSelectionMenu (1)
+  m_Name: CharacterSelectionMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &573306601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11105,7 +11110,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1382621097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393168558}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: CharacterSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1382621097
 MonoBehaviour:
   m_ObjectHideFlags: 0
