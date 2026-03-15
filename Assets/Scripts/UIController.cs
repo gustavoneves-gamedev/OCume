@@ -113,6 +113,39 @@ public class UIController : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
+    public void NextLevel()
+    {
+        
+        if (isLevelSelecting && levelCode + 1 < levelMenuArray.Length)
+        {
+            levelMenuArray[levelCode + 1].SetActive(true);
+            levelMenuArray[levelCode].SetActive(false);
+            levelCode++;
+        }
+        else if (isCharSelecting && charCode + 1 < characterMenuArray.Length)
+        {
+            characterMenuArray[charCode + 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode++;
+        }
+    }
+
+    public void PreviousLevel()
+    {
+        
+        if (isLevelSelecting && levelCode - 1 > 0)
+        {
+            levelMenuArray[levelCode - 1].SetActive(true);
+            levelMenuArray[levelCode].SetActive(false);
+            levelCode--;
+        }
+        else if (isCharSelecting && charCode - 1 > 0)
+        {
+            characterMenuArray[charCode - 1].SetActive(true);
+            characterMenuArray[charCode].SetActive(false);
+            charCode--;
+        }
+    }
 
     #region Character Selection
 
@@ -150,45 +183,6 @@ public class UIController : MonoBehaviour
     {
         levelSelectionMenu.SetActive(true);
         isLevelSelecting = true;
-    }
-    
-
-    public void NextLevel()
-    {
-        //if (levelCode + 1 >= levelMenuArray.Length) return; //Segurança
-
-        if (isLevelSelecting)
-        {
-            levelMenuArray[levelCode + 1].SetActive(true);
-            levelMenuArray[levelCode].SetActive(false);
-            levelCode++;
-        }
-        else if(isCharSelecting)
-        {
-            characterMenuArray[charCode + 1].SetActive(true);
-            characterMenuArray[charCode].SetActive(false);
-            charCode++;
-        }
-    }
-
-    public void PreviousLevel()
-    {
-        //if (levelCode - 1 < 0) return; //Segurança
-
-        if (isLevelSelecting)
-        {
-            levelMenuArray[levelCode - 1].SetActive(true);
-            levelMenuArray[levelCode].SetActive(false);
-            levelCode--;
-        }
-        else if (isCharSelecting)
-        {
-            characterMenuArray[charCode - 1].SetActive(true);
-            characterMenuArray[charCode].SetActive(false);
-            charCode--;
-        }
-
-
     }
 
     public void SelectCowboyLevel()
