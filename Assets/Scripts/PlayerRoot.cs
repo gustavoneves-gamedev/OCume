@@ -24,6 +24,8 @@ public class PlayerRoot : MonoBehaviour
     public float currentStamina;
     public float maxStamina;
     [SerializeField] private float movementSpeed;
+    private float initialSpeed;
+    private float maxSpeed;
     [SerializeField] private float horizontalSpeed;
     public float damage;
     public float cooldown;

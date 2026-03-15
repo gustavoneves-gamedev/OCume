@@ -45,6 +45,7 @@ public class UIController : MonoBehaviour
         mainMenu.SetActive(true);
         pauseMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         HUD.SetActive(false);
 
@@ -99,16 +100,19 @@ public class UIController : MonoBehaviour
         statsMenu.SetActive(false);
         pauseMenu.SetActive(false);
         HUD.SetActive(false);
+        characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
-        if (!isLevelSelecting)
+
+        if (!isLevelSelecting && !isCharSelecting)
         {
             GameController.gameController.InitilizeLevelStatics();
             GameController.gameController.ResetPlayerPosition();
         }
 
+        isCharSelecting = false;
         isLevelSelecting = false;
         mainMenu.SetActive(true);
     }
@@ -159,18 +163,21 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Cowboy;
         GameController.gameController.playerRoot.Initialize(characterID.Cowboy);
+        BackToMainMenu();
     }
 
     public void SelectSamurai()
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Samurai;
         GameController.gameController.playerRoot.Initialize(characterID.Samurai);
+        BackToMainMenu();
     }
 
     public void SelectAlpinista()
     {
         GameController.gameController.playerRoot.selectedCharacter = characterID.Alpinista;
         GameController.gameController.playerRoot.Initialize(characterID.Alpinista);
+        BackToMainMenu();
     }
 
 
