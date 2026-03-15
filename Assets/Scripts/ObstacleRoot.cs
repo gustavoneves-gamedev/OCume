@@ -26,6 +26,7 @@ public class ObstacleRoot : MonoBehaviour
         {
             Debug.Log("Colidi com algo");
             player.UpdateStamina(-damage);
+            player.SpeedReset();
             Destroy(gameObject, 10f);
             obstacle.SetActive(false);
         }
