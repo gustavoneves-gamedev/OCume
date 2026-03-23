@@ -307,7 +307,8 @@ public class PlayerRoot : MonoBehaviour
     {
         Debug.Log("Ataquei!!");
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bullet.GetComponent<Bullet>().playerSpeed = movementSpeed;
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.bulletSpeed = movementSpeed + bulletScript.defaultBulletSpeed;
         currentAmmo--;
         cooldownRemaining = cooldown;
         canAttack = false;

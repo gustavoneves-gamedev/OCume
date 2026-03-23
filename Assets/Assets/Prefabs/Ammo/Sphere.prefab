@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c770e03b09f87314aa92add01f91599b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  playerSpeed: 10
-  defaultBulletSpeed: 10
+  defaultBulletSpeed: 50
+  bulletSpeed: 0
 --- !u!33 &859265627515157848
 MeshFilter:
   m_ObjectHideFlags: 0
