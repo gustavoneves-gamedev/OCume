@@ -34,6 +34,7 @@ public class PlayerRoot : MonoBehaviour
     [Header("Attack")]
     [SerializeField] private GameObject bulletPrefab;
     private bool canAttack;
+    private float attackSpeed = 50f; //Valor temporário fixo, mas deverá variar de acordo com o personagem
     public float damage;
     public float cooldown;
     private float cooldownRemaining; //Esta variável pode ficar apenas aqui
@@ -308,7 +309,7 @@ public class PlayerRoot : MonoBehaviour
         Debug.Log("Ataquei!!");
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.bulletSpeed = movementSpeed + bulletScript.defaultBulletSpeed;
+        bulletScript.bulletSpeed = movementSpeed + attackSpeed;
        // bulletScript.Movement();
         currentAmmo--;
         cooldownRemaining = cooldown;

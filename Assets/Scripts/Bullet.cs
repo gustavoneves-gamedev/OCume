@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     
     //public float playerSpeed = 10f;
-    public float defaultBulletSpeed;
+    //public float defaultBulletSpeed;
     public float bulletSpeed;
     private Rigidbody rb;
     
@@ -12,19 +12,11 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Destroy(gameObject, 2f);
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       // rb.linearVelocity = transform.forward * bulletSpeed;
-
-        //rb.linearVelocity = transform.forward * (bulletSpeed + defaultBulletSpeed) * Time.deltaTime;
-
-       //rb.linearVelocity = GameController.gameController.playerRoot.gameObject.transform.forward
-       //     * (playerSpeed + defaultBulletSpeed) * Time.deltaTime;
-    }
+    
 
     private void FixedUpdate()
     {
