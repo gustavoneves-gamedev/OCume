@@ -14,7 +14,6 @@ public class PlayerRoot : MonoBehaviour
     private int coinsCollected; //Valor que será mostrado ao final e durante a run
     private int rubiesCollected; //Valor que será mostrado ao final e durante a run
     private int obstaclesDestroyed; //Valor que será mostrado ao final e durante a run
-    private bool canAttack;
     //private bool canCountCheckpoint;
     private Vector3 move;
     private int desiredLane = 0;
@@ -31,6 +30,10 @@ public class PlayerRoot : MonoBehaviour
     private float acelerationCooldown;
     private float defaultAcelerationCooldown = 10f;
     [SerializeField] private float horizontalSpeed;
+
+    [Header("Attack")]
+    [SerializeField] private GameObject bulletPrefab;
+    private bool canAttack;
     public float damage;
     public float cooldown;
     private float cooldownRemaining; //Esta variável pode ficar apenas aqui
@@ -38,6 +41,8 @@ public class PlayerRoot : MonoBehaviour
     public int currentAmmo; //Esta variável pode ficar apenas aqui
     public float reloadTime;
     private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui
+
+    
     public float defense;
     public float resistance;
 
