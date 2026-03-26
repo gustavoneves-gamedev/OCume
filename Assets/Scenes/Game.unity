@@ -7270,6 +7270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleManager
   staticObstacleSpawnRate: 20
+  coinSpawnRate: 40
   staticObstacles:
   - {fileID: 1728778713127497232, guid: bb5fa3a96349e9c488c4d3bcb44bbed7, type: 3}
   - {fileID: 6023950075848797583, guid: dd57475a01b9c3a42b84ee2bbd4e7293, type: 3}
@@ -7277,6 +7278,8 @@ MonoBehaviour:
   movableObstacles:
   - {fileID: 5359629852202726598, guid: a8b9d30b52a416a488b625ba79eab6f7, type: 3}
   - {fileID: 8459530097593972147, guid: a10dade5ee5446b46b40708be0dd375e, type: 3}
+  coinStacks:
+  - {fileID: 7060795182263168816, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
 --- !u!4 &794875639
 Transform:
   m_ObjectHideFlags: 0
@@ -19867,6 +19870,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8a689477b5635e49afa338f0a249700, type: 3}
+--- !u!1001 &4357890150039942123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.725
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.50194
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202862099669653474, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060795182263168816, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_Name
+      value: NormalCoinStack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7060795182263168816, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff3499c8ce6710d429aa9f4b01dc0cd3, type: 3}
 --- !u!1001 &4813382045633849443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20671,3 +20735,4 @@ SceneRoots:
   - {fileID: 206703267}
   - {fileID: 794875639}
   - {fileID: 8106183892171887638}
+  - {fileID: 4357890150039942123}

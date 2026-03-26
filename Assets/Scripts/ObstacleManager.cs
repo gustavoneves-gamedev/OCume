@@ -5,6 +5,7 @@ public class ObstacleManager : MonoBehaviour
 {
     [Header("Spawn Management")]
     [SerializeField] private int staticObstacleSpawnRate = 5;
+    [SerializeField] private int coinSpawnRate = 5;
     public ObstacleSpawn[,] spawnPointsMatrizA = new ObstacleSpawn[9,3];
     public ObstacleSpawn[,] spawnPointsMatrizB = new ObstacleSpawn[9,3];
     private bool matrizFlowControl = true;
@@ -12,6 +13,9 @@ public class ObstacleManager : MonoBehaviour
     [Header("Obstacles")]
     [SerializeField] private GameObject[] staticObstacles;
     [SerializeField] private GameObject[] movableObstacles;
+
+    [Header("Coins")]
+    [SerializeField] private GameObject[] coinStacks;
 
     [Header("References")]
     private LevelManager levelManager;
@@ -89,20 +93,38 @@ public class ObstacleManager : MonoBehaviour
 
             if (matriz[row, lane].isFreeForStaticObstacle)
             {
-                //Debug.Log("Spawnei obstáculo fixo na [lane, row]: [" + lane + ", " + row + "]");
-                
-
+               
                 Instantiate(staticObstacles[rb.Next(0, staticObstacles.Length)], matriz[row, lane].
                     transform.position, matriz[row, lane].transform.rotation);
                 
+                //Obstáculos pesados
                 matriz[row, lane].isFreeForStaticObstacle = false;
-                //Bloquear moedas
-                //Bloquear Obstáculos móveis
                 matriz[row, 0].isFreeForStaticObstacle = false;
                 matriz[row, 1].isFreeForStaticObstacle = false;
                 matriz[row, 2].isFreeForStaticObstacle = false;
+
+                //Moedas
+                matriz[row, lane].isFreeForCoins = false;
             }
-            
+        }
+
+        for (int i = 0; i < coinSpawnRate; i++)
+        {
+            row = rb.Next(0, matriz.GetLength(0));
+            lane = rb.Next(0, matriz.GetLength(1));            
+
+            if (matriz[row, lane].isFreeForCoins)
+            {
+
+                Instantiate(coinStacks[rb.Next(0, coinStacks.Length)], matriz[row, lane].
+                    transform.position, matriz[row, lane].transform.rotation);
+
+                matriz[row, lane].isFreeForCoins = false;
+                if (row - 1 >= 0) matriz[row - 1, lane].isFreeForCoins = false;
+                if (row + 1 < staticObstacles.Length) matriz[row + 1, lane].isFreeForCoins = false;
+
+            }
+
         }
     }
     
