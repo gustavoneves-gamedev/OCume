@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   coinID: 0
+  rotateSpeed: 40
 --- !u!33 &6585928621286170153
 MeshFilter:
   m_ObjectHideFlags: 0

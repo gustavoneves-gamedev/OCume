@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Coin : MonoBehaviour
 {
     [SerializeField] private int coinID = 0;
     private MeshRenderer meshRenderer;
-    private GameObject parent;
+    [SerializeField] private float rotateSpeed = 20f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,8 +17,7 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.gameController.isRunning) return;
-        Destroy(parent, 1f);
+        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
