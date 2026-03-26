@@ -15864,6 +15864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c606ab9ffc94f1345928d4a846183104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coins: 0
+  rubies: 0
   isRunning: 0
   runNormalCoins: 0
   runRubies: 0
