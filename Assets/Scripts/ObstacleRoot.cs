@@ -25,7 +25,10 @@ public class ObstacleRoot : MonoBehaviour
         if (obsctacleType == 1)
         {
             transform.position += Vector3.up * 3.2f;
-
+        }
+        if (obsctacleType == 2)
+        {
+            transform.position += Vector3.up * 1.2f;
         }
     }
 
