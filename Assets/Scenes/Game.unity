@@ -3245,6 +3245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1194546810}
   tapToPlayText: {fileID: 0}
+  coins: {fileID: 0}
+  rubies: {fileID: 0}
   characterSelectionMenu: {fileID: 573306600}
   characterMenuArray:
   - {fileID: 197408516}
