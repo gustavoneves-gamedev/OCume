@@ -41,9 +41,7 @@ public class PlayerRoot : MonoBehaviour
     public int maxAmmo;
     public int currentAmmo; //Esta variável pode ficar apenas aqui
     public float reloadTime;
-    private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui
-
-    
+    private float reloadTimeRemaining; //Esta variável pode ficar apenas aqui    
     public float defense;
     public float resistance;
 
@@ -52,6 +50,13 @@ public class PlayerRoot : MonoBehaviour
     public int normalCoinMultiplier = 1;
     //public int rubyMultiplier = 1;
 
+    [Header("Touch config")]
+    [SerializeField] private float swipeDistance = 100f;
+    private float lastTapTime;
+    private int tapCount;
+    private Vector2 startTouch;
+    private bool hasSwipe;
+    private float touchTime;
 
     [Header("References")]
     [SerializeField] private CharacterController cc;
@@ -81,7 +86,7 @@ public class PlayerRoot : MonoBehaviour
 
     public void Initialize(characterID selectedChar)
     {
-        normalCoinMultiplier = 1;        
+        normalCoinMultiplier = 1;
 
         //Serve para atualizar o script do progress manager e pegar o incremento correto
         ProgressManager.progressManager.UpdateIncrement(selectedChar);
@@ -102,7 +107,7 @@ public class PlayerRoot : MonoBehaviour
             InitializePlayer(2);
 
     }
-    
+
 
     private void InitializePlayer(int charCode)
     {
@@ -153,7 +158,7 @@ public class PlayerRoot : MonoBehaviour
         desiredLane = 0;
         currentStamina = maxStamina;
         movementSpeed = initialSpeed;
-        acelerationCooldown = defaultAcelerationCooldown;        
+        acelerationCooldown = defaultAcelerationCooldown;
         obstaclesDestroyed = 0;
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
@@ -171,6 +176,9 @@ public class PlayerRoot : MonoBehaviour
 
         //Calcula a altura escalada pelo jogador - APRIMORAR
         heightClimbed = transform.position.z - initialHeight;
+        
+        DetectSwipes();
+        DetectTaps();
 
         PlayerMovement();
         SpeedScale();
@@ -195,8 +203,116 @@ public class PlayerRoot : MonoBehaviour
         //{
         //    GameController.gameController.UpdateCheckpoint();
         //}
-        
+
     }
+
+    #region Mobile Inputs
+
+    private void DetectSwipes()
+    {
+        if (Input.touchCount == 1)
+        {
+            Touch t = Input.GetTouch(0);
+
+            if (t.phase == TouchPhase.Began)
+            {
+                startTouch = t.position;
+                touchTime = Time.time;
+                hasSwipe = false;
+            }
+            else if (t.phase == TouchPhase.Ended)
+            {
+                Vector2 delta = t.position - startTouch;
+
+                if (delta.magnitude > swipeDistance)
+                {
+                    hasSwipe = true;
+
+                    if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+                    {
+                        if (delta.x > 0)
+                        {
+                            Debug.Log("Swipe Right");
+                            if (canRun && desiredLane < 1 && !isChangingLane)
+                            {
+                                desiredLane = desiredLane + 1;
+                                tapCount = 0;
+                                //isChangingLane = true;
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("Swipe Left");                            
+                            if (canRun && desiredLane > -1 && !isChangingLane)
+                            {
+                                desiredLane = desiredLane - 1;
+                                tapCount = 0;
+                                //isChangingLane = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (delta.y > 0)
+                        {
+                            Debug.Log("Swipe Up");
+                            
+                        }
+                        else
+                        {
+                            Debug.Log("Swipe Down");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void DetectTaps()
+    {
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) //|| Input.GetKeyDown(KeyCode.Mouse0)
+        {
+            if (Time.time - touchTime > 0.15f || hasSwipe)
+            {
+                tapCount = 0;
+                return;
+            }
+
+
+            float timeNow = Time.time;
+
+            if (timeNow - lastTapTime < 0.2f)
+                tapCount++;
+            else
+                tapCount = 1;
+
+            lastTapTime = timeNow;
+
+            if (tapCount == 1)
+            {
+                if (canAttack == true)
+                    Attack();
+                else if (currentAmmo <= 0)
+                    Debug.Log("Sem munição suficiente");
+                else if (cooldownRemaining >= 0)
+                    Debug.Log("Ataque em cooldown ainda");
+            }
+
+            //if (tapCount == 2)
+            //{
+            //    CancelInvoke();
+            //    Invoke("DoubleTap", 0.3f);
+            //}
+            //if (tapCount == 3)
+            //{
+            //    CancelInvoke();
+            //    Invoke("TripleTap", 0.2f); //Queria colocar instantâneo para o triple,
+            //                               //mas decidi só reduzir o tempo para manter o paralelismo
+            //}
+        }
+    }
+
+    #endregion
 
     #region Movement
     private void PlayerMovement()
@@ -217,7 +333,7 @@ public class PlayerRoot : MonoBehaviour
 
         float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
 
-        move.x = (targetX - transform.position.x) / Time.deltaTime;      
+        move.x = (targetX - transform.position.x) / Time.deltaTime;
 
 
         cc.Move(move * Time.deltaTime);
@@ -307,7 +423,7 @@ public class PlayerRoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.bulletSpeed = movementSpeed + attackSpeed;
-       // bulletScript.Movement();
+        // bulletScript.Movement();
         currentAmmo--;
         cooldownRemaining = cooldown;
         canAttack = false;
@@ -343,7 +459,7 @@ public class PlayerRoot : MonoBehaviour
 
         //TEMPORÁRIO!! DEPOIS DEVO PASSAR ESSE MÉTODO TODO PARA O GAME CONTROLLER
         GameController.gameController.uiController.
-            StaticsMenu(heightClimbed, GameController.gameController.runNormalCoins, 
+            StaticsMenu(heightClimbed, GameController.gameController.runNormalCoins,
             GameController.gameController.runRubies, obstaclesDestroyed);
 
         GameController.gameController.isRunning = false;
@@ -354,13 +470,13 @@ public class PlayerRoot : MonoBehaviour
     //OU POSSO COLOCAR OS SONS AQUI E TOCAR QUANDO COLETAR AS MOEDAS!! - VOU FAZER ISTO
     private void OnTriggerEnter(Collider other)
     {
-        
+
         //Este trigger serve para spawnar um novo conjunto de prefabs após passar pelo checkpoint 
         if (other.CompareTag("UpdatePrefabMarker"))
         {
             //VIDE ANOTAÇÃO NO LEVEL DATA QUANTO AO CÁLCULO DE QUANDO OS PREFABS SERÃO ATUALIZADOS
             GameController.gameController.UpdatePrefab();
-            
+
         }
 
         if (other.CompareTag("Checkpoint"))
