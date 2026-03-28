@@ -63,11 +63,13 @@ public class PlayerRoot : MonoBehaviour
     public characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
+    private AudioSource audioSource;
 
 
     void Start()
     {
         GameController.gameController.playerRoot = this;
+        audioSource = GetComponent<AudioSource>();
         Initialize(selectedCharacter);
 
     }
@@ -379,6 +381,8 @@ public class PlayerRoot : MonoBehaviour
     public void UpdateStamina(float x)
     {
         currentStamina += x;
+
+        if (x < 0) audioSource.Play();
 
         if (currentStamina > maxStamina)
             currentStamina = maxStamina;
