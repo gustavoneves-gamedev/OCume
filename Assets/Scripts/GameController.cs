@@ -89,11 +89,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            uiController.PauseMenu();
-            //Pause();
-        }
+        
     }
 
     #region Main Menu

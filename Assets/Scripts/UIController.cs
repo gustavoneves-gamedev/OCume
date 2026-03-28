@@ -82,10 +82,13 @@ public class UIController : MonoBehaviour
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
     {
-              
         pauseMenu.SetActive(!pauseMenu.activeSelf);
 
         playerRoot.canRun = !playerRoot.canRun;
+
+        //TEMPORÁRIO - REVISAR!! 28/03/2026
+        if(playerRoot.canRun) Time.timeScale = 1;
+        else Time.timeScale = 0;
 
         //playerRoot.EndRun();
     }
@@ -114,6 +117,8 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
+
+        Time.timeScale = 1;
 
         if (!isLevelSelecting && !isCharSelecting)
         {

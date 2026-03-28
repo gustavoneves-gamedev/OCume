@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerRoot : MonoBehaviour
 {
@@ -174,6 +175,13 @@ public class PlayerRoot : MonoBehaviour
 
     void Update()
     {
+
+        //Pause
+        if (Input.GetKeyDown(KeyCode.Escape) && GameController.gameController.isRunning)
+        {
+            GameController.gameController.uiController.PauseMenu();
+        }
+
         if (canRun == false || isDead || isGamePaused) return;
 
         //Calcula a altura escalada pelo jogador - APRIMORAR
@@ -190,6 +198,7 @@ public class PlayerRoot : MonoBehaviour
         //Atualiza a barra de stamina na HUD
         GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
 
+        
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
