@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class PlayerRoot : MonoBehaviour
 {
@@ -49,6 +48,7 @@ public class PlayerRoot : MonoBehaviour
 
     [Header("PowerUps")]
     public int normalCoinMultiplier = 1;
+    private PlayerPowers powerScript;
     //public int rubyMultiplier = 1;
 
     [Header("Touch config")]
@@ -186,7 +186,7 @@ public class PlayerRoot : MonoBehaviour
 
         //Calcula a altura escalada pelo jogador - APRIMORAR
         heightClimbed = transform.position.z - initialHeight;
-        
+
         DetectSwipes();
         DetectTaps();
 
@@ -198,22 +198,17 @@ public class PlayerRoot : MonoBehaviour
         //Atualiza a barra de stamina na HUD
         GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
 
-        
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canAttack == true)
                 Attack();
-            //else if (currentAmmo <= 0)
-            //    Debug.Log("Sem munição suficiente");
-            //else if (cooldownRemaining >= 0)
-            //    Debug.Log("Ataque em cooldown ainda");
+            else if (currentAmmo <= 0)
+                Debug.Log("Sem munição suficiente");
+            else if (cooldownRemaining >= 0)
+                Debug.Log("Ataque em cooldown ainda");
         }
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    GameController.gameController.UpdateCheckpoint();
-        //}
 
     }
 
@@ -267,7 +262,7 @@ public class PlayerRoot : MonoBehaviour
                         if (delta.y > 0)
                         {
                             //Debug.Log("Swipe Up");
-                            
+
                         }
                         else
                         {
@@ -385,10 +380,11 @@ public class PlayerRoot : MonoBehaviour
         }
     }
 
-    //Esta função serve para regenerar a stamina e talvez reduzi-la ao longo da Run
-    //AINDA NÃO ESTÁ SENDO UTILIZADA!!
+    //Esta função serve para regenerar a stamina e reduzi-la ao colidir com obstáculos
     public void UpdateStamina(float x)
     {
+        
+        
         currentStamina += x;
 
         if (x < 0) audioSource.Play();
@@ -478,9 +474,6 @@ public class PlayerRoot : MonoBehaviour
         GameController.gameController.isRunning = false;
     }
 
-    //Talvez eu deva criar um script de moedas para colocar isso tudo lá e
-    //tocar o som delas quando o jogador as coletar. VER COM PROFESSOR O QUE PESA MENOS
-    //OU POSSO COLOCAR OS SONS AQUI E TOCAR QUANDO COLETAR AS MOEDAS!! - VOU FAZER ISTO
     private void OnTriggerEnter(Collider other)
     {
 
