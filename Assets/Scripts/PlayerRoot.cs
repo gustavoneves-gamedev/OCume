@@ -170,6 +170,7 @@ public class PlayerRoot : MonoBehaviour
         heightClimbed = 0;
         initialHeight = transform.position.z;
         playerPowers.ResetPowers(); //Serve para resetar os poderes do Player
+                                    //PROVAVELMENTE IREI MUDAR PARA SER CHAMADO AO FIM DA RUN
         canRun = true;
     }
 
