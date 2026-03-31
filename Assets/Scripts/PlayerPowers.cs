@@ -9,6 +9,11 @@ public class PlayerPowers : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ResetPowers();
+    }
+
+    public void ResetPowers()
+    {
         isShieldUp = false;
         shield.SetActive(false);
     }
