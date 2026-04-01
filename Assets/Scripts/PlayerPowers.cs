@@ -7,8 +7,8 @@ public class PlayerPowers : MonoBehaviour
     [SerializeField] private GameObject shield;
     private int shieldCharges = 1;
     private int defaultShieldCharges;
-    [SerializeField] private float shieldDuration;
     private float baseShieldDuration = 20f;
+    [SerializeField] private float shieldDuration;
     private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
@@ -17,8 +17,10 @@ public class PlayerPowers : MonoBehaviour
 
     [Header("Coin Multiplier")]
     [SerializeField] private bool isCoinMultiplierOn;
-    private float coinMultiplier = 2f;
-    private float multiplierDuration = 10f;
+    private float coinBaseMultiplier = 1.5f;
+    private float coinMultiplier;
+    private float coinBaseMultiplierDuration = 16f;
+    private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
 
     private PlayerRoot player;
@@ -47,22 +49,13 @@ public class PlayerPowers : MonoBehaviour
     private void InitilizePowers()
     {
         //Shield
-        shieldDuration = baseShieldDuration +
-            inventory.shieldDurationUpgrade * inventory.shieldUpgradeFactor;
-
-        shieldCharges = inventory.shieldChargeUpgrade;
-
-        defaultShieldCharges = shieldCharges;
-        defaultShieldDuration = shieldDuration;
+        InitializeShield();
 
         //Potion        
-        potionRestauration = basePotionRestauration + 
-            inventory.staminaPotionUpgrade * inventory.staminaPotionUpgradeFactor;        
+        InitializeStaminaPotion();
 
         //Coin Multiplier
-        //multiplierDuration += Inventory...
-        //coinMultiplier += Inventory...
-        defaultMultiplierDuration = multiplierDuration;
+        InitializeCoinMultiplier();
     }
 
     public void ResetPowers()
@@ -74,11 +67,22 @@ public class PlayerPowers : MonoBehaviour
         shieldDuration = defaultShieldDuration;
 
         //Multiplicador de moedas        
-        multiplierDuration = defaultMultiplierDuration;
+        coinMultiplierDuration = defaultMultiplierDuration;
         player.normalCoinMultiplier = 1;
     }
 
     #region Shield
+
+    private void InitializeShield()
+    {
+        shieldDuration = baseShieldDuration +
+                    inventory.shieldDurationUpgrade * inventory.shieldUpgradeFactor;
+
+        shieldCharges = inventory.shieldChargeUpgrade;
+
+        defaultShieldCharges = shieldCharges;
+        defaultShieldDuration = shieldDuration;
+    }
 
     public void Shield(float x = 0)
     {
@@ -116,12 +120,32 @@ public class PlayerPowers : MonoBehaviour
 
     #endregion
 
+    #region Stamina Potion
+    private void InitializeStaminaPotion()
+    {
+        potionRestauration = basePotionRestauration +
+                    inventory.staminaPotionUpgrade * inventory.staminaPotionUpgradeFactor;
+    }
+
+    #endregion
+
     #region Coin Multiplier
+    private void InitializeCoinMultiplier()
+    {
+        coinMultiplier = coinBaseMultiplier +
+                    inventory.coinMultiplierUpgrade * inventory.coinMultiplierUpgradeFactor;
+
+        coinMultiplierDuration = coinBaseMultiplierDuration +
+            inventory.coinDurationUpgrade * inventory.coinDurationUpgradeFactor;
+
+        defaultMultiplierDuration = coinMultiplierDuration;
+    }
+
     private void CoinMultiplier()
     {
         if (isCoinMultiplierOn)
         {
-            multiplierDuration = defaultMultiplierDuration;
+            coinMultiplierDuration = defaultMultiplierDuration;
         }
         else
         {
@@ -134,12 +158,12 @@ public class PlayerPowers : MonoBehaviour
     {
         if (isCoinMultiplierOn)
         {
-            multiplierDuration -= Time.deltaTime;
+            coinMultiplierDuration -= Time.deltaTime;
 
-            if (multiplierDuration <= 0)
+            if (coinMultiplierDuration <= 0)
             {
                 isCoinMultiplierOn = false;
-                multiplierDuration = defaultMultiplierDuration;
+                coinMultiplierDuration = defaultMultiplierDuration;
                 player.normalCoinMultiplier = 1;
             }
         }
