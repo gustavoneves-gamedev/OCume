@@ -4,7 +4,7 @@ public class Inventory : MonoBehaviour
 {
     [Header("Shield")]
     public int shieldDurationUpgrade = 0;
-    public float shieldFactor = 10f;
+    public float shieldUpgradeFactor = 10f;
     public int shieldChargeUpgrade = 1;
     
     [Header("Stamina Potion")]
@@ -13,9 +13,9 @@ public class Inventory : MonoBehaviour
 
     [Header("Coin Multiplier")]
     public int coinDurationUpgrade = 0;
-    public float coinUpgradeFactor = 5f;
-    public int coinChargeUpgrade = 1;
-
+    public float coinDurationUpgradeFactor = 8f;
+    public int coinMultiplierUpgrade = 1;
+    public float coinMultiplierUpgradeFactor = 0.5f;
 
     void Start()
     {
@@ -27,7 +27,6 @@ public class Inventory : MonoBehaviour
     {
         
     }
-
 
     #region Item Upgrades
 
@@ -56,7 +55,15 @@ public class Inventory : MonoBehaviour
 
     #region Coin Multiplier
 
+    public void UpgradeCoinDuration()
+    {
+        coinDurationUpgrade++;
+    }
 
+    public void UpgradeCoinMultiplier()
+    {
+        coinMultiplierUpgrade++;
+    }
 
     #endregion
 

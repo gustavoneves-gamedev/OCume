@@ -48,7 +48,7 @@ public class PlayerPowers : MonoBehaviour
     {
         //Shield
         shieldDuration = baseShieldDuration +
-            inventory.shieldDurationUpgrade * inventory.shieldFactor;
+            inventory.shieldDurationUpgrade * inventory.shieldUpgradeFactor;
 
         shieldCharges = inventory.shieldChargeUpgrade;
 
