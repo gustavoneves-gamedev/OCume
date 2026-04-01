@@ -7,7 +7,8 @@ public class PlayerPowers : MonoBehaviour
     [SerializeField] private GameObject shield;
     private int shieldCharges = 1;
     private int defaultShieldCharges;
-    [SerializeField] private float shieldDuration = 20f;
+    [SerializeField] private float shieldDuration;
+    private float baseShieldDuration = 20f;
     private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
@@ -20,12 +21,17 @@ public class PlayerPowers : MonoBehaviour
     private float defaultMultiplierDuration;
 
     private PlayerRoot player;
+    private Inventory inventory;
 
 
     void Start()
     {
         GameController.gameController.playerPowers = this;
         player = GetComponent<PlayerRoot>();
+
+        //PERIGOSO PORQUE DEPENDE DE O INVENTÁRIO JÁ TER SE ALIMENTADO NO GAMECONTROLLER
+        inventory = GameController.gameController.inventory;
+
         InitilizePowers();
         ResetPowers();
     }
@@ -36,10 +42,16 @@ public class PlayerPowers : MonoBehaviour
         ShieldCountdown();
     }
 
+    //IPC: Acho que vou passar esse cálculo para o invetory e puxar só os valores finais
     private void InitilizePowers()
     {
         //Shield
         //Shield Charges += Inventory...
+        shieldDuration = baseShieldDuration +
+            inventory.shieldDurationUpgrade * inventory.shieldFactor;
+
+        shieldCharges = inventory.shieldChargeUpgrade;
+
         defaultShieldCharges = shieldCharges;
         defaultShieldDuration = shieldDuration;
 
@@ -82,6 +94,7 @@ public class PlayerPowers : MonoBehaviour
         {
             isShieldUp = !isShieldUp;
             shield.SetActive(!shield.activeSelf);
+            shieldDuration = defaultShieldDuration;
         }
     }
 
@@ -130,6 +143,12 @@ public class PlayerPowers : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    #region Special
+
+
 
     #endregion
 

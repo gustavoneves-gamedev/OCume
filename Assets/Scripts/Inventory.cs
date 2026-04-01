@@ -6,6 +6,11 @@ public class Inventory : MonoBehaviour
     public int staminaPotionUpgrade;
     public float staminaPotionUpgradeFactor = 10f;
 
+    [Header("Shield")]
+    public int shieldDurationUpgrade = 0;
+    public float shieldFactor = 10f;
+    public int shieldChargeUpgrade = 1;
+
 
     void Start()
     {
@@ -17,14 +22,23 @@ public class Inventory : MonoBehaviour
     {
         
     }
-    
+
 
     #region Item Upgrades
 
-    public void UpgradeShield()
-    {
+    #region Shield Upgrades
 
+    public void UpgradeShieldDuration()
+    {
+        shieldDurationUpgrade++;        
     }
+
+    public void UpgradeShieldCharges()
+    {
+        shieldChargeUpgrade++;
+    }
+
+    #endregion
 
     #endregion
 }
