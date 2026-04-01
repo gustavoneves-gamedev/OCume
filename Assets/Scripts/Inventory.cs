@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [Header("Stamina Potion")]
-    public int staminaPotionUpgrade;
-    public float staminaPotionUpgradeFactor = 10f;
-
     [Header("Shield")]
     public int shieldDurationUpgrade = 0;
     public float shieldFactor = 10f;
     public int shieldChargeUpgrade = 1;
+    
+    [Header("Stamina Potion")]
+    public int staminaPotionUpgrade = 0;
+    public float staminaPotionUpgradeFactor = 10f;
+
+    [Header("Coin Multiplier")]
+    public int coinDurationUpgrade = 0;
+    public float coinUpgradeFactor = 5f;
+    public int coinChargeUpgrade = 1;
 
 
     void Start()
@@ -37,6 +42,21 @@ public class Inventory : MonoBehaviour
     {
         shieldChargeUpgrade++;
     }
+
+    #endregion
+
+    #region Potion Upgrade
+
+    public void PotionUpgrade()
+    {
+        staminaPotionUpgrade++;
+    }
+
+    #endregion
+
+    #region Coin Multiplier
+
+
 
     #endregion
 

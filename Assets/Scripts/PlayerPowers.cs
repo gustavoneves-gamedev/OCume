@@ -12,7 +12,8 @@ public class PlayerPowers : MonoBehaviour
     private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
-    private float potionRestauration = 10f;
+    private float basePotionRestauration = 10f;
+    private float potionRestauration;
 
     [Header("Coin Multiplier")]
     [SerializeField] private bool isCoinMultiplierOn;
@@ -46,7 +47,6 @@ public class PlayerPowers : MonoBehaviour
     private void InitilizePowers()
     {
         //Shield
-        //Shield Charges += Inventory...
         shieldDuration = baseShieldDuration +
             inventory.shieldDurationUpgrade * inventory.shieldFactor;
 
@@ -55,8 +55,9 @@ public class PlayerPowers : MonoBehaviour
         defaultShieldCharges = shieldCharges;
         defaultShieldDuration = shieldDuration;
 
-        //Potion
-        //potionRestauration += Inventory...
+        //Potion        
+        potionRestauration = basePotionRestauration + 
+            inventory.staminaPotionUpgrade * inventory.staminaPotionUpgradeFactor;        
 
         //Coin Multiplier
         //multiplierDuration += Inventory...
