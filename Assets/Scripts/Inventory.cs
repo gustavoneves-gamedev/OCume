@@ -21,6 +21,10 @@ public class Inventory : MonoBehaviour
 
     #region Item Upgrades
 
+    public void UpgradeShield()
+    {
+
+    }
 
     #endregion
 }

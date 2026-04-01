@@ -388,7 +388,7 @@ public class PlayerRoot : MonoBehaviour
     {
         if (x < 0 && playerPowers.isShieldUp)
         {
-            playerPowers.Shield();
+            playerPowers.Shield(x);
             return;
         }
 

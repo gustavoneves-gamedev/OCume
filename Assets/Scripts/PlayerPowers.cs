@@ -7,6 +7,8 @@ public class PlayerPowers : MonoBehaviour
     [SerializeField] private GameObject shield;
     private int shieldCharges = 1;
     private int defaultShieldCharges;
+    [SerializeField] private float shieldDuration = 20f;
+    private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
     private float potionRestauration = 10f;
@@ -31,6 +33,7 @@ public class PlayerPowers : MonoBehaviour
     void Update()
     {
         CoinMultiplierCountdown();
+        ShieldCountdown();
     }
 
     private void InitilizePowers()
@@ -38,6 +41,7 @@ public class PlayerPowers : MonoBehaviour
         //Shield
         //Shield Charges += Inventory...
         defaultShieldCharges = shieldCharges;
+        defaultShieldDuration = shieldDuration;
 
         //Potion
         //potionRestauration += Inventory...
@@ -54,6 +58,7 @@ public class PlayerPowers : MonoBehaviour
         isShieldUp = false;
         shield.SetActive(false);
         shieldCharges = defaultShieldCharges;
+        shieldDuration = defaultShieldDuration;
 
         //Multiplicador de moedas        
         multiplierDuration = defaultMultiplierDuration;
@@ -62,16 +67,36 @@ public class PlayerPowers : MonoBehaviour
 
     #region Shield
 
-    public void Shield()
+    public void Shield(float x = 0)
     {
-        if (shieldCharges > 1)
+        if (shieldCharges > 1 && isShieldUp && x < 0)
         {
             shieldCharges--;
+        }
+        else if (isShieldUp && x >= 0)
+        {
+            shieldCharges = defaultShieldCharges;
+            shieldDuration = defaultShieldDuration;
         }
         else
         {
             isShieldUp = !isShieldUp;
             shield.SetActive(!shield.activeSelf);
+        }
+    }
+
+    private void ShieldCountdown()
+    {
+        if (isShieldUp)
+        {
+            shieldDuration -= Time.deltaTime;
+
+            if (shieldDuration <= 0)
+            {
+                isShieldUp = false;
+                shieldDuration = defaultShieldDuration;
+                shield.SetActive(false);
+            }
         }
     }
 
@@ -119,7 +144,7 @@ public class PlayerPowers : MonoBehaviour
 
         if (other.CompareTag("StaminaPotion"))
         {
-            player.UpdateStamina(potionRestauration); 
+            player.UpdateStamina(potionRestauration);
             //Tocar som de stamina recuperando
             Destroy(other.gameObject);
         }
