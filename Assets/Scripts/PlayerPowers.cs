@@ -17,7 +17,7 @@ public class PlayerPowers : MonoBehaviour
 
     [Header("Coin Multiplier")]
     [SerializeField] private bool isCoinMultiplierOn;
-    private float coinBaseMultiplier = 1.5f;
+    private int coinBaseMultiplier = 2;
     [SerializeField] private float coinMultiplier;
     private float coinBaseMultiplierDuration = 16f;
     private float coinMultiplierDuration;
@@ -68,7 +68,7 @@ public class PlayerPowers : MonoBehaviour
 
         //Multiplicador de moedas        
         coinMultiplierDuration = defaultMultiplierDuration;
-        player.normalCoinMultiplier = 1;
+        player.normalCoinMultiplier = 2;
     }
 
     #region Shield

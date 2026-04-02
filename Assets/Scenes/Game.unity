@@ -17863,8 +17863,8 @@ MonoBehaviour:
   staminaPotionUpgradeFactor: 10
   coinDurationUpgrade: 0
   coinDurationUpgradeFactor: 8
-  coinMultiplierUpgrade: 1
-  coinMultiplierUpgradeFactor: 0.5
+  coinMultiplierUpgrade: 0
+  coinMultiplierUpgradeFactor: 1
 --- !u!1001 &1671170688
 PrefabInstance:
   m_ObjectHideFlags: 0
