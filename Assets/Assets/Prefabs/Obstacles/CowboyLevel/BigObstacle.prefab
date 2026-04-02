@@ -253,6 +253,7 @@ MonoBehaviour:
   - {fileID: 658540184221981988}
   - {fileID: 2603246391263436384}
   - {fileID: 4350063717941479325}
+  itemSpawnTransform: {fileID: 829104664427182089}
 --- !u!65 &9199403196006257509
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,7 +12,9 @@ public class ObstacleRoot : MonoBehaviour
     [Header("Items")]
     [SerializeField] private GameObject[] items;
     [SerializeField] private GameObject[] obstacleGlow;
+    [SerializeField] private Transform itemSpawnTransform;
     private GameObject itemToSpawn;
+    private GameObject itemSpawned;
     private float itemSpawnCode;
 
     private float rotateSpeedA;
@@ -94,7 +96,6 @@ public class ObstacleRoot : MonoBehaviour
                 obstacleGlow[i].SetActive(false);
             }
         }
-        
     }
 
     public void ApplyDamage()
@@ -110,7 +111,10 @@ public class ObstacleRoot : MonoBehaviour
 
         if (itemSpawnCode < 5 && itemToSpawn != null)
         {
-            Instantiate(itemToSpawn, transform.position, transform.rotation);
+            itemSpawned = Instantiate(itemToSpawn, 
+                itemSpawnTransform.position, itemSpawnTransform.rotation);
+
+            Destroy(itemSpawned, 5f);
         }
         
 
