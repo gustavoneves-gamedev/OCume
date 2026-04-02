@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class ObstacleRoot : MonoBehaviour
 {
-    [SerializeField] private GameObject obstacle;
+    [Header("Main")]
+    [SerializeField] private GameObject obstacle;    
     [SerializeField] private float damage;
     [SerializeField] private float movementSpeed = 10f;
     [SerializeField] private int obsctacleType = 0;
 
     [Header("Items")]
     [SerializeField] private GameObject[] items;
+    [SerializeField] private GameObject[] obstacleGlow;
     private float itemSpawnCode;
 
 
@@ -62,22 +64,48 @@ public class ObstacleRoot : MonoBehaviour
     {
         itemSpawnCode = Random.Range(1, 11);
 
-        if (itemSpawnCode >= 1 && itemSpawnCode < 3) return items[0];
-        else if (itemSpawnCode == 3) return items[1];
-        else if (itemSpawnCode == 4) return items[2];
+        if (itemSpawnCode >= 1 && itemSpawnCode < 3)
+        {
+            obstacleGlow[0].SetActive(true);
+            return items[0];
+        }
+        else if (itemSpawnCode == 3)
+        {
+            obstacleGlow[1].SetActive(true);
+            return items[1];
+        }
+        else if (itemSpawnCode == 4)
+        {
+            obstacleGlow[2].SetActive(true);
+            return items[2];
+        }
         else return null;
+    }
+
+    private void DisableGameObjects()
+    {
+        obstacle.SetActive(false);
+
+        if (itemSpawnCode < 5 && ItemToSpawn() != null)
+        {
+            for (int i = 0; i < obstacleGlow.Length; i++)
+            {
+                obstacleGlow[i].SetActive(false);
+            }
+        }
+        
     }
 
     public void ApplyDamage()
     {
         player.UpdateStamina(-damage);        
         Destroy(gameObject, 10f);
-        obstacle.SetActive(false);
+        DisableGameObjects();
     }
 
     public void WasShot(GameObject bullet)
     {
-        obstacle.SetActive(false);
+        DisableGameObjects();
 
         if (itemSpawnCode < 5 && ItemToSpawn() != null)
         {
