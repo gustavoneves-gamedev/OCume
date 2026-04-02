@@ -14,6 +14,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coins;
     [SerializeField] private TextMeshProUGUI rubies;
 
+    [Header("Leaderboard")]
+    [SerializeField] private TextMeshProUGUI Top1;
+
     [Header("CharacterMenu")]
     [SerializeField] private GameObject characterSelectionMenu;
     [SerializeField] private GameObject[] characterMenuArray;
