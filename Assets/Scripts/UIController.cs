@@ -30,6 +30,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI runCoins;
+    [SerializeField] private TextMeshProUGUI runHeightClimbed;
 
     [Header("Stamina")]
     [SerializeField] private Slider staminaSlider;
@@ -76,6 +77,7 @@ public class UIController : MonoBehaviour
         if(!GameController.gameController.isRunning) return;
         
         UpdateStaminaHUD(playerRoot.currentStamina / playerRoot.maxStamina);
+        UpdateHeightClimbed();
     }
 
     private void Initialize()
@@ -295,6 +297,11 @@ public class UIController : MonoBehaviour
     public void UpdateCoinHUD(int normalCoins = 0, int rubies = 0)
     {
         runCoins.text = "x " + normalCoins;
+    }
+
+    private void UpdateHeightClimbed()
+    {
+        runHeightClimbed.text = playerRoot.heightClimbed.ToString("F0") + " m";
     }
 
     #endregion

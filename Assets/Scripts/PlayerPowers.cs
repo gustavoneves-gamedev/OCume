@@ -196,7 +196,8 @@ public class PlayerPowers : MonoBehaviour
         if (other.CompareTag("CoinMultiplier"))
         {
             CoinMultiplier();
-            //Ativar multiplicador
+            //Tocar som de ativar multiplicador
+            Destroy(other.gameObject);
         }
 
 

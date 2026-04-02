@@ -8,13 +8,7 @@ public class PlayerRoot : MonoBehaviour
     private bool isDead;
     public bool isGamePaused;
     public float heightClimbed;
-    private float initialHeight;
-    //public float runHeightClimbed;
-    public float totalHeight; //Valor que será mostrado ao final e durante a run
-    //private int coinsCollected; //Valor que será mostrado ao final e durante a run
-    //private int rubiesCollected; //Valor que será mostrado ao final e durante a run
-    private int obstaclesDestroyed; //Valor que será mostrado ao final e durante a run
-    //private bool canCountCheckpoint;
+    private float initialHeight;    
     private Vector3 move;
     private int desiredLane = 0;
     public bool isChangingLane; //IPC: Não está funcionando ainda porque vou colocar um trigger no meio das lanes para
@@ -75,9 +69,7 @@ public class PlayerRoot : MonoBehaviour
         Initialize(selectedCharacter);
 
     }
-
-    //Tive que fazer desta forma porque o CharacterController não estava deixando reposicionar
-    //AVALIAR SE PRECISAREI USAR UM INVOKE PARA DAR TEMPO DE O JOGADOR CHEGAR NA NOVA POSIÇÃO!! (ACHO QUE NÃO)
+    
     public void ResetPosition(Vector3 worldPos)
     {
         cc.enabled = false;
@@ -162,8 +154,7 @@ public class PlayerRoot : MonoBehaviour
         desiredLane = 0;
         currentStamina = maxStamina;
         movementSpeed = initialSpeed;
-        acelerationCooldown = defaultAcelerationCooldown;
-        obstaclesDestroyed = 0;
+        acelerationCooldown = defaultAcelerationCooldown;        
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
         reloadTimeRemaining = reloadTime;
@@ -196,11 +187,7 @@ public class PlayerRoot : MonoBehaviour
         AttackTimeCounter();
         StaminaConsumption();
 
-        //Atualiza a barra de stamina na HUD
-        //GameController.gameController.uiController.UpdateHUD(currentStamina / maxStamina);
-
-
-
+       
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canAttack == true)
@@ -392,7 +379,11 @@ public class PlayerRoot : MonoBehaviour
 
         currentStamina += x;
 
-        if (x < 0) audioSource.Play();
+        if (x < 0)
+        {
+            audioSource.Play();
+            SpeedReset();
+        }
 
         if (currentStamina > maxStamina)
             currentStamina = maxStamina;
@@ -459,24 +450,7 @@ public class PlayerRoot : MonoBehaviour
         canRun = false;
         isDead = true;
 
-        EndRun();
-    }
-
-    //Coloquei esta função abaixo para o caso de o jogador ganhar a escalada e não encerrá-la com sua morte
-    //Outra observação, o ciclo está estranho. O Game Controller chama esta função que depois chama o próprio game controller
-    //Manterei por enquanto, mas vou tentar otimizar no futuro
-    public void EndRun()
-    {
-
-
-        GameController.gameController.UpdateBestHeight(heightClimbed);
-
-        //TEMPORÁRIO!! DEPOIS DEVO PASSAR ESSE MÉTODO TODO PARA O GAME CONTROLLER
-        GameController.gameController.uiController.
-            StaticsMenu(heightClimbed, GameController.gameController.runNormalCoins,
-            GameController.gameController.runRubies, obstaclesDestroyed);
-
-        GameController.gameController.isRunning = false;
+        GameController.gameController.EndRun(heightClimbed);
     }
 
     private void OnTriggerEnter(Collider other)

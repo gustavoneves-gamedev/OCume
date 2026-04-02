@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public bool isRunning;
     public int runNormalCoins;
     public int runRubies;
+    public int obstaclesDestroyed;
 
     [Header("Levels")]
     [SerializeField] private LevelData[] levelArray;
@@ -73,6 +74,7 @@ public class GameController : MonoBehaviour
         runNormalCoins = 0;
         runRubies = 0;
         uiController.UpdateCoinHUD();
+        obstaclesDestroyed = 0;
 
         //Isto servirá para o jogador escolher se quer começar do checkpoint ou do zero REVISAR!!!
         if (!isStartingOnCheckpoint)
@@ -93,10 +95,15 @@ public class GameController : MonoBehaviour
         playerRoot.ResetPosition(worldPos);
     }
 
-    private void Update()
+    public void EndRun(float heigth)
     {
+        UpdateBestHeight(heigth);
+        
+        uiController.StaticsMenu(heigth, runNormalCoins, runRubies, obstaclesDestroyed);
 
+        isRunning = false;
     }
+    
 
     #region Main Menu
 
@@ -115,6 +122,10 @@ public class GameController : MonoBehaviour
         uiController.UpdateCoinHUD(runNormalCoins);
     }
 
+    public void ObstaclesDestroyedCounter()
+    {
+        obstaclesDestroyed++;
+    }
 
     #endregion
 

@@ -51,8 +51,7 @@ public class ObstacleRoot : MonoBehaviour
 
     public void ApplyDamage()
     {
-        player.UpdateStamina(-damage);
-        player.SpeedReset();
+        player.UpdateStamina(-damage);        
         Destroy(gameObject, 10f);
         obstacle.SetActive(false);
     }
@@ -62,6 +61,7 @@ public class ObstacleRoot : MonoBehaviour
         obstacle.SetActive(false);
         Destroy(bullet);
         Destroy(gameObject, 10f);
+        GameController.gameController.ObstaclesDestroyedCounter();
     }
 
 

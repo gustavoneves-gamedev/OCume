@@ -3590,6 +3590,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
+  runHeightClimbed: {fileID: 907417154}
   staminaSlider: {fileID: 1084490909}
   staminaBackground: {fileID: 797017983}
   staminaFill: {fileID: 51749054}
