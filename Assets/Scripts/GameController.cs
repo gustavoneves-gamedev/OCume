@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour
     public int coins;
     public int rubies;
 
+    [Header("Leaderboard")]
+    private float[] bestHeigths = new float[10];
+
     [Header("Run")]
     public bool isRunning;
     public int runNormalCoins;
@@ -105,7 +108,7 @@ public class GameController : MonoBehaviour
     }
     
 
-    #region Main Menu
+    #region Leaderboard Temp
 
 
 
