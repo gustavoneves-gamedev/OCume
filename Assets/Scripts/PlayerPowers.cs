@@ -17,7 +17,7 @@ public class PlayerPowers : MonoBehaviour
     private float potionRestauration;
 
     [Header("Coin Multiplier")]
-    [SerializeField] private bool isCoinMultiplierOn;
+    public bool isCoinMultiplierOn;
     private int coinBaseMultiplier = 2;
     public float coinMultiplier;
     private float boostedCoinMultiplier;   

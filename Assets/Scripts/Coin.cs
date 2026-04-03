@@ -5,8 +5,10 @@ public class Coin : MonoBehaviour
 {
     [SerializeField] private int coinID = 0;
     private MeshRenderer meshRenderer;
-    [SerializeField] private float rotateSpeed = 20f;
-    
+    [SerializeField] private float normalRotateSpeed = 50f;
+    [SerializeField] private float boostedRotateSpeed = 500f;
+    private float rotationSpeed;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +19,10 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World);
+        if (GameController.gameController.playerPowers.isCoinMultiplierOn) rotationSpeed = boostedRotateSpeed;
+        else rotationSpeed = normalRotateSpeed;
+
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
