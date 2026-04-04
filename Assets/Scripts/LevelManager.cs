@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
         Destroy(currentPrefab);
         Destroy(lastPrefab);
         Destroy(activeCheckpoint);
-        //Destroy(finishLine);
+        
 
         currentLevelID = levelID;
 
@@ -65,8 +65,6 @@ public class LevelManager : MonoBehaviour
 
         currentPrefab = Instantiate(currentLevelPrefabs[0], startSpawn.position, startSpawn.rotation);
         
-        //Invoke("Teste", .1f);
-
 
         activeCheckpoint = Instantiate(checkpointPrefab, startSpawn.position +
             Vector3.forward * checkpointDistance, startSpawn.rotation);

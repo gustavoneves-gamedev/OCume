@@ -66,13 +66,13 @@ public class ObstacleManager : MonoBehaviour
         }
 
         Invoke("StaticObjectsSpawnManager", .5f);
-
         
     }
 
     private void StaticObjectsSpawnManager()
     {
         
+
         if (matrizFlowControl)        
             StaticObjectsSpawn(spawnPointsMatrizA);        
         else
@@ -83,6 +83,8 @@ public class ObstacleManager : MonoBehaviour
 
     private void StaticObjectsSpawn(ObstacleSpawn[,] matriz)
     {
+        if (!GameController.gameController.isRunning) return;
+        
         System.Random rb = new System.Random();
         int lane = 0, row = 0;
         

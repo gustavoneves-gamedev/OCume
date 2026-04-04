@@ -3972,8 +3972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1194546810}
   tapToPlayText: {fileID: 0}
-  coins: {fileID: 0}
-  rubies: {fileID: 0}
+  coins: {fileID: 458857176}
+  rubies: {fileID: 1121435501}
   leaderboard: {fileID: 128252947}
   playerNames:
   - {fileID: 1800176118}
@@ -13470,13 +13470,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1536038165}
-  - {fileID: 1747186992}
   - {fileID: 772608663}
   - {fileID: 1387911214}
   - {fileID: 619835289}
+  - {fileID: 332431725}
   - {fileID: 573306601}
   - {fileID: 287675248}
-  - {fileID: 332431725}
+  - {fileID: 1747186992}
   m_Father: {fileID: 941530627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
