@@ -9,7 +9,8 @@ public class Inventory : MonoBehaviour
     
     [Header("Stamina Potion")]
     public int staminaPotionUpgrade = 0;
-    public float staminaPotionUpgradeFactor = 10f;
+    public int staminaPotionUpgradeFactor = 5;
+    public int staminaPotionUpgradeCost = 100;
 
     [Header("Coin Multiplier")]
     public int coinDurationUpgrade = 0;
@@ -20,12 +21,14 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         GameController.gameController.inventory = this;
-        InitializeItemsUpgrades();
+        Invoke("InitializeItemsUpgrades", .2f);
     }
 
     private void InitializeItemsUpgrades()
     {
-        
+        //STAMINA POTION
+        //Inserir aqui a puxada de informações do script onde estarão as informações da poção
+        UIStaminaPotionUpdate();
     }
 
     #region Item Upgrades
@@ -49,6 +52,16 @@ public class Inventory : MonoBehaviour
     public void PotionUpgrade()
     {
         staminaPotionUpgrade++;
+        staminaPotionUpgradeCost *= staminaPotionUpgrade * (3 + staminaPotionUpgrade);
+
+        UIStaminaPotionUpdate();
+    }
+
+    private void UIStaminaPotionUpdate()
+    {
+        GameController.gameController.uiController.
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgrade * staminaPotionUpgradeFactor),
+            staminaPotionUpgrade, staminaPotionUpgradeCost);
     }
 
     #endregion

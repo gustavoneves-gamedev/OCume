@@ -4639,6 +4639,11 @@ MonoBehaviour:
   shopMenu: {fileID: 1267297610}
   purchaseMenu: {fileID: 125923637}
   itemUpgradeMenu: {fileID: 2090228210}
+  staminaPotionName: {fileID: 1261029147}
+  staminaPotionLevel: {fileID: 874059451}
+  staminaPotionUpgradedIndicator: {fileID: 1897393289}
+  staminaPotionVisualUpgrade: {fileID: 1859774642}
+  staminaPotionUpgradeCost: {fileID: 243117122}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
@@ -23993,7 +23998,8 @@ MonoBehaviour:
   shieldUpgradeFactor: 10
   shieldChargeUpgrade: 1
   staminaPotionUpgrade: 0
-  staminaPotionUpgradeFactor: 10
+  staminaPotionUpgradeFactor: 5
+  staminaPotionUpgradeCost: 100
   coinDurationUpgrade: 0
   coinDurationUpgradeFactor: 8
   coinMultiplierUpgrade: 0

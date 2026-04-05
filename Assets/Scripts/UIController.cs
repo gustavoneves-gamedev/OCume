@@ -36,6 +36,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject purchaseMenu;
     [SerializeField] private GameObject itemUpgradeMenu;
 
+    [Header("ShopMenu - Stamina Potion")]
+    [SerializeField] private TextMeshProUGUI staminaPotionName;
+    [SerializeField] private TextMeshProUGUI staminaPotionLevel;
+    [SerializeField] private TextMeshProUGUI staminaPotionUpgradedIndicator;
+    [SerializeField] private Slider staminaPotionVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI staminaPotionUpgradeCost;
+
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
@@ -97,6 +104,7 @@ public class UIController : MonoBehaviour
     {
         playerRoot = GameController.gameController.playerRoot;
         //coins.text = puxar informação do local de salvamento
+        //InitializeStore(); //puxar informações do local de salvamento
     }
 
     #region General Menu
@@ -295,6 +303,13 @@ public class UIController : MonoBehaviour
 
     #region Store
 
+    //Não usarei este método por enquanto, deixarei no script de inventário
+    private void InitializeStore()
+    {
+        UpdateStaminaPostionUpgradeUI();
+    }
+
+    #region Store Navigation
     public void ShopMenu()
     {
         shopMenu.SetActive(true);
@@ -311,6 +326,25 @@ public class UIController : MonoBehaviour
         itemUpgradeMenu.SetActive(true);
         //purchaseMenu.SetActive(false);
     }
+    #endregion
+
+    #region Stamina Potion Upgrade
+
+    public void StaminaPotionUpgrade()
+    {
+        GameController.gameController.inventory.PotionUpgrade();
+    }
+
+    public void UpdateStaminaPostionUpgradeUI(int upgradeBonus = 0, int level = 0, int cost = 1000)
+    {
+        staminaPotionName.text = "Stamina Potion (" + (10 + upgradeBonus) + ")";
+        staminaPotionLevel.text = "Lv. " + (level);
+        staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level) + ")";
+        staminaPotionVisualUpgrade.value = level;
+        staminaPotionUpgradeCost.text = cost.ToString();
+    }
+
+    #endregion
 
     #endregion
 
