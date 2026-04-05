@@ -1129,7 +1129,7 @@ GameObject:
   - component: {fileID: 65597064}
   - component: {fileID: 65597063}
   m_Layer: 5
-  m_Name: UpgradesButton (1)
+  m_Name: UpgradesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1198,7 +1198,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 65597064}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393168558}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ItemUpgradeMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &65597064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4328,9 +4340,9 @@ MonoBehaviour:
   - {fileID: 1074221788}
   - {fileID: 1191913167}
   - {fileID: 595197054}
-  storeMenu: {fileID: 0}
-  purchaseMenu: {fileID: 0}
-  itemUpgradeMenu: {fileID: 0}
+  shopMenu: {fileID: 1267297610}
+  purchaseMenu: {fileID: 125923637}
+  itemUpgradeMenu: {fileID: 2090228210}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
@@ -11855,7 +11867,7 @@ GameObject:
   - component: {fileID: 990703668}
   - component: {fileID: 990703667}
   m_Layer: 5
-  m_Name: StoreButton
+  m_Name: PurchaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11924,7 +11936,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 990703668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393168558}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PurchaseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &990703668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14330,7 +14354,7 @@ RectTransform:
   m_Children:
   - {fileID: 1223325384}
   - {fileID: 1240516400}
-  m_Father: {fileID: 1194546811}
+  m_Father: {fileID: 1267297611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -14508,7 +14532,6 @@ RectTransform:
   - {fileID: 573306601}
   - {fileID: 287675248}
   - {fileID: 1267297611}
-  - {fileID: 1184455903}
   - {fileID: 1747186992}
   m_Father: {fileID: 941530627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15003,7 +15026,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1224201544}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 393168558}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: ShopMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1224201544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15927,12 +15962,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1267297611}
   m_Layer: 5
-  m_Name: Store
+  m_Name: ShopMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1267297611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15948,6 +15983,7 @@ RectTransform:
   - {fileID: 1428320374}
   - {fileID: 125923638}
   - {fileID: 2090228211}
+  - {fileID: 1184455903}
   m_Father: {fileID: 1194546811}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

@@ -31,8 +31,8 @@ public class UIController : MonoBehaviour
     private int levelCode = 0;
     private bool isLevelSelecting;
 
-    [Header("StoreMenu")]
-    [SerializeField] private GameObject storeMenu;
+    [Header("ShopMenu")]
+    [SerializeField] private GameObject shopMenu;
     [SerializeField] private GameObject purchaseMenu;
     [SerializeField] private GameObject itemUpgradeMenu;
 
@@ -73,12 +73,12 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.uiController = this;
         mainMenu.SetActive(true);
-        pauseMenu.SetActive(false);
-        pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);        
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         HUD.SetActive(false);
         leaderboard.SetActive(false);
+        shopMenu.SetActive(false);
 
         GameController.gameController.UpdateLeaderboarUI();
 
@@ -153,6 +153,7 @@ public class UIController : MonoBehaviour
         leaderboard.SetActive(false);
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
+        shopMenu.SetActive(false);
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
@@ -294,9 +295,9 @@ public class UIController : MonoBehaviour
 
     #region Store
 
-    public void StoreMenu()
+    public void ShopMenu()
     {
-        storeMenu.SetActive(true);
+        shopMenu.SetActive(true);
     }
 
     public void PurchaseMenu()
