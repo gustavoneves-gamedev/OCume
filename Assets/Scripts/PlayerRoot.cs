@@ -53,6 +53,10 @@ public class PlayerRoot : MonoBehaviour
     private bool hasSwipe;
     private float touchTime;
 
+    [Header("Scene Plane")]
+    [SerializeField] private GameObject scenePlane;
+    private Vector3 originalPosition;
+
     [Header("References")]
     [SerializeField] private CharacterController cc;
     public characterID selectedCharacter = characterID.Cowboy;
@@ -66,6 +70,10 @@ public class PlayerRoot : MonoBehaviour
         GameController.gameController.playerRoot = this;
         audioSource = GetComponent<AudioSource>();
         playerPowers = GetComponent<PlayerPowers>();
+
+        originalPosition = scenePlane.transform.position;
+        scenePlane.transform.localPosition = originalPosition;
+
         Initialize(selectedCharacter);
 
     }
@@ -150,6 +158,8 @@ public class PlayerRoot : MonoBehaviour
     //Reseta os valores para a nova Run
     private void BeginRunEvent()
     {
+        scenePlane.transform.localPosition = originalPosition;
+
         isDead = false;
         desiredLane = 0;
         currentStamina = maxStamina;
@@ -187,7 +197,9 @@ public class PlayerRoot : MonoBehaviour
         AttackTimeCounter();
         StaminaConsumption();
 
-       
+        scenePlane.transform.localPosition += Vector3.back * 0.4f * Time.deltaTime;
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canAttack == true)
