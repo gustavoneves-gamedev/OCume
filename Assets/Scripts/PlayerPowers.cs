@@ -125,7 +125,7 @@ public class PlayerPowers : MonoBehaviour
     #endregion
 
     #region Stamina Potion
-    private void InitializeStaminaPotion()
+    public void InitializeStaminaPotion()
     {
         potionRestauration = basePotionRestauration +
                     inventory.staminaPotionUpgrade * inventory.staminaPotionUpgradeFactor;

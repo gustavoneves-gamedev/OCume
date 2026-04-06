@@ -339,7 +339,7 @@ public class UIController : MonoBehaviour
     {
         staminaPotionName.text = "Stamina Potion (" + (10 + upgradeBonus) + ")";
         staminaPotionLevel.text = "Lv. " + (level);
-        staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level) + ")";
+        staminaPotionUpgradedIndicator.text = "Stamina Recover (10+" + (level * 5) + ")";
         staminaPotionVisualUpgrade.value = level;
         staminaPotionUpgradeCost.text = cost.ToString();
     }

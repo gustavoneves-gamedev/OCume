@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
     [Header("Stamina Potion")]
     public int staminaPotionUpgrade = 0;
     public int staminaPotionUpgradeFactor = 5;
-    public int staminaPotionUpgradeCost = 100;
+    public int staminaPotionUpgradeCost = 1000;
 
     [Header("Coin Multiplier")]
     public int coinDurationUpgrade = 0;
@@ -52,9 +52,11 @@ public class Inventory : MonoBehaviour
     public void PotionUpgrade()
     {
         staminaPotionUpgrade++;
-        staminaPotionUpgradeCost *= staminaPotionUpgrade * (3 + staminaPotionUpgrade);
+        //staminaPotionUpgradeCost *= (1 + staminaPotionUpgrade);
+        staminaPotionUpgradeCost *= (2);
 
         UIStaminaPotionUpdate();
+        GameController.gameController.playerPowers.InitializeStaminaPotion();
     }
 
     private void UIStaminaPotionUpdate()
