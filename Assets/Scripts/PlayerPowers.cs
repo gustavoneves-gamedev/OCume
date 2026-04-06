@@ -7,8 +7,7 @@ public class PlayerPowers : MonoBehaviour
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject shieldEffect;
     private int shieldCharges = 1;
-    private int defaultShieldCharges;
-    private float baseShieldDuration = 20f;
+    private int defaultShieldCharges;    
     private float shieldDuration;
     private float defaultShieldDuration;
 
@@ -50,7 +49,7 @@ public class PlayerPowers : MonoBehaviour
         inventory = GameController.gameController.inventory;
 
         //Shield
-        InitializeShield();
+        //InitializeShieldPower();
 
         //Potion        
         InitializeStaminaPotion();
@@ -75,12 +74,11 @@ public class PlayerPowers : MonoBehaviour
 
     #region Shield
 
-    private void InitializeShield()
+    public void InitializeShieldPower(float duration = 0, int charges = 0)
     {
-        shieldDuration = baseShieldDuration +
-                    inventory.shieldDurationUpgrade * inventory.shieldUpgradeFactor;
-
-        shieldCharges = inventory.shieldChargeUpgrade;
+        
+        shieldDuration = duration;
+        shieldCharges = charges;
 
         defaultShieldCharges = shieldCharges;
         defaultShieldDuration = shieldDuration;

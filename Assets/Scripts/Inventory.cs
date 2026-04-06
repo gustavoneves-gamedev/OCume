@@ -3,6 +3,9 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Header("Shield")]
+    [SerializeField] private float baseShieldDuration = 20f;
+    private int shieldCharges = 1;    
+    private float shieldDuration;    
     public int shieldDurationUpgrade = 0;
     public float shieldUpgradeFactor = 10f;
     public int shieldChargeUpgrade = 1;
@@ -29,7 +32,26 @@ public class Inventory : MonoBehaviour
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção
         UIStaminaPotionUpdate();
+
+        //SHIELD
+        ShieldInitialization();
     }
+
+    #region Item Initialization
+
+    private void ShieldInitialization()
+    {
+        shieldDuration = baseShieldDuration +
+                    shieldDurationUpgrade * shieldUpgradeFactor;
+
+        shieldCharges = shieldChargeUpgrade;
+
+        GameController.gameController.playerPowers.
+            InitializeShieldPower(shieldDuration, shieldCharges);
+    }
+
+    #endregion
+
 
     #region Item Upgrades
 

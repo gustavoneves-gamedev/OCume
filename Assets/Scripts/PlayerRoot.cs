@@ -373,7 +373,7 @@ public class PlayerRoot : MonoBehaviour
     {
         currentStamina -= ((2 - resistance / 10f) * Time.deltaTime);
 
-        if (currentStamina <= 0)
+        if (currentStamina <= 0 && !isDead)
         {
             currentStamina = 0;
             OnDeathEvent();
@@ -400,7 +400,7 @@ public class PlayerRoot : MonoBehaviour
         if (currentStamina > maxStamina)
             currentStamina = maxStamina;
 
-        if (currentStamina <= 0)
+        if (currentStamina <= 0 && !isDead)
         {
             currentStamina = 0;
             OnDeathEvent();
