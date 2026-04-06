@@ -24,8 +24,7 @@ public class Inventory : MonoBehaviour
     public float coinMultiplier;
     private float boostedCoinMultiplier;
     private float coinBaseMultiplierDuration = 16f;
-    private float coinMultiplierDuration;
-    private float defaultMultiplierDuration;
+    private float coinMultiplierDuration;   
     public int coinDurationUpgrade = 0;
     public float coinDurationUpgradeFactor = 8f;
     public int coinMultiplierUpgrade = 0;
