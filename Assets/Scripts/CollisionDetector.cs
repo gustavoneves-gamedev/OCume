@@ -18,8 +18,6 @@ public class CollisionDetector : MonoBehaviour
         }
     }
 
-    
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -43,7 +41,9 @@ public class CollisionDetector : MonoBehaviour
                 obstacleRoot.WasShot(other.gameObject);
                 gameObject.SetActive(false);
             }
-
         }
+
+        //Colisão com outro obstáculo
+        //Determinar comportamento de troca de lane
     }
 }

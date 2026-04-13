@@ -7,7 +7,7 @@ public class Coin : MonoBehaviour
     [SerializeField] private float normalRotateSpeed = 50f;
     [SerializeField] private float boostedRotateSpeed = 500f;
     private float rotationSpeed;
-    private bool isEmiting;
+    [SerializeField] private GameObject coinAura;
     private AudioSource audioSource;
     [SerializeField] private ParticleSystem multiplierVFX;
 
@@ -26,11 +26,13 @@ public class Coin : MonoBehaviour
         {
             rotationSpeed = boostedRotateSpeed;
             if (!multiplierVFX.isEmitting) multiplierVFX.Play();
+            coinAura.SetActive(true);
         }
         else
         {
             rotationSpeed = normalRotateSpeed;
             multiplierVFX.Stop();
+            coinAura.SetActive(false);
         }
 
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
