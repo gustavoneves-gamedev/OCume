@@ -11942,7 +11942,6 @@ MonoBehaviour:
   staticObstacles:
   - {fileID: 1728778713127497232, guid: bb5fa3a96349e9c488c4d3bcb44bbed7, type: 3}
   - {fileID: 6023950075848797583, guid: dd57475a01b9c3a42b84ee2bbd4e7293, type: 3}
-  - {fileID: 799595111697802400, guid: 556bd94fe1461d24e8981d0dd0e2833c, type: 3}
   movableObstacles:
   - {fileID: 5359629852202726598, guid: a8b9d30b52a416a488b625ba79eab6f7, type: 3}
   - {fileID: 5359629852202726598, guid: 5af52fda0e3eeae41aaab781c5409d4b, type: 3}
