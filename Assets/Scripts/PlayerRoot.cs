@@ -423,6 +423,11 @@ public class PlayerRoot : MonoBehaviour
     #endregion
 
     #region Attack
+    private void InitializeAmmo()
+    {
+
+    }    
+    
     private void AttackTimeCounter()
     {
         if (currentAmmo < maxAmmo)
