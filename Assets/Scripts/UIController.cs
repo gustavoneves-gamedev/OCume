@@ -49,6 +49,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
 
+    [Header("Ammo")]
+    [SerializeField] private GameObject[] ammoType;
+    [SerializeField] private Slider[] cowboyAmmo;
+    [SerializeField] private Slider[] samuraiAmmo;
+    [SerializeField] private Slider[] mummyAmmo;
+
     [Header("Stamina")]
     [SerializeField] private Slider staminaSlider;
     [SerializeField] private Image staminaBackground;
@@ -80,7 +86,7 @@ public class UIController : MonoBehaviour
     {
         GameController.gameController.uiController = this;
         mainMenu.SetActive(true);
-        pauseMenu.SetActive(false);        
+        pauseMenu.SetActive(false);
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         HUD.SetActive(false);
@@ -94,8 +100,8 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        if(!GameController.gameController.isRunning) return;
-        
+        if (!GameController.gameController.isRunning) return;
+
         UpdateStaminaHUD(playerRoot.currentStamina / playerRoot.maxStamina);
         UpdateHeightClimbed();
     }
@@ -133,13 +139,13 @@ public class UIController : MonoBehaviour
         playerRoot.canRun = !playerRoot.canRun;
 
         //TEMPORÁRIO - REVISAR!! 28/03/2026
-        if(playerRoot.canRun) Time.timeScale = 1;
+        if (playerRoot.canRun) Time.timeScale = 1;
         else Time.timeScale = 0;
 
         //playerRoot.EndRun();
     }
 
-    
+
     public void StaticsMenu(float height = 0, int coins = 0, int rubies = 0, int obstaclesDestroyed = 0)
     {
         pauseMenu.SetActive(false);
@@ -181,7 +187,7 @@ public class UIController : MonoBehaviour
 
     public void NextLevel()
     {
-        
+
         if (isLevelSelecting && levelCode + 1 < levelMenuArray.Length)
         {
             levelMenuArray[levelCode + 1].SetActive(true);
@@ -198,7 +204,7 @@ public class UIController : MonoBehaviour
 
     public void PreviousLevel()
     {
-        
+
         if (isLevelSelecting && levelCode - 1 >= 0)
         {
             levelMenuArray[levelCode - 1].SetActive(true);
@@ -224,7 +230,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateLeaderboardDisplay(int index, string name = "", float height = 0)
     {
-        if(height > 0) playerNames[index].text = name + ":";
+        if (height > 0) playerNames[index].text = name + ":";
         else playerNames[index].text = "";
 
         playerHeights[index].text = height.ToString("F0") + "m";
@@ -390,6 +396,57 @@ public class UIController : MonoBehaviour
     private void UpdateHeightClimbed()
     {
         runHeightClimbed.text = playerRoot.heightClimbed.ToString("F0") + " m";
+    }
+
+    public void InitializeAmmoUI(int characterCode = 0, int maxAmmo = 2)
+    {
+
+        for (int i = 0; i < ammoType.Length; i++)
+        {
+            ammoType[i].SetActive(false);
+        }
+
+
+        for (int i = 0; i < cowboyAmmo.Length; i++)
+        {
+            cowboyAmmo[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < samuraiAmmo.Length; i++)
+        {
+            samuraiAmmo[i].gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < mummyAmmo.Length; i++)
+        {
+            mummyAmmo[i].gameObject.SetActive(false);
+        }
+
+
+        ammoType[characterCode].SetActive(true);
+
+        if (characterCode == 0)
+        {
+            for (int i = 0; i < maxAmmo; i++)
+            {
+                cowboyAmmo[i].gameObject.SetActive(true);
+            }
+        }
+        else if (characterCode == 1)
+        {
+            for (int i = 0; i < maxAmmo; i++)
+            {
+                samuraiAmmo[i].gameObject.SetActive(true);
+            }
+        }
+        else if (characterCode == 2)
+        {
+            for (int i = 0; i < maxAmmo; i++)
+            {
+                mummyAmmo[i].gameObject.SetActive(true);
+            }
+        }
+
     }
 
     #endregion

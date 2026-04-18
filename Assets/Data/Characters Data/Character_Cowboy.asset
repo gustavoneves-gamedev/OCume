@@ -17,7 +17,7 @@ MonoBehaviour:
   baseMovementSpeed: 25
   baseDamage: 1
   baseCooldown: 1
-  baseAmmo: 6
+  baseAmmo: 4
   reloadTime: 6
   baseDefense: 5
   baseResistance: 1

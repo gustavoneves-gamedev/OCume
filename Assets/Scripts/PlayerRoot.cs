@@ -140,8 +140,8 @@ public class PlayerRoot : MonoBehaviour
 
         currentStamina = maxStamina;
 
-        //O BeginRunAnimation vai primeiro atualizar as informações do jogador e depois
-        //canRun = true;
+        //Serve para preparar a parte de munição da HUD
+        GameController.gameController.uiController.InitializeAmmoUI(charCode, maxAmmo);
 
     }
 
@@ -171,7 +171,7 @@ public class PlayerRoot : MonoBehaviour
         acelerationCooldown = defaultAcelerationCooldown;
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
-        reloadTimeRemaining = reloadTime;
+        reloadTimeRemaining = reloadTime;       
         heightClimbed = 0;
         initialHeight = transform.position.z;
         playerPowers.ResetPowers(); //Serve para resetar os poderes do Player
@@ -423,10 +423,7 @@ public class PlayerRoot : MonoBehaviour
     #endregion
 
     #region Attack
-    private void InitializeAmmo()
-    {
-
-    }    
+        
     
     private void AttackTimeCounter()
     {
