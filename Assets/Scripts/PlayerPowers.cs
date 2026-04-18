@@ -12,7 +12,7 @@ public class PlayerPowers : MonoBehaviour
     private float defaultShieldDuration;
 
     [Header("Stamina Potion")]
-    [SerializeField] private ParticleSystem staminaUp;
+    public ParticleSystem staminaUp;
     private float potionRestauration;
 
     [Header("Coin Multiplier")]

@@ -64,6 +64,7 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterData[] characterDatas;
     [SerializeField] private GameObject[] characterModels;
     private AudioSource audioSource;
+    
 
 
     void Start()
@@ -483,6 +484,7 @@ public class PlayerRoot : MonoBehaviour
         if (other.CompareTag("Checkpoint"))
         {
             GameController.gameController.UpdateCheckpoint();
+            playerPowers.staminaUp.Play();
             UpdateStamina(maxStamina * 0.1f);
         }
 
