@@ -114,7 +114,7 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnCheckpoint(float checkpointDistance, int checkpointCounter)
     {
-        Destroy(activeCheckpoint, .1f); //Talvez tocar uma animação de fogos ou confetes quando passar pelo Checkpoint
+        Destroy(activeCheckpoint, 1f); //Talvez tocar uma animação de fogos ou confetes quando passar pelo Checkpoint
 
         activeCheckpoint = Instantiate(checkpointPrefab, startSpawn.position +
            Vector3.forward * checkpointDistance * (checkpointCounter + 1), startSpawn.rotation);

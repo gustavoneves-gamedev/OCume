@@ -485,6 +485,10 @@ public class PlayerRoot : MonoBehaviour
         {
             GameController.gameController.UpdateCheckpoint();
             playerPowers.staminaUp.Play();
+
+            Checkpoint checkpoint = other.GetComponent<Checkpoint>();
+            if (checkpoint != null) checkpoint.wasCrossed = true;
+
             UpdateStamina(maxStamina * 0.1f);
         }
 
