@@ -25,9 +25,14 @@ public class Coin : MonoBehaviour
     {
         if (GameController.gameController.playerPowers.isCoinMultiplierOn)
         {
+            if (meshRenderer.enabled == false) return;
+
             rotationSpeed = boostedRotateSpeed;
             if (!multiplierVFX.isEmitting) multiplierVFX.Play();
-            coinAura.SetActive(true);
+
+            if (meshRenderer.enabled == true) coinAura.SetActive(true);
+            else coinAura.SetActive(false);
+
         }
         else
         {
@@ -38,7 +43,7 @@ public class Coin : MonoBehaviour
 
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
-        
+
 
 
     private void OnTriggerEnter(Collider other)
