@@ -10,6 +10,11 @@ public class UIController : MonoBehaviour
     //[SerializeField] private GameObject menu;
     [SerializeField] private GameObject tapToPlayText;
 
+    [Header("Options")]
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject volumeMenu;
+
+
     [Header("TopMenu")]
     [SerializeField] private TextMeshProUGUI coins;
     [SerializeField] private TextMeshProUGUI rubies;
@@ -132,6 +137,24 @@ public class UIController : MonoBehaviour
         coins.text = GameController.gameController.coins.ToString();
     }
 
+    #region Options Menu
+    public void ActivateOptionsMenu()
+    {
+        optionsMenu.SetActive(true);
+    }
+
+    public void ReturnToOptionsMenu()
+    {
+        volumeMenu.SetActive(false);
+    }
+
+    public void VolumeMenu()
+    {
+        volumeMenu.SetActive(true);
+    }
+
+    #endregion
+
     //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
     public void PauseMenu()
     {
@@ -169,6 +192,7 @@ public class UIController : MonoBehaviour
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         shopMenu.SetActive(false);
+        optionsMenu.SetActive(false);
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
