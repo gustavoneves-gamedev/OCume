@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
     public static AudioController audioController;
+
+    [Header("Audio Objects")]
     public AudioSource mySoundBox;
     public AudioMixer myMixer;
     public AudioClip[] musics;
 
-    private float currentMasterVolume = 0.5f;
+    [Header("Volume Sliders")]
+    [SerializeField] private Slider masterVolume;
+    [SerializeField] private Slider musicVolume;
+    [SerializeField] private Slider SFXVolume;
+
+
+    private float currentMasterVolume = 1f;
     private float currentMusicVolume = 0.5f;
     private float currentSFXVolume = 0.5f;
 
@@ -31,6 +40,9 @@ public class AudioController : MonoBehaviour
     void Start()
     {
         mySoundBox = GetComponent<AudioSource>();
+        masterVolume.value = currentMasterVolume;
+        musicVolume.value = currentMusicVolume;
+        SFXVolume.value = currentSFXVolume;
         Initialize();
     }
 

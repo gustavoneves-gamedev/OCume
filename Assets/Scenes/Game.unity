@@ -17891,6 +17891,9 @@ MonoBehaviour:
   mySoundBox: {fileID: 0}
   myMixer: {fileID: 24100000, guid: c58402716cd21d140b1d469019e17774, type: 2}
   musics: []
+  masterVolume: {fileID: 840755711}
+  musicVolume: {fileID: 1450965058}
+  SFXVolume: {fileID: 208422127}
 --- !u!4 &1058420133
 Transform:
   m_ObjectHideFlags: 0
