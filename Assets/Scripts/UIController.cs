@@ -130,6 +130,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.BeginRun();
 
         HUD.SetActive(true); //Colocar um efeito de fade in aqui 
+        AudioController.audioController.SwitchMusic(1);
     }
 
     public void TopMenu()
@@ -196,6 +197,7 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
+        AudioController.audioController.SwitchMusic(0);
 
         Time.timeScale = 1;
 

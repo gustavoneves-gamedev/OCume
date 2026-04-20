@@ -10,13 +10,16 @@ public class AudioController : MonoBehaviour
     public AudioSource mySoundBox;
     public AudioMixer myMixer;
     public AudioClip[] musics;
+    //0 - MenuCowboy
+    //1 - Cowboy Level part 1
+    //2 - Cowboy Level part 2
 
     [Header("Volume Sliders")]
     [SerializeField] private Slider masterVolume;
     [SerializeField] private Slider musicVolume;
     [SerializeField] private Slider SFXVolume;
 
-
+    private bool isRunning;
     private float currentMasterVolume = 1f;
     private float currentMusicVolume = 0.5f;
     private float currentSFXVolume = 0.5f;
@@ -44,6 +47,16 @@ public class AudioController : MonoBehaviour
         musicVolume.value = currentMusicVolume;
         SFXVolume.value = currentSFXVolume;
         Initialize();
+    }
+
+    private void Update()
+    {
+        if (isRunning && !mySoundBox.isPlaying)
+        {
+            mySoundBox.clip = musics[1];
+            mySoundBox.loop = true;
+            mySoundBox.Play();
+        }
     }
 
     public void Initialize()
@@ -86,21 +99,24 @@ public class AudioController : MonoBehaviour
         myMixer.SetFloat("SFXVolume", LinearToDb(value));
     }
 
-    public void SwitchMusic(string music)
+    public void SwitchMusic(int music)
     {
-        switch (music)
+
+        if (music == 0)
         {
-            case "Menu":
-                mySoundBox.clip = musics[0];
-                break;
-            case "Jogo":
-                mySoundBox.clip = musics[1];
-                break;
-            default:
-                break;
+            mySoundBox.clip = musics[0];
+            mySoundBox.loop = true;
+            mySoundBox.Play();
         }
-        mySoundBox.loop = true;
-        mySoundBox.Play();
+        if (music == 1)
+        {
+            mySoundBox.clip = musics[1];
+            mySoundBox.loop = false;
+            mySoundBox.Play();
+        }
+
+        //mySoundBox.loop = true;
+        //mySoundBox.Play();
     }
 
 }
