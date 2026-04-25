@@ -23,6 +23,17 @@ public class PlayerPowers : MonoBehaviour
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
 
+    [Header("O2 Tank")] //AINDA NÃO IMPLEMENTADO
+    public bool isO2TankOn;
+    private int activeO2Tanks;
+    private float o2Restauration;
+
+    [Header("Recharger")] //AINDA NÃO IMPLEMENTADO
+    public bool isRechargeOn;
+    private int activeRecharges;
+    private bool isRecharging;
+
+
     private PlayerRoot player;
     private Inventory inventory; //Está inutilizada por enquanto
 
@@ -162,6 +173,12 @@ public class PlayerPowers : MonoBehaviour
     #endregion
 
     #region Special
+
+
+
+    #endregion
+
+    #region O2
 
 
 

@@ -149,7 +149,6 @@ public class PlayerRoot : MonoBehaviour
         currentStamina = maxStamina;
 
        
-
     }
 
      
