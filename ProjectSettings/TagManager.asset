@@ -15,6 +15,7 @@ TagManager:
   - Shield
   - CoinMultiplier
   - StaminaPotion
+  - MovableObstacle
   layers:
   - Default
   - TransparentFX

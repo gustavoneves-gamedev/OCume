@@ -7,6 +7,7 @@ public class CollisionDetector : MonoBehaviour
     //2 = Moeda
     //3 = Itens
     private ObstacleRoot obstacleRoot;
+    private PlayerRoot playerRoot;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +16,7 @@ public class CollisionDetector : MonoBehaviour
         if (index == 1)
         {
             obstacleRoot = GetComponentInParent<ObstacleRoot>();
+            playerRoot = GameController.gameController.playerRoot;
         }
     }
 
@@ -44,13 +46,40 @@ public class CollisionDetector : MonoBehaviour
                 }
                 else
                 {
-                    obstacleRoot.WasShot(other.gameObject);
+                    obstacleRoot.WasHit(other.gameObject);
                     gameObject.SetActive(false);
                 }
             }
         }
 
+        if (other.CompareTag("MovableObstacle") && transform.position.z - playerRoot.transform.position.z <= 50f)
+        {
+             Debug.Log("Colidi com um obstáculo");
+
+            if (index == 1)
+            {
+                obstacleRoot.WasHit(other.gameObject);
+                gameObject.SetActive(false);
+            }
+
+        }
+
         //Colisão com outro obstáculo
         //Determinar comportamento de troca de lane
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("MovableObstacle"))
+        {
+           // Debug.Log("Colidi com um obstáculo");
+
+            if (index == 1)
+            {
+                obstacleRoot.WasHit(collision.gameObject.GetComponentInParent<GameObject>());
+                gameObject.SetActive(false);
+            }
+
+        }
     }
 }

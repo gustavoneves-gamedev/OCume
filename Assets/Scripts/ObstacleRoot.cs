@@ -111,11 +111,14 @@ public class ObstacleRoot : MonoBehaviour
 
     private void DisableGameObjects()
     {
-        
-        for (int i = 0; i < obstacles.Length; i++)
+        if(obstacles.Length == 1) obstacles[0].SetActive(false);
+        else
         {
-            obstacles[i].SetActive(false);
-        }
+            for (int i = 0; i < obstacles.Length-1; i++)
+            {
+                obstacles[i].SetActive(false);
+            }
+        }           
 
 
         if (itemToSpawn != null)
@@ -134,7 +137,7 @@ public class ObstacleRoot : MonoBehaviour
         DisableGameObjects();
     }
 
-    public void WasShot(GameObject bullet)
+    public void WasHit(GameObject hit)
     {
         DisableGameObjects();
 
@@ -146,8 +149,10 @@ public class ObstacleRoot : MonoBehaviour
             Destroy(itemSpawned, 5f);
         }
 
+        ObstacleRoot root = hit.GetComponentInParent<ObstacleRoot>();
+        if (root != null) Destroy(root.gameObject);
 
-        Destroy(bullet);
+        Destroy(hit);
         Destroy(gameObject, 10f);
         GameController.gameController.ObstaclesDestroyedCounter();
     }

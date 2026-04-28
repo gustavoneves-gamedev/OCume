@@ -55,11 +55,11 @@ public class AudioController : MonoBehaviour
         Initialize();
     }
 
-    private void Update()
+    private void Update() //MEGA PROVISÓRIO!!
     {
         if (isPlayingRunMusic) timeToChangeMusic -= Time.deltaTime;
 
-        if (isPlayingRunMusic && timeToChangeMusic <= 0)
+        if (isPlayingRunMusic && timeToChangeMusic <= 4f)
         {
             mySoundBox.clip = musics[2];
             mySoundBox.pitch = 1.1f;

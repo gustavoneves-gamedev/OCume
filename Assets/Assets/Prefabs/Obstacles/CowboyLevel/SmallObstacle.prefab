@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7346607317626207451}
   m_Layer: 0
   m_Name: CollisionDetector
-  m_TagString: Untagged
+  m_TagString: MovableObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
