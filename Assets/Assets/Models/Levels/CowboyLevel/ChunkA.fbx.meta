@@ -53,12 +53,17 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Barrel
-    second: {fileID: 2800000, guid: a8b553bb527ddc6449fbc3a58d6871bc, type: 3}
+    second: {fileID: 2800000, guid: c1b88ba9c5e6b654792164fc316ae95a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: CampTexture
-    second: {fileID: 2800000, guid: 86224e5ba3cffdb43a8e05fd21e92b8f, type: 3}
+    second: {fileID: 2800000, guid: 33c31a1d4ebbc5f4492bb7ae8c832079, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TexturaChao
+    second: {fileID: 2800000, guid: 02cf8417cc9f9944e9c24220c5659754, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
