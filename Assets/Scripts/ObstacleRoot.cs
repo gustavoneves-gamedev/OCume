@@ -20,6 +20,10 @@ public class ObstacleRoot : MonoBehaviour
     [SerializeField] private int shieldSpawnUpperRate = 10;
     [SerializeField] private int coinSpawnUpperRate = 18;
 
+
+    [Header("Collision")]
+    [SerializeField] private ParticleSystem destroyVFX;
+
     private float rotateSpeedA;
     private float rotateSpeedB;
     private float rotateSpeedC;
@@ -120,6 +124,7 @@ public class ObstacleRoot : MonoBehaviour
             }
         }           
 
+        if(destroyVFX != null) destroyVFX.Play();
 
         if (itemToSpawn != null)
         {
@@ -153,6 +158,7 @@ public class ObstacleRoot : MonoBehaviour
         if (root != null) Destroy(root.gameObject);
 
         Destroy(hit);
+        movementSpeed = 0;
         Destroy(gameObject, 10f);
         GameController.gameController.ObstaclesDestroyedCounter();
     }
