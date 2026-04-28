@@ -7,13 +7,48 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BarrelMaterial
+    second: {fileID: 2100000, guid: aea9f0aaa2a7bc34e8793fec09e81c38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CampMaterial
+    second: {fileID: 2100000, guid: e0af86c4b50e78f43bc4f02853e5031a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChunkMaterial
+    second: {fileID: 2100000, guid: e575b1e59c006324bad10906fe66b576, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madeira
+    second: {fileID: 2100000, guid: 63ba0d37b24ae7741bf48e0a2aa2576f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: aa9b08dd9e2f0f34da3d1e1c343d5989, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: d46451bd119b4dd43893e4c429c074b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalMaterial
+    second: {fileID: 2100000, guid: 8bbd6dfdc2417d1408ed01fd4f038242, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Rough
     second: {fileID: 2100000, guid: aa9b08dd9e2f0f34da3d1e1c343d5989, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodMaterial
+    second: {fileID: 2100000, guid: 2f88cf79fdaabe6478a035546e506696, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
