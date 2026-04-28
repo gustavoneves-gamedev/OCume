@@ -49,6 +49,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: WoodMaterial
     second: {fileID: 2100000, guid: 2f88cf79fdaabe6478a035546e506696, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2800000, guid: a8b553bb527ddc6449fbc3a58d6871bc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CampTexture
+    second: {fileID: 2800000, guid: 86224e5ba3cffdb43a8e05fd21e92b8f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
