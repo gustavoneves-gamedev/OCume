@@ -400,21 +400,26 @@ public class UIController : MonoBehaviour
         GameController.gameController.inventory.UpgradeShieldCharges();
     }
 
-    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int level = 0, int cost = 1000)
+    public void UpdateShieldChargeUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0, int cost = 1000, int level = 0)
     {
         shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
         shieldLevel.text = "Lv. " + (level);
-        shieldChargeUpgradedIndicator.text = "Shield Recover (10+" + (level * 5) + ")";
-        shieldChargeVisualUpgrade.value = level;
+        shieldChargeUpgradedIndicator.text = "Shield Recover (1+" + (chargeLevel) + ")";
+        shieldChargeVisualUpgrade.value = chargeLevel;
         shieldChargeUpgradeCost.text = cost.ToString();
     }
 
-    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int level = 0, int cost = 1000)
+    public void ShieldDurationUpgrade()
+    {
+        GameController.gameController.inventory.UpgradeShieldDuration();
+    }
+
+    public void UpdateShieldDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0, int cost = 1000, int level = 0)
     {
         //shieldName.text = "Shield (" + (1 + upgradeBonus) + ")";
         shieldLevel.text = "Lv. " + (level);
-        shieldDurationUpgradedIndicator.text = "Shield Recover (10+" + (level * 5) + ")";
-        shieldDurationVisualUpgrade.value = level;
+        shieldDurationUpgradedIndicator.text = "Shield Recover (20+" + (durationLevel * 3) + ")";
+        shieldDurationVisualUpgrade.value = durationLevel;
         shieldDurationUpgradeCost.text = cost.ToString();
     }
 

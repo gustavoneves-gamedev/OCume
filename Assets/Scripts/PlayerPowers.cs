@@ -102,6 +102,7 @@ public class PlayerPowers : MonoBehaviour
             shield.SetActive(!shield.activeSelf);
             shieldEffect.SetActive(!shieldEffect.activeSelf);
             shieldDuration = defaultShieldDuration;
+            shieldCharges = defaultShieldCharges;
         }
     }
 

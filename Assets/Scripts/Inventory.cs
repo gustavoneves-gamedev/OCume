@@ -5,9 +5,12 @@ public class Inventory : MonoBehaviour
     [Header("Shield")]
     [SerializeField] private float baseShieldDuration = 20f;
     private int shieldCharges = 1;    
-    private float shieldDuration;    
+    private float shieldDuration;
+    private int shieldUpgradeLevel = 0;
     public int shieldDurationUpgrade = 0;
-    public float shieldUpgradeFactor = 10f;
+    public int shieldDurationUpgradeFactor = 10;
+    public int shieldDurationUpgradeCost = 1000;
+    private int shieldDurationMaxLevel = 8;
     public int shieldChargeUpgrade = 0;
     private int shieldChargeMaxLevel = 2;
     public int shieldChargeUpgradeCost = 20000;
@@ -43,6 +46,7 @@ public class Inventory : MonoBehaviour
         //SHIELD
         ShieldInitialization();
         UIShieldChargeUpgrade();
+        UIShieldDurationUpgrade();
 
         //STAMINA POTION
         //Inserir aqui a puxada de informações do script onde estarão as informações da poção
@@ -58,7 +62,7 @@ public class Inventory : MonoBehaviour
     private void ShieldInitialization()
     {
         shieldDuration = baseShieldDuration +
-                    shieldDurationUpgrade * shieldUpgradeFactor;
+                    shieldDurationUpgrade * shieldDurationUpgradeFactor;
 
         shieldCharges = shieldChargeUpgrade + 1;
 
@@ -101,6 +105,7 @@ public class Inventory : MonoBehaviour
         if (shieldChargeUpgrade >= shieldChargeMaxLevel) return;
 
         shieldChargeUpgrade++;
+        shieldUpgradeLevel++;
 
         shieldChargeUpgradeCost *= 5;
 
@@ -112,12 +117,27 @@ public class Inventory : MonoBehaviour
     {
         GameController.gameController.uiController.
             UpdateShieldChargeUpgradeUI((shieldChargeUpgrade),
-            shieldChargeUpgrade, shieldChargeUpgradeCost);
+            shieldChargeUpgrade, shieldChargeUpgradeCost, shieldUpgradeLevel);
     }
 
     public void UpgradeShieldDuration()
     {
-        shieldDurationUpgrade++;        
+        if (shieldDurationUpgrade >= shieldDurationMaxLevel) return;
+
+        shieldDurationUpgrade++;
+        shieldUpgradeLevel++;
+
+        shieldDurationUpgradeCost *= 2;
+
+        UIShieldDurationUpgrade();
+        ShieldInitialization();
+    }
+
+    private void UIShieldDurationUpgrade()
+    {
+        GameController.gameController.uiController.
+            UpdateShieldDurationUpgradeUI((shieldDurationUpgrade * shieldDurationUpgradeFactor),
+            shieldDurationUpgrade, shieldDurationUpgradeCost, shieldUpgradeLevel);
     }
 
 

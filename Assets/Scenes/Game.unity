@@ -7180,10 +7180,10 @@ MonoBehaviour:
   staminaPotionUpgradeCost: {fileID: 243117122}
   shieldName: {fileID: 472500450}
   shieldLevel: {fileID: 1773623041}
-  shieldChargeUpgradedIndicator: {fileID: 177777883}
+  shieldChargeUpgradedIndicator: {fileID: 863493983}
   shieldChargeVisualUpgrade: {fileID: 196212275}
   shieldChargeUpgradeCost: {fileID: 726218691}
-  shieldDurationUpgradedIndicator: {fileID: 596155544}
+  shieldDurationUpgradedIndicator: {fileID: 835304408}
   shieldDurationVisualUpgrade: {fileID: 1774526524}
   shieldDurationUpgradeCost: {fileID: 1049413828}
   pauseMenu: {fileID: 347314579}
@@ -36765,7 +36765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   baseShieldDuration: 20
   shieldDurationUpgrade: 0
-  shieldUpgradeFactor: 10
+  shieldDurationUpgradeFactor: 10
+  shieldDurationUpgradeCost: 1000
   shieldChargeUpgrade: 0
   shieldChargeUpgradeCost: 20000
   basePotionRestauration: 10
@@ -39649,7 +39650,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 393168558}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: StaminaPotionUpgrade
+        m_MethodName: ShieldDurationUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
