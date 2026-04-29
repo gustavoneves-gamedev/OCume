@@ -7183,9 +7183,9 @@ MonoBehaviour:
   shieldChargeUpgradedIndicator: {fileID: 177777883}
   shieldChargeVisualUpgrade: {fileID: 196212275}
   shieldChargeUpgradeCost: {fileID: 726218691}
-  shieldDurationUpgradedIndicator: {fileID: 0}
-  shieldDurationVisualUpgrade: {fileID: 0}
-  shieldDurationUpgradeCost: {fileID: 0}
+  shieldDurationUpgradedIndicator: {fileID: 596155544}
+  shieldDurationVisualUpgrade: {fileID: 1774526524}
+  shieldDurationUpgradeCost: {fileID: 1049413828}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
