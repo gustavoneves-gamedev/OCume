@@ -19,6 +19,8 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0) return;
+        
         float x = Mathf.Lerp(transform.position.x,targetToFollow.position.x + positionOffset.x, cameraSpeed * Time.deltaTime);
         
         transform.position = new Vector3(x, transform.position.y, targetToFollow.position.z + positionOffset.z);

@@ -27,3 +27,14 @@ public enum levelID
     SamuraiLevel,
     AlpinistaLevel
 }
+
+public enum ItemID
+{
+    StaminaPotion,
+    Shield,
+    CoinMultiplier,
+    Checkpoint,
+    O2Tank,
+    Recharger,
+    AdTicket
+}

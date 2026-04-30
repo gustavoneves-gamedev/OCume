@@ -169,7 +169,7 @@ public class UIController : MonoBehaviour
 
     #endregion
 
-    //MUDAR ISSO PARA ALTERAR O TIME SCALE PARA ZERO. DO CONTRÁRIO ESTAREI PARANDO APENAS O PLAYER!!
+    
     public void PauseMenu()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
