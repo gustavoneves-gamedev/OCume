@@ -13667,7 +13667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +3 Seconds per level
+  m_text: +4 Seconds per level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14472,7 +14472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shield Charges (1+0)
+  m_text: Coin Multiplier (1+0)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24994,7 +24994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shield Duration (20+0)
+  m_text: Coin Multiplier Duration (20+0)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36156,7 +36156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shield (1)
+  m_text: Coin Multiplier (2)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -36766,15 +36766,9 @@ MonoBehaviour:
   shieldChargeData: {fileID: 11400000, guid: 98eab079f5f5fe94b939475b3f0a23f6, type: 2}
   shieldDurationData: {fileID: 11400000, guid: 4d81f7fa9c16333409caa117c9481283, type: 2}
   staminaData: {fileID: 11400000, guid: 6c973bf98d38df34695b029e9b5ecd2d, type: 2}
-  staminaPotionUpgradeLevel: 0
-  staminaPotionUpgradeFactor: 5
-  staminaPotionUpgradeCost: 1000
+  coinMultiplierData: {fileID: 11400000, guid: 0cadb173db48fd446bb43191bc104129, type: 2}
+  coinMultiplierDurationData: {fileID: 11400000, guid: 670a5a4252be5834fb01b1a72c4bb0c9, type: 2}
   isCoinMultiplierOn: 0
-  coinMultiplier: 0
-  coinDurationUpgrade: 0
-  coinDurationUpgradeFactor: 8
-  coinMultiplierUpgrade: 0
-  coinMultiplierUpgradeFactor: 1
 --- !u!1 &1677408062
 GameObject:
   m_ObjectHideFlags: 0
@@ -45688,7 +45682,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +1 Charge per level
+  m_text: +1 Multiplier per level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

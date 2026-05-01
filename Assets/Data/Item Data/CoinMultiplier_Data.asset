@@ -16,5 +16,5 @@ MonoBehaviour:
   baseEffectCharges: 2
   levelFactorUpgrade: 1
   maxLevel: 1
-  coinChargeUpgradeCost: 400d0300
-  rubyChargeUpgradeCost: c8000000
+  coinChargeUpgradeCost: 400d0300ffffffff
+  rubyChargeUpgradeCost: c8000000ffffffff
