@@ -285,7 +285,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateLeaderboardDisplay(int index, string name = "", float height = 0)
     {
-        if (height > 0) playerNames[index].text = name + ":";
+        if (height > 0) playerNames[index].text = name;
         else playerNames[index].text = "";
 
         playerHeights[index].text = height.ToString("F0") + "m";
