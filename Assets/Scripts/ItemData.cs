@@ -9,7 +9,7 @@ public class ItemData : ScriptableObject
 
     [Header("Charges")]
     public int baseEffectCharges;    
-    public float levelFactorUpgrade;
+    public int levelFactorUpgrade;
     public int maxLevel;
     public int[] coinChargeUpgradeCost;
     public int[] rubyChargeUpgradeCost;   

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShieldDuration_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   characterID: 2
-  baseEffectCharges: 20
+  baseEffectCharges: 10
   levelFactorUpgrade: 3
   maxLevel: 8
   coinChargeUpgradeCost: f4010000e8030000d00700008813000010270000204e00003075000050c30000

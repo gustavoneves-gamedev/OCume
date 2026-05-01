@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [Header("Shield")]
-    private ItemID shildChargeID = ItemID.ShieldCharges;
+    [Header("Shield Charges")]
+    //private ItemID shildChargeID = ItemID.ShieldCharges;
     [SerializeField] private ItemData shieldChargeData;
-    private ItemID shildDurationID = ItemID.ShieldDuration;
-    [SerializeField] private ItemData shieldDurationData;
-    [SerializeField] private float baseShieldDuration = 20f; //substituir por shildData.baseDuration
-    private int shieldCharges = 1; //Igualar a shildData.baseEffectCharges
+    //private ItemID shildDurationID = ItemID.ShieldDuration;
+    [SerializeField] private ItemData shieldDurationData;    
+    private int shieldCharges;
     private float shieldDuration;
     private int shieldUpgradeLevel = 0;
-    public int shieldDurationUpgradeLevel = 0; 
-    public int shieldDurationUpgradeFactor = 10; //substituir por shildData.durationFactorUpgrade
-    public int shieldDurationUpgradeCost = 1000; //substituir por shildData.coinDurationUpgradeCost[shieldDurationUpgradeLevel]
-    private int shieldDurationMaxLevel = 8;  //substituir por shildData.durationMaxLevel
-    public int shieldChargeUpgrade = 0;
-    private int shieldChargeMaxLevel = 2; //substituir por shildData.baseEffectMaxLevel
-    public int shieldChargeUpgradeCost = 20000; //substituir por shildData.coinChargeUpgradeCost[shieldChargeUpgrade]
+
+    [Header("Shield Duration")]
+    private int shieldDurationUpgradeLevel = 0;    
+    private int shieldDurationUpgradeCoinCost; //substituir por shildData.coinDurationUpgradeCost[shieldDurationUpgradeLevel]
+    private int shieldDurationUpgradeRubyCost;    
+    private int shieldChargeUpgradeLevel = 0;    
+    private int shieldChargeUpgradeCoinCost; //substituir por shildData.coinChargeUpgradeCost[shieldChargeUpgrade]
+    private int shieldChargeUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Stamina Potion")]
     [SerializeField] private int basePotionRestauration = 10;
@@ -65,10 +65,11 @@ public class Inventory : MonoBehaviour
 
     private void ShieldInitialization()
     {
-        shieldDuration = baseShieldDuration +
-                    shieldDurationUpgradeLevel * shieldDurationUpgradeFactor;
-
-        shieldCharges = shieldChargeUpgrade + 1;
+        shieldCharges = shieldChargeData.baseEffectCharges + 
+                    shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade;
+        
+        shieldDuration = shieldDurationData.baseEffectCharges +
+                    shieldDurationUpgradeLevel * shieldDurationData.levelFactorUpgrade;
 
         GameController.gameController.playerPowers.
             InitializeShieldPower(shieldDuration, shieldCharges);
@@ -106,12 +107,13 @@ public class Inventory : MonoBehaviour
     #region Shield Upgrades
     public void UpgradeShieldCharges()
     {
-        if (shieldChargeUpgrade >= shieldChargeMaxLevel) return;
+        if (shieldChargeUpgradeLevel >= shieldChargeData.maxLevel) return;
 
-        shieldChargeUpgrade++;
+        shieldChargeUpgradeCoinCost = shieldChargeData.coinChargeUpgradeCost[shieldChargeUpgradeLevel];
+        shieldChargeUpgradeRubyCost = shieldChargeData.rubyChargeUpgradeCost[shieldChargeUpgradeLevel];
+
+        shieldChargeUpgradeLevel++;
         shieldUpgradeLevel++;
-
-        shieldChargeUpgradeCost *= 5;
 
         UIShieldChargeUpgrade();
         ShieldInitialization();
@@ -120,18 +122,19 @@ public class Inventory : MonoBehaviour
     private void UIShieldChargeUpgrade()
     {
         GameController.gameController.uiController.
-            UpdateShieldChargeUpgradeUI((shieldChargeUpgrade),
-            shieldChargeUpgrade, shieldChargeUpgradeCost, shieldUpgradeLevel);
+            UpdateShieldChargeUpgradeUI((shieldChargeUpgradeLevel * shieldChargeData.levelFactorUpgrade),
+            shieldChargeUpgradeLevel, shieldChargeUpgradeCoinCost, shieldUpgradeLevel);
     }
 
     public void UpgradeShieldDuration()
     {
-        if (shieldDurationUpgradeLevel >= shieldDurationMaxLevel) return;
+        if (shieldDurationUpgradeLevel >= shieldDurationData.maxLevel) return;
+
+        shieldDurationUpgradeCoinCost = shieldDurationData.coinChargeUpgradeCost[shieldDurationUpgradeLevel];
+        shieldDurationUpgradeRubyCost = shieldDurationData.rubyChargeUpgradeCost[shieldDurationUpgradeLevel];
 
         shieldDurationUpgradeLevel++;
         shieldUpgradeLevel++;
-
-        shieldDurationUpgradeCost *= 2;
 
         UIShieldDurationUpgrade();
         ShieldInitialization();
@@ -140,8 +143,8 @@ public class Inventory : MonoBehaviour
     private void UIShieldDurationUpgrade()
     {
         GameController.gameController.uiController.
-            UpdateShieldDurationUpgradeUI((shieldDurationUpgradeLevel * shieldDurationUpgradeFactor),
-            shieldDurationUpgradeLevel, shieldDurationUpgradeCost, shieldUpgradeLevel);
+            UpdateShieldDurationUpgradeUI((shieldDurationUpgradeLevel * shieldDurationData.levelFactorUpgrade),
+            shieldDurationUpgradeLevel, shieldDurationUpgradeCoinCost, shieldUpgradeLevel);
     }
 
 

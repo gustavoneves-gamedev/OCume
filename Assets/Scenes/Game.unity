@@ -11820,7 +11820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55.024902}
+  m_AnchoredPosition: {x: 0, y: -55.024597}
   m_SizeDelta: {x: 0, y: -110.05009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &576824315
@@ -36763,12 +36763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf9c65a00d3759439e2c3d59b9f0b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  baseShieldDuration: 20
-  shieldDurationUpgrade: 0
-  shieldDurationUpgradeFactor: 10
-  shieldDurationUpgradeCost: 1000
-  shieldChargeUpgrade: 0
-  shieldChargeUpgradeCost: 20000
+  shieldChargeData: {fileID: 11400000, guid: 98eab079f5f5fe94b939475b3f0a23f6, type: 2}
+  shieldDurationData: {fileID: 11400000, guid: 4d81f7fa9c16333409caa117c9481283, type: 2}
+  shieldDurationUpgradeLevel: 0
   basePotionRestauration: 10
   staminaPotionUpgrade: 0
   staminaPotionUpgradeFactor: 5
