@@ -42,6 +42,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject purchaseMenu;
     [SerializeField] private GameObject itemUpgradeMenu;
 
+    [Header("Items Upgrade")]
+    #region Items Upgrade
     [Header("ShopMenu - Stamina Potion")]
     [SerializeField] private TextMeshProUGUI staminaPotionName;
     [SerializeField] private TextMeshProUGUI staminaPotionLevel;
@@ -58,6 +60,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shieldDurationUpgradedIndicator;
     [SerializeField] private Slider shieldDurationVisualUpgrade;
     [SerializeField] private TextMeshProUGUI shieldDurationUpgradeCost;
+
+    [Header("ShopMenu - Coin Multiplier")]
+    [SerializeField] private TextMeshProUGUI coinMultiplierName;
+    [SerializeField] private TextMeshProUGUI coinMultiplierLevel;
+    [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradedIndicator;
+    [SerializeField] private Slider coinMultiplierChargeVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI coinMultiplierChargeUpgradeCost;
+    [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradedIndicator;
+    [SerializeField] private Slider coinMultiplierDurationVisualUpgrade;
+    [SerializeField] private TextMeshProUGUI coinMultiplierDurationUpgradeCost;
+
+    #endregion
 
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
@@ -421,20 +435,20 @@ public class UIController : MonoBehaviour
     public void UpdateCoinMultiplierUpgradeUI(int upgradeBonus = 0, int chargeLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        shieldName.text = "Coin Multiplier (" + (1 + upgradeBonus) + ")";
-        shieldLevel.text = "Lv. " + (level);
-        shieldChargeUpgradedIndicator.text = "Multiplier (1+" + (chargeLevel) + ")";
-        shieldChargeVisualUpgrade.value = chargeLevel;
-        shieldChargeUpgradeCost.text = coinCost.ToString();
+        coinMultiplierName.text = "Coin Multiplier (" + (1 + upgradeBonus) + ")";
+        coinMultiplierLevel.text = "Lv. " + (level);
+        coinMultiplierChargeUpgradedIndicator.text = "Multiplier (1+" + (chargeLevel) + ")";
+        coinMultiplierChargeVisualUpgrade.value = chargeLevel;
+        coinMultiplierChargeUpgradeCost.text = coinCost.ToString();
     }
 
     public void UpdateCoinMultiplierDurationUpgradeUI(int upgradeBonus = 0, int durationLevel = 0,
                                                 int coinCost = 1000, int rubyCost = 0, int level = 0)
     {
-        shieldLevel.text = "Lv. " + (level);
-        shieldDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (durationLevel * 4) + ")";
-        shieldDurationVisualUpgrade.value = durationLevel;
-        shieldDurationUpgradeCost.text = coinCost.ToString();
+        coinMultiplierLevel.text = "Lv. " + (level);
+        coinMultiplierDurationUpgradedIndicator.text = "Multiplier Duration (16+" + (durationLevel * 4) + ")";
+        coinMultiplierDurationVisualUpgrade.value = durationLevel;
+        coinMultiplierDurationUpgradeCost.text = coinCost.ToString();
     }
 
     #endregion

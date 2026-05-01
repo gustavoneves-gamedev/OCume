@@ -7186,6 +7186,14 @@ MonoBehaviour:
   shieldDurationUpgradedIndicator: {fileID: 835304408}
   shieldDurationVisualUpgrade: {fileID: 1774526524}
   shieldDurationUpgradeCost: {fileID: 1049413828}
+  coinMultiplierName: {fileID: 1653807149}
+  coinMultiplierLevel: {fileID: 75542948}
+  coinMultiplierChargeUpgradedIndicator: {fileID: 733065619}
+  coinMultiplierChargeVisualUpgrade: {fileID: 1245080431}
+  coinMultiplierChargeUpgradeCost: {fileID: 598252536}
+  coinMultiplierDurationUpgradedIndicator: {fileID: 1221838703}
+  coinMultiplierDurationVisualUpgrade: {fileID: 1644179203}
+  coinMultiplierDurationUpgradeCost: {fileID: 2085598368}
   pauseMenu: {fileID: 347314579}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
