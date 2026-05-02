@@ -225,7 +225,7 @@ public class UIController : MonoBehaviour
 
         //playerRoot.EndRun();
         GameController.gameController.isRunning = false;
-        AudioController.audioController.SwitchMusic(0);
+        if(AudioController.audioController.currentMusicCode != 0) AudioController.audioController.SwitchMusic(0);
 
         Time.timeScale = 1;
 

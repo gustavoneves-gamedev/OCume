@@ -7,6 +7,7 @@ public class AudioController : MonoBehaviour
     public static AudioController audioController;
 
     [Header("Audio Objects")]
+    public int currentMusicCode = 0;
     public AudioSource mySoundBox;
     public AudioMixer myMixer;
     public AudioClip[] musics;
@@ -24,7 +25,7 @@ public class AudioController : MonoBehaviour
     private float currentMusicVolume = 0.5f;
     private float currentSFXVolume = 0.5f;
 
-    [SerializeField] private float timeToChangeMusic;
+    private float timeToChangeMusic;
     private bool isPlayingRunMusic;
 
     private void Awake()
@@ -111,6 +112,7 @@ public class AudioController : MonoBehaviour
 
     public void SwitchMusic(int music)
     {
+        currentMusicCode = music;
 
         if (music == 0)
         {
