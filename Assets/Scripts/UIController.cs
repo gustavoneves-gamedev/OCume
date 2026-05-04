@@ -181,6 +181,11 @@ public class UIController : MonoBehaviour
         volumeMenu.SetActive(true);
     }
 
+    public void DeactivateOptionsMenu()
+    {
+        optionsMenu.SetActive(false);
+    }
+
     #endregion
 
     
@@ -205,7 +210,7 @@ public class UIController : MonoBehaviour
 
         heightClimbed.text = height.ToString("F0");
         coinsCollected.text = coins.ToString("F0");
-        rubiesCollected.text = rubies.ToString("F0");
+        //rubiesCollected.text = rubies.ToString("F0");
         obstacles.text = obstaclesDestroyed.ToString("F0");
 
         statsMenu.SetActive(true);
