@@ -202,6 +202,18 @@ public class UIController : MonoBehaviour
         //playerRoot.EndRun();
     }
 
+    public void ResumeButton()
+    {
+        pauseMenu.SetActive(false);
+
+        playerRoot.canRun = true;
+
+        //TEMPORÁRIO - REVISAR!! 28/03/2026
+        Time.timeScale = 1;
+
+        //playerRoot.EndRun();
+    }
+
 
     public void StaticsMenu(float height = 0, int coins = 0, int rubies = 0, int obstaclesDestroyed = 0)
     {
