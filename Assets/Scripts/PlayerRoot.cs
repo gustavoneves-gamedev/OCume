@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerRoot : MonoBehaviour
 {
@@ -69,15 +71,13 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private CharacterController cc;
     public characterID selectedCharacter = characterID.Cowboy;
     [SerializeField] private CharacterData[] characterDatas;
-    [SerializeField] private GameObject[] characterModels;    
+    [SerializeField] private GameObject[] characterModels;
     private int characterCode = 0;
     private UIController uiController;
-    
-
 
     void Start()
     {
-        GameController.gameController.playerRoot = this;        
+        GameController.gameController.playerRoot = this;
         playerPowers = GetComponent<PlayerPowers>();
 
         originalPosition = scenePlane.transform.position;
@@ -125,7 +125,7 @@ public class PlayerRoot : MonoBehaviour
     private void InitializePlayer(int charCode)
     {
         characterCode = charCode;
-        
+
         maxStamina = characterDatas[charCode].baseMaxStamina + ProgressManager.progressManager.staminaIncrement;
 
         movementSpeed = characterDatas[charCode].baseMovementSpeed + ProgressManager.progressManager.movementSpeedIncrement;
@@ -149,11 +149,7 @@ public class PlayerRoot : MonoBehaviour
         characterModels[charCode].SetActive(true); //Ativa o modelo do personagem selecionado
 
         currentStamina = maxStamina;
-
-       
     }
-
-     
 
     public void BeginRunAnimation()
     {
@@ -176,6 +172,7 @@ public class PlayerRoot : MonoBehaviour
         scenePlane.transform.localPosition = originalPosition;
 
         isDead = false;
+        isGamePaused = false;
         desiredLane = 0;
         currentStamina = maxStamina;
         initialSpeed = defaultInitialSpeed;
@@ -183,7 +180,7 @@ public class PlayerRoot : MonoBehaviour
         acelerationCooldown = defaultAcelerationCooldown;
         currentAmmo = maxAmmo;
         cooldownRemaining = 0;
-        reloadTimeRemaining = reloadTime;       
+        reloadTimeRemaining = reloadTime;
         heightClimbed = 0;
         initialHeight = transform.position.z;
         playerPowers.ResetPowers(); //Serve para resetar os poderes do Player
@@ -195,9 +192,10 @@ public class PlayerRoot : MonoBehaviour
         canRun = true;
     }
 
+
     void Update()
     {
-
+        
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape) && GameController.gameController.isRunning)
         {
@@ -210,7 +208,7 @@ public class PlayerRoot : MonoBehaviour
         heightClimbed = transform.position.z - initialHeight;
 
         DetectSwipes();
-        DetectTaps();
+        //DetectTaps();
 
         PlayerMovement();
         SpeedScale();
@@ -252,8 +250,7 @@ public class PlayerRoot : MonoBehaviour
 
                 if (delta.magnitude > swipeDistance)
                 {
-                    hasSwipe = true;
-
+                    tapCount = 0;
                     if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
                     {
                         if (delta.x > 0)
@@ -290,13 +287,62 @@ public class PlayerRoot : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    DetectTapsTest();
+                }
+
             }
         }
     }
+    private void DetectTapsTest()
+    {
 
+
+        float timeNow = Time.time;
+
+        if (timeNow - lastTapTime < 0.2f)
+            tapCount++;
+        else
+            tapCount = 1;
+
+        lastTapTime = timeNow;
+
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        if (Input.touchCount > 0 && EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            return;
+
+        if (tapCount == 1)
+        {
+            if (canAttack == true)
+                Attack();
+            else if (currentAmmo <= 0)
+                Debug.Log("Sem munição suficiente");
+            else if (cooldownRemaining >= 0)
+                Debug.Log("Ataque em cooldown ainda");
+        }
+
+        //if (tapCount == 2)
+        //{
+        //    CancelInvoke();
+        //    Invoke("DoubleTap", 0.3f);
+        //}
+        //if (tapCount == 3)
+        //{
+        //    CancelInvoke();
+        //    Invoke("TripleTap", 0.2f); //Queria colocar instantâneo para o triple,
+        //                               //mas decidi só reduzir o tempo para manter o paralelismo
+        //}
+
+    }
     private void DetectTaps()
     {
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) //|| Input.GetKeyDown(KeyCode.Mouse0)
+
+
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             if (Time.time - touchTime > 0.15f || hasSwipe)
             {
@@ -313,6 +359,13 @@ public class PlayerRoot : MonoBehaviour
                 tapCount = 1;
 
             lastTapTime = timeNow;
+
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            if (Input.touchCount > 0 && EventSystem.current != null &&
+                EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                return;
 
             if (tapCount == 1)
             {
@@ -343,7 +396,8 @@ public class PlayerRoot : MonoBehaviour
     #region Movement
     private void PlayerMovement()
     {
-        move = transform.forward * movementSpeed;
+        if (Time.deltaTime <= 0f)
+            return;
 
         if (Input.GetKeyDown(KeyCode.D) && desiredLane < 1 && !isChangingLane)
         {
@@ -357,12 +411,18 @@ public class PlayerRoot : MonoBehaviour
             //isChangingLane = true;
         }
 
+        move = transform.forward * movementSpeed;
+
         float targetX = Mathf.Lerp(transform.position.x, desiredLane * 4, horizontalSpeed * Time.deltaTime);
 
-        move.x = (targetX - transform.position.x) / Time.deltaTime;
-
+        if (Time.deltaTime > 0f)
+        {
+            move.x = (targetX - transform.position.x) / Time.deltaTime;
+        }
 
         cc.Move(move * Time.deltaTime);
+
+
     }
 
     private void SpeedScale()
@@ -382,7 +442,7 @@ public class PlayerRoot : MonoBehaviour
     //para dentro do stamina update e chamar caso o valor passado seja negativo
     public void SpeedReset()
     {
-                
+
         movementSpeed = initialSpeed;
 
         initialSpeed = defaultInitialSpeed;
@@ -456,7 +516,7 @@ public class PlayerRoot : MonoBehaviour
     #endregion
 
     #region Attack    
-    
+
     private void AttackTimeCounter()
     {
         if (currentAmmo < maxAmmo)

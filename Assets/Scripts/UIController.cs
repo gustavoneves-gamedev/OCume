@@ -138,11 +138,12 @@ public class UIController : MonoBehaviour
         UpdateHeightClimbed();
     }
 
-    private void Initialize()
+    private void Initialize()//COMENTÁRIOS IMPORTANTES AQUI
     {
         playerRoot = GameController.gameController.playerRoot;
         //coins.text = puxar informação do local de salvamento
         //InitializeStore(); //puxar informações do local de salvamento
+        TopMainMenuUpdate();
     }
 
     #region General Menu
@@ -160,7 +161,7 @@ public class UIController : MonoBehaviour
         AudioController.audioController.SwitchMusic(1);
     }
 
-    public void TopMenu()
+    public void TopMainMenuUpdate()
     {
         coins.text = GameController.gameController.coins.ToString();
     }
@@ -188,32 +189,27 @@ public class UIController : MonoBehaviour
 
     #endregion
 
-    
+    #region Pause Menu
     public void PauseMenu()
     {
-        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        pauseMenu.SetActive(true);
 
-        playerRoot.canRun = !playerRoot.canRun;
-
-        //TEMPORÁRIO - REVISAR!! 28/03/2026
-        if (playerRoot.canRun) Time.timeScale = 1;
-        else Time.timeScale = 0;
-
-        //playerRoot.EndRun();
+        playerRoot.canRun = false;
+        playerRoot.isGamePaused = true;
+        
+        Time.timeScale = 0;
     }
 
     public void ResumeButton()
     {
         pauseMenu.SetActive(false);
 
+        playerRoot.isGamePaused = false;
         playerRoot.canRun = true;
 
-        //TEMPORÁRIO - REVISAR!! 28/03/2026
-        Time.timeScale = 1;
-
-        //playerRoot.EndRun();
+        Time.timeScale = 1f;
     }
-
+    #endregion
 
     public void StaticsMenu(float height = 0, int coins = 0, int rubies = 0, int obstaclesDestroyed = 0)
     {
@@ -244,6 +240,7 @@ public class UIController : MonoBehaviour
         GameController.gameController.isRunning = false;
         if(AudioController.audioController.currentMusicCode != 0) AudioController.audioController.SwitchMusic(0);
 
+        //playerRoot.isGamePaused = false;        
         Time.timeScale = 1;
 
         if (!isLevelSelecting && !isCharSelecting)

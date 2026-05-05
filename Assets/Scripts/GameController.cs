@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -46,7 +47,7 @@ public class GameController : MonoBehaviour
     public Inventory inventory;
     public UIController uiController;
     public LevelManager levelManager;
-    public ObstacleManager obstacleManager;
+    public ObstacleManager obstacleManager;   
 
 
     void Awake()
@@ -71,6 +72,7 @@ public class GameController : MonoBehaviour
         //currentLevelID = lastLevel;
         InitilizeLevelStatics();
     }
+    
 
     //IPC: ANOTAÇÃO IMPORTANTE LOGO ABAIXO!!!
     public void BeginRun()
@@ -104,7 +106,7 @@ public class GameController : MonoBehaviour
         UpdateBestHeight(heigth);
 
         coins += runNormalCoins;
-        uiController.TopMenu();
+        uiController.TopMainMenuUpdate();
 
         uiController.StaticsMenu(heigth, runNormalCoins, runRubies, obstaclesDestroyed);
 
