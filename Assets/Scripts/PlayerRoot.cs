@@ -54,7 +54,7 @@ public class PlayerRoot : MonoBehaviour
     private float lastTapTime;
     private int tapCount;
     private Vector2 startTouch;
-    private bool hasSwipe;
+    //private bool hasSwipe;
     private float touchTime;
 
     [Header("Scene Plane")]
@@ -242,7 +242,7 @@ public class PlayerRoot : MonoBehaviour
             {
                 startTouch = t.position;
                 touchTime = Time.time;
-                hasSwipe = false;
+                //hasSwipe = false;
             }
             else if (t.phase == TouchPhase.Ended)
             {
@@ -250,7 +250,7 @@ public class PlayerRoot : MonoBehaviour
 
                 if (delta.magnitude > swipeDistance)
                 {
-                    tapCount = 0;
+                    
                     if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
                     {
                         if (delta.x > 0)
@@ -289,13 +289,13 @@ public class PlayerRoot : MonoBehaviour
                 }
                 else
                 {
-                    DetectTapsTest();
+                    DetectTaps();
                 }
 
             }
         }
     }
-    private void DetectTapsTest()
+    private void DetectTaps()
     {
 
 
@@ -308,12 +308,12 @@ public class PlayerRoot : MonoBehaviour
 
         lastTapTime = timeNow;
 
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-            return;
+        //if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        //    return;
 
-        if (Input.touchCount > 0 && EventSystem.current != null &&
-            EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            return;
+        //if (Input.touchCount > 0 && EventSystem.current != null &&
+        //    EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        //    return;
 
         if (tapCount == 1)
         {
@@ -338,58 +338,59 @@ public class PlayerRoot : MonoBehaviour
         //}
 
     }
-    private void DetectTaps()
-    {
+
+    //private void DetectTaps()
+    //{
 
 
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            if (Time.time - touchTime > 0.15f || hasSwipe)
-            {
-                tapCount = 0;
-                return;
-            }
+    //    if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+    //    {
+    //        if (Time.time - touchTime > 0.15f || hasSwipe)
+    //        {
+    //            tapCount = 0;
+    //            return;
+    //        }
 
 
-            float timeNow = Time.time;
+    //        float timeNow = Time.time;
 
-            if (timeNow - lastTapTime < 0.2f)
-                tapCount++;
-            else
-                tapCount = 1;
+    //        if (timeNow - lastTapTime < 0.2f)
+    //            tapCount++;
+    //        else
+    //            tapCount = 1;
 
-            lastTapTime = timeNow;
+    //        lastTapTime = timeNow;
 
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return;
+    //        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+    //            return;
 
-            if (Input.touchCount > 0 && EventSystem.current != null &&
-                EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                return;
+    //        if (Input.touchCount > 0 && EventSystem.current != null &&
+    //            EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+    //            return;
 
-            if (tapCount == 1)
-            {
-                if (canAttack == true)
-                    Attack();
-                else if (currentAmmo <= 0)
-                    Debug.Log("Sem munição suficiente");
-                else if (cooldownRemaining >= 0)
-                    Debug.Log("Ataque em cooldown ainda");
-            }
+    //        if (tapCount == 1)
+    //        {
+    //            if (canAttack == true)
+    //                Attack();
+    //            else if (currentAmmo <= 0)
+    //                Debug.Log("Sem munição suficiente");
+    //            else if (cooldownRemaining >= 0)
+    //                Debug.Log("Ataque em cooldown ainda");
+    //        }
 
-            //if (tapCount == 2)
-            //{
-            //    CancelInvoke();
-            //    Invoke("DoubleTap", 0.3f);
-            //}
-            //if (tapCount == 3)
-            //{
-            //    CancelInvoke();
-            //    Invoke("TripleTap", 0.2f); //Queria colocar instantâneo para o triple,
-            //                               //mas decidi só reduzir o tempo para manter o paralelismo
-            //}
-        }
-    }
+    //        //if (tapCount == 2)
+    //        //{
+    //        //    CancelInvoke();
+    //        //    Invoke("DoubleTap", 0.3f);
+    //        //}
+    //        //if (tapCount == 3)
+    //        //{
+    //        //    CancelInvoke();
+    //        //    Invoke("TripleTap", 0.2f); //Queria colocar instantâneo para o triple,
+    //        //                               //mas decidi só reduzir o tempo para manter o paralelismo
+    //        //}
+    //    }
+    //}
 
     #endregion
 
