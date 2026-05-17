@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9dbf7f0359f6e4ea63cc485192318d, type: 3}
   m_Name: Adrenaline_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  characterID: 7
-  baseCoinCost: 10000
+  characterID: 8
+  baseCoinCost: 1000
   baseEffectCharges: 10
   levelFactorUpgrade: 10
   maxLevel: 5

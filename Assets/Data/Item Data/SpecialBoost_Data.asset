@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpecialBoost_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   characterID: 7
-  baseCoinCost: 10000
+  baseCoinCost: 1000
   baseEffectCharges: 10
   levelFactorUpgrade: 10
   maxLevel: 5

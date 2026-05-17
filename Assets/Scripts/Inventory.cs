@@ -35,7 +35,6 @@ public class Inventory : MonoBehaviour
     private int coinMultiplierUpgradeCoinCost;
     private int coinMultiplierUpgradeRubyCost;
 
-
     [Header("Coin Multiplier Duration")]
     [SerializeField] private ItemData coinMultiplierDurationData;
     public bool isCoinMultiplierOn;    
@@ -179,6 +178,18 @@ public class Inventory : MonoBehaviour
         //InitializeStaminaPotion(potionRestauration);
     }
 
+    private void AdrenalineInitialization()
+    {
+        adrenalineUpgradeCoinCost = adrenalineData.coinChargeUpgradeCost[adrenalineUpgradeLevel];
+        adrenalineUpgradeRubyCost = adrenalineData.rubyChargeUpgradeCost[adrenalineUpgradeLevel];
+
+        adrenalineRestauration = adrenalineData.baseEffectCharges +
+                     adrenalineUpgradeLevel * adrenalineData.levelFactorUpgrade;
+
+        // GameController.gameController.playerPowers.
+        //InitializeStaminaPotion(potionRestauration);
+    }
+
 
     #endregion
 
@@ -193,7 +204,7 @@ public class Inventory : MonoBehaviour
         else if (itemCode == 5) UpgradeCoinMultiplierDuration();
         else if (itemCode == 6) ResurrectionAmuletUpgrade();
         else if (itemCode == 7) SpecialBoostUpgrade();
-        else if (itemCode == 8) SpecialBoostUpgrade();
+        else if (itemCode == 8) AdrenalineUpgrade();
     }
 
 
@@ -371,7 +382,27 @@ public class Inventory : MonoBehaviour
     #endregion
 
     #region Adrenaline
+    private void AdrenalineUpgrade()
+    {
+        if (adrenalineUpgradeLevel >= adrenalineData.maxLevel) return;
+        //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
 
+        adrenalineUpgradeLevel++;
+
+        adrenalineUpgradeCoinCost = adrenalineData.coinChargeUpgradeCost[adrenalineUpgradeLevel];
+        adrenalineUpgradeRubyCost = adrenalineData.rubyChargeUpgradeCost[adrenalineUpgradeLevel];
+
+
+        AdrenalineInitialization();
+        UIAdrenalineUpdate();
+    }
+
+    private void UIAdrenalineUpdate() //PRECISA ATUALIZAR
+    {
+        GameController.gameController.uiController.
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+    }
     #endregion
 
 

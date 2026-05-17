@@ -45714,8 +45714,8 @@ MonoBehaviour:
   coinMultiplierDurationData: {fileID: 11400000, guid: 670a5a4252be5834fb01b1a72c4bb0c9, type: 2}
   isCoinMultiplierOn: 0
   resurrectionAmuletData: {fileID: 11400000, guid: b08663ba291d75f4f841c77e648590ed, type: 2}
-  specialBoostData: {fileID: 0}
-  adrenalineData: {fileID: 0}
+  specialBoostData: {fileID: 11400000, guid: a3d04e0adbcc34644a33d61e8ba3d051, type: 2}
+  adrenalineData: {fileID: 11400000, guid: 600edd5bdb16e644ca8a39f674732880, type: 2}
 --- !u!1 &1672686727
 GameObject:
   m_ObjectHideFlags: 0
