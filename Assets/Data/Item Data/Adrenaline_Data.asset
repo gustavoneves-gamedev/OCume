@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a9dbf7f0359f6e4ea63cc485192318d, type: 3}
-  m_Name: ResurrectionAmulet_Data
+  m_Name: Adrenaline_Data
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  characterID: 6
+  characterID: 7
   baseCoinCost: 10000
-  baseEffectCharges: 20
-  levelFactorUpgrade: 20
-  maxLevel: 3
-  coinChargeUpgradeCost: 204e0000409c0000a0860100ffffffff
-  rubyChargeUpgradeCost: 000000000a00000014000000ffffffff
+  baseEffectCharges: 10
+  levelFactorUpgrade: 10
+  maxLevel: 5
+  coinChargeUpgradeCost: 102700003075000050c3000080380100a0860100ffffffff
+  rubyChargeUpgradeCost: 0000000000000000050000000a00000014000000ffffffff

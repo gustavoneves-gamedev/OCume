@@ -36,7 +36,8 @@ public enum ItemID
     CoinMultiplierCharges,
     CoinMultiplierDuration,
     Checkpoint,
-    O2Tank,
-    Recharger,
+    RessurrectionAmulet,
+    SpecialBoost,
+    Adrenaline, //adrenaline
     AdTicket
 }

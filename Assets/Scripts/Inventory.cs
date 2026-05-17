@@ -45,24 +45,21 @@ public class Inventory : MonoBehaviour
     private int coinMultiplierDurationUpgradeRubyCost;
 
     [Header("Resurrection Amulet")]
-    [SerializeField] private ItemData resurrectionAmuletData;
-    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    [SerializeField] private ItemData resurrectionAmuletData;        
     private int resurrectionAmuletStaminaRestauration;
     private int resurrectionAmuletUpgradeLevel = 0;
     private int resurrectionAmuletUpgradeCoinCost;
     private int resurrectionAmuletUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Special Boost")]
-    [SerializeField] private ItemData specialBoostData;
-    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    [SerializeField] private ItemData specialBoostData;      
     private int specialBoostRestauration;
     private int specialBoostUpgradeLevel = 0;
     private int specialBoostUpgradeCoinCost;
     private int specialBoostUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Adrenaline")]
-    [SerializeField] private ItemData adrenalineData;
-    //private ItemID staminaPotionID = ItemID.StaminaPotion;    
+    [SerializeField] private ItemData adrenalineData;        
     private int adrenalineRestauration;
     private int adrenalineUpgradeLevel = 0;
     private int adrenalineUpgradeCoinCost;
@@ -91,6 +88,14 @@ public class Inventory : MonoBehaviour
         CoinMultiplierInitialization();
         UICoinMultiplierChargeUpgrade();
         UICoinMultiplierDurationUpgrade();
+
+        //RESURRECTION AMULET
+        ResurrectionAmuletInitialization();
+        //UIResurrectionAmulet
+
+        //SPECIAL BOOST
+        ResurrectionAmuletInitialization();
+        //UIResurrectionAmulet
     }
 
     #region Item Initialization
@@ -312,7 +317,33 @@ public class Inventory : MonoBehaviour
         UiResurrectionAmuletUpdate();
     }
 
-    private void UiResurrectionAmuletUpdate()
+    private void UiResurrectionAmuletUpdate() //PRECISA ATUALIZAR
+    {
+        GameController.gameController.uiController.
+            UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
+            staminaPotionUpgradeLevel, staminaPotionUpgradeCoinCost, staminaPotionUpgradeRubyCost);
+    }
+
+    #endregion
+
+    #region SpecialBoost
+
+    private void SpecialBoostUpgrade()
+    {
+        if (resurrectionAmuletUpgradeLevel >= resurrectionAmuletData.maxLevel) return;
+        //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
+
+        resurrectionAmuletUpgradeLevel++;
+
+        resurrectionAmuletUpgradeCoinCost = resurrectionAmuletData.coinChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+        resurrectionAmuletUpgradeRubyCost = resurrectionAmuletData.rubyChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+
+
+        ResurrectionAmuletInitialization();
+        UiResurrectionAmuletUpdate();
+    }
+
+    private void UiSpecialBoostUpdate() //PRECISA ATUALIZAR
     {
         GameController.gameController.uiController.
             UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
