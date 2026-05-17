@@ -91,10 +91,14 @@ public class Inventory : MonoBehaviour
 
         //RESURRECTION AMULET
         ResurrectionAmuletInitialization();
-        //UIResurrectionAmulet
+        UIResurrectionAmuletUpdate();
 
         //SPECIAL BOOST
-        ResurrectionAmuletInitialization();
+        SpecialBoostInitialization();        
+        UISpecialBoostUpdate();
+
+        //ADRENALINE
+        SpecialBoostInitialization();
         //UIResurrectionAmulet
     }
 
@@ -163,6 +167,18 @@ public class Inventory : MonoBehaviour
             //InitializeStaminaPotion(potionRestauration);
     }
 
+    private void SpecialBoostInitialization()
+    {
+        specialBoostUpgradeCoinCost = specialBoostData.coinChargeUpgradeCost[specialBoostUpgradeLevel];
+        specialBoostUpgradeRubyCost = specialBoostData.rubyChargeUpgradeCost[specialBoostUpgradeLevel];
+
+        specialBoostRestauration = specialBoostData.baseEffectCharges +
+                     specialBoostUpgradeLevel * specialBoostData.levelFactorUpgrade;
+
+        // GameController.gameController.playerPowers.
+        //InitializeStaminaPotion(potionRestauration);
+    }
+
 
     #endregion
 
@@ -176,6 +192,8 @@ public class Inventory : MonoBehaviour
         else if (itemCode == 4) UpgradeCoinMultiplier();
         else if (itemCode == 5) UpgradeCoinMultiplierDuration();
         else if (itemCode == 6) ResurrectionAmuletUpgrade();
+        else if (itemCode == 7) SpecialBoostUpgrade();
+        else if (itemCode == 8) SpecialBoostUpgrade();
     }
 
 
@@ -314,10 +332,10 @@ public class Inventory : MonoBehaviour
 
 
         ResurrectionAmuletInitialization();
-        UiResurrectionAmuletUpdate();
+        UIResurrectionAmuletUpdate();
     }
 
-    private void UiResurrectionAmuletUpdate() //PRECISA ATUALIZAR
+    private void UIResurrectionAmuletUpdate() //PRECISA ATUALIZAR
     {
         GameController.gameController.uiController.
             UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
@@ -330,20 +348,20 @@ public class Inventory : MonoBehaviour
 
     private void SpecialBoostUpgrade()
     {
-        if (resurrectionAmuletUpgradeLevel >= resurrectionAmuletData.maxLevel) return;
+        if (specialBoostUpgradeLevel >= specialBoostData.maxLevel) return;
         //Também devo mudar o texto e a cor do botão neste caso, mas deixarei assim por enquanto
 
-        resurrectionAmuletUpgradeLevel++;
+        specialBoostUpgradeLevel++;
 
-        resurrectionAmuletUpgradeCoinCost = resurrectionAmuletData.coinChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
-        resurrectionAmuletUpgradeRubyCost = resurrectionAmuletData.rubyChargeUpgradeCost[resurrectionAmuletUpgradeLevel];
+        specialBoostUpgradeCoinCost = specialBoostData.coinChargeUpgradeCost[specialBoostUpgradeLevel];
+        specialBoostUpgradeRubyCost = specialBoostData.rubyChargeUpgradeCost[specialBoostUpgradeLevel];
 
 
-        ResurrectionAmuletInitialization();
-        UiResurrectionAmuletUpdate();
+        SpecialBoostInitialization();
+        UISpecialBoostUpdate();
     }
 
-    private void UiSpecialBoostUpdate() //PRECISA ATUALIZAR
+    private void UISpecialBoostUpdate() //PRECISA ATUALIZAR
     {
         GameController.gameController.uiController.
             UpdateStaminaPostionUpgradeUI((staminaPotionUpgradeLevel * staminaData.levelFactorUpgrade),
@@ -351,6 +369,11 @@ public class Inventory : MonoBehaviour
     }
 
     #endregion
+
+    #region Adrenaline
+
+    #endregion
+
 
     #endregion
 }
