@@ -58,7 +58,8 @@ public class Inventory : MonoBehaviour
     private int specialBoostUpgradeRubyCost; //Passar para a HUD!!
 
     [Header("Adrenaline")]
-    [SerializeField] private ItemData adrenalineData;        
+    [SerializeField] private ItemData adrenalineData;
+    private int adreanlinaQuantity;
     private int adrenalineRestauration;
     private int adrenalineUpgradeLevel = 0;
     private int adrenalineUpgradeCoinCost;

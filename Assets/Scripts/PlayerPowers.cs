@@ -7,7 +7,7 @@ public class PlayerPowers : MonoBehaviour
     [SerializeField] private GameObject shield;
     [SerializeField] private GameObject shieldEffect;
     private int shieldCharges = 1;
-    private int defaultShieldCharges;    
+    private int defaultShieldCharges;
     private float shieldDuration;
     private float defaultShieldDuration;
 
@@ -23,15 +23,22 @@ public class PlayerPowers : MonoBehaviour
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
 
-    [Header("O2 Tank")] //AINDA NÃO IMPLEMENTADO
+    [Header("Resurrection Amulet")] //AINDA NÃO IMPLEMENTADO
+    private int ressurrectionAmuletQuantity;
     public bool isO2TankOn;
     private int activeO2Tanks;
     private float o2Restauration;
 
-    [Header("Recharger")] //AINDA NÃO IMPLEMENTADO
+    [Header("Special Boost")] //AINDA NÃO IMPLEMENTADO
+    private int specialBoostQuantity;
     public bool isRechargeOn;
     private int activeRecharges;
     private bool isRecharging;
+
+    [Header("Adrenaline")] //AINDA NÃO IMPLEMENTADO
+    private int adreanlinaQuantity;
+    private int adrenalineRestauration;
+    private bool isAdrenaline;
 
 
     private PlayerRoot player;
@@ -41,7 +48,7 @@ public class PlayerPowers : MonoBehaviour
     void Start()
     {
         GameController.gameController.playerPowers = this;
-        player = GetComponent<PlayerRoot>();        
+        player = GetComponent<PlayerRoot>();
 
         //Invoke("InitilizePowers", .2f);        
         Invoke("ResetPowers", .2f);
@@ -51,8 +58,11 @@ public class PlayerPowers : MonoBehaviour
     {
         CoinMultiplierCountdown();
         ShieldCountdown();
+
+        if (player.currentStamina < player.maxStamina / 10 && adreanlinaQuantity > 0) ActivateAdrenaline();
+
     }
-    
+
     //Inutilizada temporariamente esta função
     private void InitilizePowers()
     {
@@ -77,7 +87,7 @@ public class PlayerPowers : MonoBehaviour
 
     public void InitializeShieldPower(float duration = 0, int charges = 0)
     {
-        
+
         shieldDuration = duration;
         shieldCharges = charges;
 
@@ -147,7 +157,7 @@ public class PlayerPowers : MonoBehaviour
     {
         if (isCoinMultiplierOn)
         {
-            coinMultiplierDuration = defaultMultiplierDuration;            
+            coinMultiplierDuration = defaultMultiplierDuration;
         }
         else
         {
@@ -179,11 +189,30 @@ public class PlayerPowers : MonoBehaviour
 
     #endregion
 
-    #region O2
+    #region Resurrection Amulet
 
 
 
     #endregion
+
+    #region Adrenaline
+
+    public void InitializeAdrenaline(int quantity = 0, int restauration = 0)
+    {
+        adreanlinaQuantity = quantity;
+        adrenalineRestauration = restauration;
+    }
+
+    private void ActivateAdrenaline()
+    {
+        player.UpdateStamina(adrenalineRestauration);
+        adreanlinaQuantity--;
+    }
+
+    #endregion
+
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -198,9 +227,9 @@ public class PlayerPowers : MonoBehaviour
         {
             player.UpdateStamina(potionRestauration);
             //Tocar som de stamina recuperando
-            if(staminaUp != null) staminaUp.Play();
+            if (staminaUp != null) staminaUp.Play();
             other.GetComponent<Items>().PlayFX();
-            
+
         }
 
         if (other.CompareTag("CoinMultiplier"))
@@ -209,7 +238,7 @@ public class PlayerPowers : MonoBehaviour
             //Tocar som de ativar multiplicador
             if (coinMultiplierVFX != null) coinMultiplierVFX.Play();
             other.GetComponent<Items>().PlayFX();
-            
+
         }
 
 
