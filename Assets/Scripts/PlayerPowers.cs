@@ -36,7 +36,8 @@ public class PlayerPowers : MonoBehaviour
     private bool isRecharging;
 
     [Header("Adrenaline")] //AINDA NÃO IMPLEMENTADO
-    private int adreanlinaQuantity;
+    private int adrenalineQuantity;
+    private int alocatedAdrenalineQuantity;
     private int adrenalineRestauration;
     private bool isAdrenaline;
 
@@ -59,7 +60,8 @@ public class PlayerPowers : MonoBehaviour
         CoinMultiplierCountdown();
         ShieldCountdown();
 
-        if (player.currentStamina < player.maxStamina / 10 && adreanlinaQuantity > 0) ActivateAdrenaline();
+        if (player.currentStamina < player.maxStamina / 10 && alocatedAdrenalineQuantity > 0)
+            ActivateAdrenaline();
 
     }
 
@@ -199,14 +201,23 @@ public class PlayerPowers : MonoBehaviour
 
     public void InitializeAdrenaline(int quantity = 0, int restauration = 0)
     {
-        adreanlinaQuantity = quantity;
+        adrenalineQuantity = quantity;
         adrenalineRestauration = restauration;
+    }
+
+    public void AlocateAdrenalineQuantity()
+    {
+        if (adrenalineQuantity <= 0) return;
+
+        alocatedAdrenalineQuantity++;
+        adrenalineQuantity--;
+        inventory.adrenalineQuantity--;
     }
 
     private void ActivateAdrenaline()
     {
         player.UpdateStamina(adrenalineRestauration);
-        adreanlinaQuantity--;
+        alocatedAdrenalineQuantity--;
     }
 
     #endregion

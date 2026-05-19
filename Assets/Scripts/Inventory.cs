@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Adrenaline")]
     [SerializeField] private ItemData adrenalineData;
-    private int adreanlinaQuantity;
+    public int adrenalineQuantity;
     private int adrenalineRestauration;
     private int adrenalineUpgradeLevel = 0;
     private int adrenalineUpgradeCoinCost;
