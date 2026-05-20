@@ -9771,6 +9771,7 @@ MonoBehaviour:
   adrenalineUpgradeRubyCost: {fileID: 0}
   pauseMenu: {fileID: 347314579}
   resurrectionMenu: {fileID: 590574078}
+  resurrectionButton: {fileID: 1575609337}
   HUD: {fileID: 1855609971}
   runCoins: {fileID: 1180275159}
   runHeightClimbed: {fileID: 907417154}

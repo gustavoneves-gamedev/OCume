@@ -104,6 +104,7 @@ public class UIController : MonoBehaviour
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject resurrectionMenu;
+    [SerializeField] private Button resurrectionButton;
     [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
@@ -147,7 +148,8 @@ public class UIController : MonoBehaviour
         GameController.gameController.uiController = this;
         mainMenu.SetActive(true);
         topMenu.SetActive(true);
-        pauseMenu.SetActive(false);        
+        pauseMenu.SetActive(false);
+        resurrectionMenu.SetActive(false);
         characterSelectionMenu.SetActive(false);
         levelSelectionMenu.SetActive(false);
         HUD.SetActive(false);
@@ -233,6 +235,15 @@ public class UIController : MonoBehaviour
     {
         resurrectionMenu.SetActive(true);
 
+        if (playerRoot.playerPowers.hasResurrectionAmulet)
+        {
+            resurrectionButton.interactable = true;
+        }
+        else
+        {
+            resurrectionButton.interactable = false;
+        }
+
         playerRoot.canRun = false;
         playerRoot.isGamePaused = true;
 
@@ -273,6 +284,7 @@ public class UIController : MonoBehaviour
     {
         statsMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        resurrectionMenu.SetActive(false);
         HUD.SetActive(false);
         leaderboard.SetActive(false);
         characterSelectionMenu.SetActive(false);

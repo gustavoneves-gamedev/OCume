@@ -99,7 +99,7 @@ public class Inventory : MonoBehaviour
         UISpecialBoostUpdate();
 
         //ADRENALINE
-        SpecialBoostInitialization();
+        AdrenalineInitialization();
         UIAdrenalineUpdate();
     }
 
@@ -197,6 +197,20 @@ public class Inventory : MonoBehaviour
 
     #region Item Purchases & Consume
 
+    #region Resurrection Amulet
+
+    public void BuyResurrectionAmulet()
+    {
+
+    }
+
+    public void ConsumeResurrectionAmulet(int quantity)
+    {
+        resurrectionAmuletQuantity = quantity;
+        //Inserir aqui a atualização no salvamento
+    }
+
+    #endregion
 
     #region Adrenaline
 

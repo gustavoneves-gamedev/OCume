@@ -212,7 +212,7 @@ public class PlayerRoot : MonoBehaviour
         PlayerMovement();
         SpeedScale();
         AttackTimeCounter();
-        StaminaConsumption();
+        StaminaConsumption();        
 
         scenePlane.transform.localPosition += Vector3.back * 0.4f * Time.deltaTime;
 

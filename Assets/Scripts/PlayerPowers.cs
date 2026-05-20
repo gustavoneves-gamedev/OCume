@@ -23,7 +23,7 @@ public class PlayerPowers : MonoBehaviour
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
 
-    [Header("Resurrection Amulet")] //AINDA NÃO IMPLEMENTADO
+    [Header("Resurrection Amulet")]
     public bool hasResurrectionAmulet;
     private int ressurrectionAmuletQuantity;
     private int ressurrectionAmuletRestauration;
@@ -55,11 +55,20 @@ public class PlayerPowers : MonoBehaviour
 
     void Update()
     {
+        if (player.canRun == false || player.isGamePaused) return;
+
         CoinMultiplierCountdown();
         ShieldCountdown();
 
-        if (player.currentStamina < player.maxStamina / 10 && alocatedAdrenalineQuantity > 0)
+        
+        //Debug.Log("Stamina: " + player.currentStamina + "/" + (player.maxStamina / 10));
+
+        if (player.currentStamina < (player.maxStamina / 10) && alocatedAdrenalineQuantity > 0)
+        {
+            Debug.Log("FUI CHAMADO");
             ActivateAdrenaline();
+
+        }
 
     }
 
@@ -196,12 +205,18 @@ public class PlayerPowers : MonoBehaviour
     {
         ressurrectionAmuletQuantity = quantity;
         ressurrectionAmuletRestauration = restauration;
+
+        if (quantity > 0) hasResurrectionAmulet = true;
     }
 
     public void ActivateResurrectionAmulet()
     {
         player.UpdateStamina(ressurrectionAmuletRestauration);
+
         ressurrectionAmuletQuantity--;
+        if (ressurrectionAmuletQuantity <= 0) hasResurrectionAmulet = false;
+
+        inventory.ConsumeResurrectionAmulet(ressurrectionAmuletQuantity);
         uiController.ResumeButton();
     }
 
@@ -213,6 +228,7 @@ public class PlayerPowers : MonoBehaviour
     {
         adrenalineQuantity = quantity;
         adrenalineRestauration = restauration;
+        alocatedAdrenalineQuantity = 2;
     }
 
     public void AlocateAdrenalineQuantity()
@@ -224,8 +240,9 @@ public class PlayerPowers : MonoBehaviour
         inventory.ConsumeAdrenaline(adrenalineQuantity);
     }
 
-    private void ActivateAdrenaline()
+    public void ActivateAdrenaline()
     {
+        
         player.UpdateStamina(adrenalineRestauration);
         alocatedAdrenalineQuantity--;
     }
