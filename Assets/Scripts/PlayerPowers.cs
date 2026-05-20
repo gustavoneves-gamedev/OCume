@@ -25,7 +25,7 @@ public class PlayerPowers : MonoBehaviour
 
     [Header("Resurrection Amulet")]
     public bool hasResurrectionAmulet;
-    private int ressurrectionAmuletQuantity;
+    public int ressurrectionAmuletQuantity;
     private int ressurrectionAmuletRestauration;
 
     [Header("Special Boost")] //AINDA NÃO IMPLEMENTADO
@@ -65,7 +65,7 @@ public class PlayerPowers : MonoBehaviour
 
         if (player.currentStamina < (player.maxStamina / 10) && alocatedAdrenalineQuantity > 0)
         {
-            Debug.Log("FUI CHAMADO");
+            
             ActivateAdrenaline();
 
         }

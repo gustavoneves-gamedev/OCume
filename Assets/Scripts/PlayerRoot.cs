@@ -567,7 +567,7 @@ public class PlayerRoot : MonoBehaviour
     #region Death
     private void OnStaminaEnd()
     {
-        uiController.EndRunChoiceMenu();
+        uiController.EndRunChoiceMenu(playerPowers.ressurrectionAmuletQuantity);
     }
 
     public void ContinueRunChoice(bool willContinue)

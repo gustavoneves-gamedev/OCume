@@ -102,12 +102,15 @@ public class UIController : MonoBehaviour
     #endregion
 
     [Header("Run")]
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject resurrectionMenu;
-    [SerializeField] private Button resurrectionButton;
+    [SerializeField] private GameObject pauseMenu;    
     [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
+
+    [Header("Death Menu")]
+    [SerializeField] private GameObject resurrectionMenu;
+    [SerializeField] private Button resurrectionButton;
+    [SerializeField] private TextMeshProUGUI amuletQuantity;
 
     [Header("Ammo")]
     [SerializeField] private GameObject[] ammoType;
@@ -231,9 +234,10 @@ public class UIController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    public void EndRunChoiceMenu()
+    public void EndRunChoiceMenu(int quantity = 0)
     {
         resurrectionMenu.SetActive(true);
+        amuletQuantity.text = "x" + quantity;
 
         if (playerRoot.playerPowers.hasResurrectionAmulet)
         {
