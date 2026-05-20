@@ -24,14 +24,14 @@ public class PlayerPowers : MonoBehaviour
     private float defaultMultiplierDuration;
 
     [Header("Resurrection Amulet")] //AINDA NÃO IMPLEMENTADO
-    private int ressurrectionAmuletQuantity;
     public bool isO2TankOn;
+    private int ressurrectionAmuletQuantity;
     private int activeO2Tanks;
     private float o2Restauration;
 
     [Header("Special Boost")] //AINDA NÃO IMPLEMENTADO
-    private int specialBoostQuantity;
     public bool isRechargeOn;
+    private int specialBoostQuantity;
     private int activeRecharges;
     private bool isRecharging;
 
