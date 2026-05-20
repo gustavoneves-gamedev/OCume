@@ -44,7 +44,8 @@ public class Inventory : MonoBehaviour
     private int coinMultiplierDurationUpgradeRubyCost;
 
     [Header("Resurrection Amulet")]
-    [SerializeField] private ItemData resurrectionAmuletData;        
+    [SerializeField] private ItemData resurrectionAmuletData;
+    private int resurrectionAmuletQuantity = 1;
     private int resurrectionAmuletStaminaRestauration;
     private int resurrectionAmuletUpgradeLevel = 0;
     private int resurrectionAmuletUpgradeCoinCost;
@@ -59,7 +60,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Adrenaline")]
     [SerializeField] private ItemData adrenalineData;
-    public int adrenalineQuantity;
+    private int adrenalineQuantity = 1;
     private int adrenalineRestauration;
     private int adrenalineUpgradeLevel = 0;
     private int adrenalineUpgradeCoinCost;
@@ -163,8 +164,8 @@ public class Inventory : MonoBehaviour
         resurrectionAmuletStaminaRestauration = resurrectionAmuletData.baseEffectCharges +
                     resurrectionAmuletUpgradeLevel * resurrectionAmuletData.levelFactorUpgrade;
 
-       // GameController.gameController.playerPowers.
-            //InitializeStaminaPotion(potionRestauration);
+       GameController.gameController.playerPowers.
+            InitializeResurrectionAmulet(resurrectionAmuletQuantity, resurrectionAmuletStaminaRestauration);
     }
 
     private void SpecialBoostInitialization()
@@ -187,10 +188,30 @@ public class Inventory : MonoBehaviour
         adrenalineRestauration = adrenalineData.baseEffectCharges +
                      adrenalineUpgradeLevel * adrenalineData.levelFactorUpgrade;
 
-        // GameController.gameController.playerPowers.
-        //InitializeStaminaPotion(potionRestauration);
+        GameController.gameController.playerPowers.
+         InitializeAdrenaline(adrenalineQuantity, adrenalineRestauration);
     }
 
+
+    #endregion
+
+    #region Item Purchases & Consume
+
+
+    #region Adrenaline
+
+    public void BuyAdrenaline()
+    {
+
+    }
+
+    public void ConsumeAdrenaline(int quantity)
+    {
+        adrenalineQuantity = quantity;
+        //Inserir aqui a atualização no salvamento
+    }
+
+    #endregion
 
     #endregion
 

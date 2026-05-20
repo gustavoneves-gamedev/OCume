@@ -103,6 +103,7 @@ public class UIController : MonoBehaviour
 
     [Header("Run")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject resurrectionMenu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private TextMeshProUGUI runCoins;
     [SerializeField] private TextMeshProUGUI runHeightClimbed;
@@ -228,9 +229,25 @@ public class UIController : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    public void EndRunChoiceMenu()
+    {
+        resurrectionMenu.SetActive(true);
+
+        playerRoot.canRun = false;
+        playerRoot.isGamePaused = true;
+
+        Time.timeScale = 0;
+    }
+
+    public void ContinueRunChoice(bool willContinue)
+    {
+        playerRoot.ContinueRunChoice(willContinue);
+    }
+
     public void ResumeButton()
     {
         pauseMenu.SetActive(false);
+        resurrectionMenu.SetActive(false);
 
         playerRoot.isGamePaused = false;
         playerRoot.canRun = true;

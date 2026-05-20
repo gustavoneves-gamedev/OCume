@@ -66,7 +66,6 @@ public class PlayerRoot : MonoBehaviour
     [SerializeField] private AudioSource ammoReadySFX;
     [SerializeField] private AudioSource healSFX;
 
-
     [Header("References")]
     [SerializeField] private CharacterController cc;
     public characterID selectedCharacter = characterID.Cowboy;
@@ -479,7 +478,7 @@ public class PlayerRoot : MonoBehaviour
         if (currentStamina <= 0 && !isDead)
         {
             currentStamina = 0;
-            OnDeathEvent();
+            OnStaminaEnd();
         }
     }
 
@@ -510,7 +509,7 @@ public class PlayerRoot : MonoBehaviour
         if (currentStamina <= 0 && !isDead)
         {
             currentStamina = 0;
-            OnDeathEvent();
+            OnStaminaEnd();
         }
     }
 
@@ -565,6 +564,23 @@ public class PlayerRoot : MonoBehaviour
 
     #endregion
 
+    #region Death
+    private void OnStaminaEnd()
+    {
+        uiController.EndRunChoiceMenu();
+    }
+
+    public void ContinueRunChoice(bool willContinue)
+    {
+        if (willContinue)
+        {
+            playerPowers.ActivateResurrectionAmulet();
+        }
+        else
+        {
+            OnDeathEvent();
+        }
+    }    
 
     private void OnDeathEvent()
     {
@@ -573,6 +589,7 @@ public class PlayerRoot : MonoBehaviour
 
         GameController.gameController.EndRun(heightClimbed);
     }
+    #endregion
 
     private void OnTriggerEnter(Collider other)
     {

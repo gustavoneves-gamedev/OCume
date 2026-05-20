@@ -24,10 +24,9 @@ public class PlayerPowers : MonoBehaviour
     private float defaultMultiplierDuration;
 
     [Header("Resurrection Amulet")] //AINDA NÃO IMPLEMENTADO
-    public bool isO2TankOn;
+    public bool hasResurrectionAmulet;
     private int ressurrectionAmuletQuantity;
-    private int activeO2Tanks;
-    private float o2Restauration;
+    private int ressurrectionAmuletRestauration;
 
     [Header("Special Boost")] //AINDA NÃO IMPLEMENTADO
     public bool isRechargeOn;
@@ -35,23 +34,22 @@ public class PlayerPowers : MonoBehaviour
     private int activeRecharges;
     private bool isRecharging;
 
-    [Header("Adrenaline")] //AINDA NÃO IMPLEMENTADO
+    [Header("Adrenaline")]
     private int adrenalineQuantity;
     private int alocatedAdrenalineQuantity;
-    private int adrenalineRestauration;
-    private bool isAdrenaline;
+    private int adrenalineRestauration;    
 
 
     private PlayerRoot player;
-    private Inventory inventory; //Está inutilizada por enquanto
-
+    private Inventory inventory;
+    private UIController uiController;
 
     void Start()
     {
         GameController.gameController.playerPowers = this;
         player = GetComponent<PlayerRoot>();
 
-        //Invoke("InitilizePowers", .2f);        
+        Invoke("InitilizeReferences", .2f);
         Invoke("ResetPowers", .2f);
     }
 
@@ -66,9 +64,10 @@ public class PlayerPowers : MonoBehaviour
     }
 
     //Inutilizada temporariamente esta função
-    private void InitilizePowers()
+    private void InitilizeReferences()
     {
         inventory = GameController.gameController.inventory;
+        uiController = GameController.gameController.uiController;
     }
 
     public void ResetPowers()
@@ -193,7 +192,18 @@ public class PlayerPowers : MonoBehaviour
 
     #region Resurrection Amulet
 
+    public void InitializeResurrectionAmulet(int quantity = 0, int restauration = 0)
+    {
+        ressurrectionAmuletQuantity = quantity;
+        ressurrectionAmuletRestauration = restauration;
+    }
 
+    public void ActivateResurrectionAmulet()
+    {
+        player.UpdateStamina(ressurrectionAmuletRestauration);
+        ressurrectionAmuletQuantity--;
+        uiController.ResumeButton();
+    }
 
     #endregion
 
@@ -211,7 +221,7 @@ public class PlayerPowers : MonoBehaviour
 
         alocatedAdrenalineQuantity++;
         adrenalineQuantity--;
-        inventory.adrenalineQuantity--;
+        inventory.ConsumeAdrenaline(adrenalineQuantity);
     }
 
     private void ActivateAdrenaline()
@@ -221,7 +231,6 @@ public class PlayerPowers : MonoBehaviour
     }
 
     #endregion
-
 
 
     private void OnTriggerEnter(Collider other)
