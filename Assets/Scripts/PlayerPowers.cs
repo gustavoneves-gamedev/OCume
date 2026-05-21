@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerPowers : MonoBehaviour
@@ -23,16 +24,21 @@ public class PlayerPowers : MonoBehaviour
     private float coinMultiplierDuration;
     private float defaultMultiplierDuration;
 
+    [Header("Special")]
+    public bool canUseSpecial;
+    public bool isSpecialOn;
+    public float currentSpecial;
+    public float maxSpecial;
+
     [Header("Resurrection Amulet")]
     public bool hasResurrectionAmulet;
     public int ressurrectionAmuletQuantity;
     private int ressurrectionAmuletRestauration;
 
     [Header("Special Boost")] //AINDA NÃO IMPLEMENTADO
-    public bool isRechargeOn;
     private int specialBoostQuantity;
-    private int activeRecharges;
-    private bool isRecharging;
+    private int alocatedspecialBoostQuantity;
+    private int specialBoostRestauration;
 
     [Header("Adrenaline")]
     private int adrenalineQuantity;
@@ -63,10 +69,16 @@ public class PlayerPowers : MonoBehaviour
         
         //Debug.Log("Stamina: " + player.currentStamina + "/" + (player.maxStamina / 10));
 
-        if (player.currentStamina < (player.maxStamina / 10) && alocatedAdrenalineQuantity > 0)
-        {
-            
+        if (player.currentStamina < (player.maxStamina / 5) && alocatedAdrenalineQuantity > 0)
+        {            
             ActivateAdrenaline();
+        }
+
+        if (isSpecialOn)
+        {
+            //Rever esse 2 aí com base em cada personagem
+            currentSpecial -= 2 * Time.deltaTime;
+            if (currentSpecial <= 0) isSpecialOn = false;
 
         }
 
@@ -195,7 +207,53 @@ public class PlayerPowers : MonoBehaviour
 
     #region Special
 
+    public void ActivateSpecial()
+    {
+        isSpecialOn = true;
+        //Activate new Collision
+        //StartCoroutine(SpecialActivationControl());
+    }
 
+    public void AddToSpecial(int x)
+    {
+        currentSpecial += x;
+
+        if (currentSpecial >= maxSpecial)
+        {
+            currentSpecial = maxSpecial;
+            canUseSpecial = true;
+        }
+        //Activate new Collision
+        //StartCoroutine(SpecialActivationControl());
+    }
+
+    #endregion
+
+    //Não implementado!
+    #region Special Boost
+
+    public void InitializeSpecialBoost(int quantity = 0, int restauration = 0)
+    {
+        specialBoostQuantity = quantity;
+        specialBoostRestauration = restauration;
+        //alocatedspecialBoostQuantity = 2;
+    }
+
+    public void AlocateSpecialBoost()
+    {
+        if (specialBoostQuantity <= 0) return;
+
+        alocatedspecialBoostQuantity++;
+        specialBoostQuantity--;
+        inventory.ConsumeAdrenaline(specialBoostQuantity);
+    }
+
+    public void ActivateSpecialBoost()
+    {
+
+        AddToSpecial(specialBoostRestauration);
+        alocatedspecialBoostQuantity--;
+    }
 
     #endregion
 

@@ -134,6 +134,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private Color red;
     [SerializeField] private Color darkRed;
 
+    [Header("Special")]
+    [SerializeField] private Slider specialSlider;
+    [SerializeField] private Image specialBackground;
+    [SerializeField] private Image specialFill;
+    
+
     [Header("Stats Menu")]
     [SerializeField] private GameObject statsMenu;
     [SerializeField] private TextMeshProUGUI result;
@@ -169,6 +175,7 @@ public class UIController : MonoBehaviour
         if (!GameController.gameController.isRunning) return;
 
         UpdateStaminaHUD(playerRoot.currentStamina / playerRoot.maxStamina);
+        UpdateSpecialHUD(playerRoot.playerPowers.currentSpecial / playerRoot.playerPowers.maxSpecial);
         UpdateHeightClimbed();
     }
 
@@ -625,6 +632,11 @@ public class UIController : MonoBehaviour
     private void UpdateHeightClimbed()
     {
         runHeightClimbed.text = playerRoot.heightClimbed.ToString("F0") + "m";
+    }
+
+    private void UpdateSpecialHUD(float special)
+    {
+        specialSlider.value = special;
     }
 
     #region Ammo
