@@ -174,9 +174,9 @@ public class UIController : MonoBehaviour
     {
         if (!GameController.gameController.isRunning) return;
 
+        UpdateHeightClimbed();
         UpdateStaminaHUD(playerRoot.currentStamina / playerRoot.maxStamina);
         UpdateSpecialHUD(playerRoot.playerPowers.currentSpecial / playerRoot.playerPowers.maxSpecial);
-        UpdateHeightClimbed();
     }
 
     private void Initialize()//COMENTÁRIOS IMPORTANTES AQUI
